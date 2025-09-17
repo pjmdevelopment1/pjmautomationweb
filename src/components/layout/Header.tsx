@@ -52,10 +52,10 @@ const Header = () => {
             className="flex items-center gap-3 group focus:outline-none"
             tabIndex={-1}
           >
-            <div className="relative w-40 h-9 lg:w-56 lg:h-13 pointer-events-none select-none">
+            <div className="relative w-40 h-9 lg:w-60 lg:h-14 pointer-events-none select-none">
               <Image
-                src="/images/mkilogo.png"
-                alt="MKI Logo"
+                src="/images/pjmlogo.png"
+                alt="PJM Logo"
                 fill
                 className="object-contain"
                 priority
