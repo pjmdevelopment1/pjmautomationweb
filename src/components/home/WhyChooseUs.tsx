@@ -1,209 +1,214 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @next/next/no-html-link-for-pages */
 /* eslint-disable react/no-unescaped-entities */
-// src/components/home/WhyChooseUs.tsx
+// src/components/home/WhyChooseUs.tsx - REDESIGNED CLEAN & CUSTOMER-FOCUSED
 import {
   CheckCircle,
-  Truck,
-  HeadphonesIcon,
-  ShieldCheck,
   Clock,
-  Users,
+  Headphones,
   Award,
-  Wrench,
-  Zap,
+  ArrowRight,
+  Star,
+  Users,
+  TrendingUp,
 } from "lucide-react";
 
 const WhyChooseUs = () => {
+  // Core value propositions - simplified & focused
   const benefits = [
     {
-      icon: CheckCircle,
-      title: "Quality Products",
-      description:
-        "Premium automation parts from trusted manufacturers with guaranteed authenticity",
-      color: "text-teal-600",
-      bgColor: "bg-teal-50",
-      borderColor: "border-teal-200",
-      stats: "500+ Products",
-    },
-    {
-      icon: HeadphonesIcon,
-      title: "24/7 Technical Support",
-      description:
-        "Expert engineering team ready to assist with parameter setting & troubleshooting",
-      color: "text-blue-600",
-      bgColor: "bg-blue-50",
-      borderColor: "border-blue-200",
-      stats: "< 2 Hour Response",
-    },
-    {
-      icon: Truck,
-      title: "Fast Delivery",
-      description:
-        "Strategic location in Bekasi for quick shipping to Jakarta & surrounding areas",
-      color: "text-teal-600",
-      bgColor: "bg-teal-50",
-      borderColor: "border-teal-200",
-      stats: "Same Day Available",
-    },
-    {
-      icon: ShieldCheck,
-      title: "Warranty Protection",
-      description:
-        "All products come with manufacturer warranty and our service guarantee",
-      color: "text-blue-600",
-      bgColor: "bg-blue-50",
-      borderColor: "border-blue-200",
-      stats: "100% Protected",
-    },
-    {
       icon: Clock,
-      title: "8+ Years Experience",
+      title: "8+ Years Engineering Experience",
       description:
-        "Proven track record in industrial automation and electrical engineering",
-      color: "text-teal-600",
-      bgColor: "bg-teal-50",
-      borderColor: "border-teal-200",
+        "Proven expertise in industrial automation with deep technical knowledge",
       stats: "Since 2016",
+      color: "blue-900",
     },
     {
-      icon: Users,
-      title: "Expert Consultation",
+      icon: Headphones,
+      title: "Complete Technical Support",
       description:
-        "Free engineering consultation for system design and product selection",
-      color: "text-blue-600",
-      bgColor: "bg-blue-50",
-      borderColor: "border-blue-200",
-      stats: "Free Service",
+        "From parameter setting to commissioning - full engineering services included",
+      stats: "24/7 Support",
+      color: "blue-900",
+    },
+    {
+      icon: CheckCircle,
+      title: "Trusted Quality Products",
+      description:
+        "Genuine automation parts from leading global manufacturers with warranty",
+      stats: "100% Authentic",
+      color: "blue-900",
     },
   ];
 
-  const achievements = [
+  // Customer logos - 12 companies
+  const customerLogos = [
+    // Row 1 - Top 6
+    { name: "Pertamina", logo: "/images/customers/pertamina.png" },
+    { name: "PLN", logo: "/images/customers/pln.png" },
+    { name: "Indocement", logo: "/images/customers/indocement.png" },
+    { name: "Unilever", logo: "/images/customers/unilever.png" },
+    { name: "Krakatau Steel", logo: "/images/customers/krakatau-steel.png" },
+    { name: "Pupuk Indonesia", logo: "/images/customers/pupuk-indonesia.png" },
+
+    // Row 2 - Bottom 6
+    { name: "Semen Indonesia", logo: "/images/customers/semen-indonesia.png" },
+    {
+      name: "Petrokimia Gresik",
+      logo: "/images/customers/petrokimia-gresik.png",
+    },
+    { name: "Chandra Asri", logo: "/images/customers/chandra-asri.png" },
+    { name: "Astra International", logo: "/images/customers/astra.png" },
+    { name: "Indofood", logo: "/images/customers/indofood.png" },
+    { name: "Sido Muncul", logo: "/images/customers/sido-muncul.png" },
+  ];
+
+  // Key metrics - more business focused
+  const metrics = [
+    { number: "120+", label: "Active Customers", icon: Users },
     { number: "8+", label: "Years Experience", icon: Award },
-    { number: "500+", label: "Products Ready", icon: Zap },
-    { number: "24/7", label: "Technical Support", icon: Wrench },
-    { number: "100%", label: "Customer Satisfaction", icon: CheckCircle },
+    { number: "98%", label: "Customer Retention", icon: TrendingUp },
+    { number: "24/7", label: "Technical Support", icon: Headphones },
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
-      {/* Background Pattern - Circuit Board Style */}
-      <div className="absolute inset-0 opacity-[0.03]">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
-              linear-gradient(90deg, #14b8a6 1px, transparent 1px),
-              linear-gradient(180deg, #14b8a6 1px, transparent 1px)
-            `,
-            backgroundSize: "50px 50px",
-          }}
-        />
-      </div>
-
-      {/* Decorative Elements */}
-      <div className="absolute -top-24 -right-24 w-96 h-96 bg-teal-100 rounded-full blur-3xl opacity-10" />
-      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-10" />
-
-      {/* Floating Shapes */}
-      <div className="absolute top-20 left-20 w-20 h-20 bg-teal-500 rounded-lg opacity-5 rotate-45 animate-pulse" />
-      <div className="absolute bottom-20 right-20 w-32 h-32 bg-blue-500 rounded-full opacity-5 animate-pulse" />
-
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Section Header - Premium Design */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Why Choose
-            <span className="text-teal-600"> Mederi Karya</span>
-            <span className="block text-3xl lg:text-4xl mt-2 text-gray-700">
-              Indonesia?
-            </span>
+    <section className="py-16 bg-gray-50">
+      <div className="container mx-auto px-4">
+        {/* Section Header - Clean */}
+        <div className="text-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+            Why Choose PJM Automation?
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            More than just a supplier - we're your trusted automation partner
-            with comprehensive technical support and engineering excellence
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Your trusted partner for complete industrial automation solutions
+            with proven track record
           </p>
         </div>
 
-        {/* Achievement Stats - New Addition */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-          {achievements.map((achievement, index) => {
-            const Icon = achievement.icon;
+        {/* Key Metrics - Prominent Display */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {metrics.map((metric, index) => {
+            const Icon = metric.icon;
             return (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                className="bg-white rounded-lg p-6 text-center shadow-sm border border-gray-100"
               >
-                <div className="w-14 h-14 bg-gradient-to-br from-teal-100 to-teal-50 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <Icon className="h-7 w-7 text-teal-600" />
+                <Icon className="h-8 w-8 text-blue-900 mx-auto mb-3" />
+                <div className="text-2xl font-bold text-gray-900 mb-1">
+                  {metric.number}
                 </div>
-                <div className="text-3xl font-bold text-gray-900 mb-1">
-                  {achievement.number}
-                </div>
-                <div className="text-sm text-gray-600">{achievement.label}</div>
+                <div className="text-sm text-gray-600">{metric.label}</div>
               </div>
             );
           })}
         </div>
 
-        {/* Benefits Grid - Enhanced Design */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Core Benefits - Simplified */}
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
           {benefits.map((benefit, index) => {
             const Icon = benefit.icon;
             return (
               <div
                 key={index}
-                className="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-500 relative overflow-hidden border border-gray-100 hover:border-gray-200"
+                className="bg-white rounded-lg p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
               >
-                {/* Hover Background Effect */}
-                <div
-                  className={`absolute inset-0 ${benefit.bgColor} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}
-                />
-
-                {/* Corner Accent */}
-                <div
-                  className={`absolute top-0 right-0 w-24 h-24 ${benefit.bgColor} opacity-10 rounded-bl-full`}
-                />
-
-                <div className="relative z-10">
-                  {/* Icon Container */}
-                  <div className="flex items-start gap-4 mb-4">
-                    <div
-                      className={`p-4 rounded-xl ${benefit.bgColor} ${benefit.borderColor} border group-hover:scale-110 transition-transform duration-300`}
-                    >
-                      <Icon className={`h-6 w-6 ${benefit.color}`} />
-                    </div>
-                    <div
-                      className={`text-xs font-semibold ${benefit.color} ${benefit.bgColor} px-3 py-1 rounded-full`}
-                    >
-                      {benefit.stats}
-                    </div>
+                <div className="flex items-center mb-4">
+                  <div className="p-3 bg-blue-50 rounded-lg mr-4">
+                    <Icon className="h-6 w-6 text-blue-900" />
                   </div>
-
-                  {/* Content */}
-                  <h3 className="font-bold text-xl text-gray-900 mb-3 group-hover:text-teal-600 transition-colors">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    {benefit.description}
-                  </p>
-
-                  {/* Bottom Line Accent */}
-                  <div
-                    className={`absolute bottom-0 left-0 right-0 h-1 ${benefit.bgColor} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}
-                  />
+                  <span className="text-sm font-medium text-blue-900 bg-blue-50 px-3 py-1 rounded-full">
+                    {benefit.stats}
+                  </span>
                 </div>
+                <h3 className="font-bold text-lg text-gray-900 mb-3">
+                  {benefit.title}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {benefit.description}
+                </p>
               </div>
             );
           })}
         </div>
 
-        {/* Bottom CTA - Simple but Effective */}
-        <div className="mt-16 text-center">
-          <p className="text-gray-600 mb-2">
-            Experience the difference of working with automation experts
-          </p>
-          <p className="text-2xl font-semibold text-teal-600">
-            Your Success is Our Priority
-          </p>
+        {/* Our Customers Section - 12 Company Logos */}
+        <div className="bg-white rounded-lg p-8 shadow-sm border border-gray-100">
+          <div className="text-center mb-8">
+            <h3 className="text-xl font-bold text-gray-900 mb-2">
+              Trusted by Leading Companies
+            </h3>
+            <p className="text-gray-600">
+              PJM Automation serves major industrial companies across Indonesia
+            </p>
+          </div>
+
+          {/* Customer Logos - 6 atas 6 bawah */}
+          <div className="space-y-6">
+            {/* Row 1 - Top 6 */}
+            <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
+              {customerLogos.slice(0, 6).map((customer, index) => (
+                <div
+                  key={customer.name}
+                  className="flex items-center justify-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors group"
+                >
+                  <img
+                    src={customer.logo}
+                    alt={`${customer.name} Logo`}
+                    className="max-w-full max-h-12 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Row 2 - Bottom 6 */}
+            <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
+              {customerLogos.slice(6, 12).map((customer, index) => (
+                <div
+                  key={customer.name}
+                  className="flex items-center justify-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors group"
+                >
+                  <img
+                    src={customer.logo}
+                    alt={`${customer.name} Logo`}
+                    className="max-w-full max-h-12 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Simple tagline */}
+          <div className="mt-8 text-center">
+            <p className="text-gray-600">
+              And many more leading companies trust PJM Automation for their
+              industrial needs
+            </p>
+          </div>
+        </div>
+
+        {/* CTA Section - Clear Action */}
+        <div className="mt-12 text-center">
+          <h4 className="text-lg font-semibold text-gray-900 mb-4">
+            Ready to Experience the PJM Automation Difference?
+          </h4>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/contact"
+              className="inline-flex items-center px-6 py-3 justify-center bg-blue-900 text-white font-medium rounded-lg hover:bg-blue-950 transition-colors"
+            >
+              Get Technical Consultation
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </a>
+            <a
+              href="/products"
+              className="inline-flex items-center px-6 py-3 border justify-center border-blue-900 text-blue-900 font-medium rounded-lg hover:bg-blue-50 transition-colors"
+            >
+              Browse Our Products
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </a>
+          </div>
         </div>
       </div>
     </section>
