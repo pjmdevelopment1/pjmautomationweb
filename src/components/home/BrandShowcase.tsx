@@ -73,11 +73,11 @@ export default function BrandShowcase() {
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-            Trusted Partners & Brands
+            Trusted Automation Brands
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            We work with leading automation brands to deliver reliable
-            industrial solutions
+            We selling automation brands and deliver reliable industrial
+            solutions
           </p>
         </div>
 

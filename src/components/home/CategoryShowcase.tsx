@@ -14,6 +14,9 @@ import {
   Power,
   CircuitBoard,
   Settings,
+  Vault,
+  SmartphoneCharging,
+  Cable,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PRODUCT_CATEGORIES } from "@/lib/contants";
@@ -29,10 +32,10 @@ interface CategoryShowcaseProps {
 const CategoryShowcase = ({ categories }: CategoryShowcaseProps) => {
   // Category images mapping - SAME AS ORIGINAL
   const categoryImages: Record<string, string> = {
-    plc: "/images/plc3.jpeg",
-    inverter: "/images/inverter2.jpeg",
-    hmi: "/images/hmi2.jpeg",
-    "power-meter": "/images/power-meter.jpg",
+    plc: "/images/plc3.png",
+    inverter: "/images/inverter2.png",
+    hmi: "/images/hmi2.png",
+    "power-meter": "/images/power-meter.png",
     "power-supply": "/images/power-supply.jpg",
     servo: "/images/servo.jpg",
     sensor: "/images/sensors.jpg",
@@ -42,14 +45,14 @@ const CategoryShowcase = ({ categories }: CategoryShowcaseProps) => {
 
   // Category icons mapping - SAME AS ORIGINAL
   const categoryIcons: Record<string, any> = {
-    plc: Cpu,
-    inverter: Zap,
+    plc: CircuitBoard,
+    inverter: Vault,
     hmi: Monitor,
     "power-meter": Gauge,
-    "power-supply": Power,
+    "power-supply": SmartphoneCharging,
     servo: Zap,
-    sensor: Radar,
-    breaker: CircuitBoard,
+    sensor: Cable,
+    breaker: Power,
     accesories: Settings,
   };
 

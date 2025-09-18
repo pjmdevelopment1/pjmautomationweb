@@ -50,7 +50,7 @@ const Header = () => {
           {/* Logo - POSITIONED BETTER LEFT */}
           <Link
             href="/"
-            className="flex items-center gap-3 group focus:outline-none -ml-2 items-start"
+            className="flex items-center gap-3 group focus:outline-none -ml-2"
           >
             <div className="relative w-40 h-9 lg:w-60 lg:h-14 pointer-events-none select-none">
               <Image

@@ -6,7 +6,9 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   ArrowRight,
+  Cable,
   ChevronDown,
+  CircuitBoard,
   Code,
   Cpu,
   Monitor,
@@ -14,6 +16,7 @@ import {
   Settings,
   Target,
   Users,
+  Vault,
   Zap,
 } from "lucide-react";
 
@@ -98,7 +101,7 @@ const HeroSection = () => {
                 className="group bg-white/10 backdrop-blur-sm rounded-lg p-5 hover:bg-white/20 transition-all duration-300 transform hover:scale-105"
               >
                 <div className="text-blue-400 mb-3 flex justify-center">
-                  <Settings className="h-7 w-7" />
+                  <CircuitBoard className="h-7 w-7" />
                 </div>
                 <h4 className="text-xs xs:text-xs sm:text-sm font-medium text-white">
                   PLC
@@ -111,10 +114,10 @@ const HeroSection = () => {
                 className="group bg-white/10 backdrop-blur-sm rounded-lg p-5 hover:bg-white/20 transition-all duration-300 transform hover:scale-105"
               >
                 <div className="text-blue-400 mb-3 flex justify-center">
-                  <Zap className="h-7 w-7" />
+                  <Vault className="h-7 w-7" />
                 </div>
                 <h4 className="text-xs xs:text-xs sm:text-sm font-medium text-white">
-                  VFD
+                  VSD
                 </h4>
               </Link>
 
@@ -137,10 +140,10 @@ const HeroSection = () => {
                 className="group bg-white/10 backdrop-blur-sm rounded-lg p-5 hover:bg-white/20 transition-all duration-300 transform hover:scale-105"
               >
                 <div className="text-blue-400 mb-3 flex justify-center">
-                  <Target className="h-7 w-7" />
+                  <Cable className="h-7 w-7" />
                 </div>
                 <h4 className="text-xs xs:text-xs sm:text-sm font-medium text-white">
-                  Sensors
+                  Install
                 </h4>
               </Link>
 
@@ -153,7 +156,7 @@ const HeroSection = () => {
                   <Code className="h-7 w-7" />
                 </div>
                 <h4 className="text-xs xs:text-xs sm:text-sm font-medium text-white leading-tight">
-                  Programming
+                  Program
                 </h4>
               </Link>
 
@@ -166,7 +169,7 @@ const HeroSection = () => {
                   <Cpu className="h-7 w-7" />
                 </div>
                 <h4 className="text-xs xs:text-xs sm:text-sm font-medium text-white leading-tight">
-                  IoT Solutions
+                  IoT
                 </h4>
               </Link>
             </div>
