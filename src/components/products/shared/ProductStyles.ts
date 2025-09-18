@@ -122,12 +122,12 @@ export const productStyles = {
       container:
         "flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4",
       info: "flex items-center gap-3",
-      icon: "p-2 bg-teal-100 rounded-lg",
-      iconSvg: "h-5 w-5 text-teal-600",
       title: "font-semibold text-gray-900 text-base sm:text-lg",
       subtitle: "text-sm text-gray-600 leading-tight",
+      icon: "p-2 bg-blue-100 rounded-lg",
+      iconSvg: "h-5 w-5 text-blue-900",
       stats: "flex items-center gap-2 sm:text-right",
-      statsNumber: "text-xl sm:text-2xl font-bold text-teal-600",
+      statsNumber: "text-xl sm:text-2xl font-bold text-blue-900",
       statsLabel: "text-xs text-gray-500",
     },
 
@@ -181,7 +181,7 @@ export const productStyles = {
       selectIcon:
         "absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none",
       button:
-        "w-full h-10 bg-gradient-to-r from-teal-600 to-teal-500 hover:from-teal-700 hover:to-teal-600 text-white font-medium shadow-md hover:shadow-lg transition-all text-sm sm:text-base",
+        "w-full h-10 bg-gradient-to-r bg-blue-900 hover:bg-blue-950 text-white font-medium shadow-md hover:shadow-lg transition-all text-sm sm:text-base",
       buttonIcon: "h-4 w-4 mr-2",
     },
   },

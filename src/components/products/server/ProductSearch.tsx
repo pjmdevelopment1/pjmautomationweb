@@ -350,6 +350,20 @@ export default function ProductSearchServer({
           <Search className={productStyles.search.form.buttonIcon} />
           Search Products
         </Button>
+
+        {/* 📱 SIMPLE WHATSAPP CTA */}
+        <p className="mt-4 text-center text-sm text-gray-600">
+          Tidak mau repot mencari? Langsung hubungi tim kami
+          <a
+            href="https://wa.me/6285210067755?text=Halo%20PJM%20Automation,%20saya%20membutuhkan%20bantuan%20untuk%20mencari%20produk%20automation"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-bold text-blue-950 hover:text-blue-950 transition-colors"
+          >
+            {" "}
+            (WhatsApp +6285210067755)
+          </a>
+        </p>
       </form>
     </div>
   );

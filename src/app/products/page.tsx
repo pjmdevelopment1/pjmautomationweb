@@ -233,11 +233,11 @@ export default async function ProductsPage({
       />
 
       {/* ✅ HERO HEADER SECTION */}
-      <div className="bg-gradient-to-br from-teal-600 to-teal-700 text-white py-8 mt-20">
+      <div className="bg-blue-900 text-white py-8 mt-20">
         <div className="container mx-auto px-4">
           <Breadcrumb
             items={breadcrumbItems}
-            className="mb-6 [&_a]:text-teal-200 [&_a:hover]:text-white [&_span]:text-white"
+            className="mb-6 [&_a]:text-white [&_a:hover]:text-white [&_span]:text-white"
           />
 
           <div className="max-w-4xl">
@@ -250,7 +250,7 @@ export default async function ProductsPage({
                   : search
                     ? `Search Results`
                     : "Industrial Automation Products"}
-              <span className="block text-teal-200 text-lg lg:text-xl font-normal mt-2">
+              <span className="block text-white text-lg lg:text-xl font-normal mt-2">
                 + Technical Support & Engineering Services
               </span>
             </h1>
