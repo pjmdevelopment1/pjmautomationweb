@@ -44,30 +44,30 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-black/75"></div>
       </div>
 
-      {/* Content Container - Moved Down Slightly */}
-      <div className="relative z-10 container mx-auto px-4 text-center text-white mt-16">
+      {/* Content Container - Add margin top, fix PLC size */}
+      <div className="relative z-10 container mx-auto px-4 text-center text-white mt-12 pt-32 md:pt-24 lg:pt-16">
         <div className="max-w-4xl mx-auto">
           {/* Hero Title */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold leading-tight mb-4 md:mb-6">
             Complete Industrial
             <br />
-            Automation Solutions
+            <span className="text-blue-400">Automation Solutions</span>
           </h1>
 
           {/* Hero Subtitle */}
-          <p className="text-base md:text-lg lg:text-xl text-gray-200 mb-6 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-gray-200 mb-4 md:mb-6 max-w-3xl mx-auto leading-relaxed">
             Search by product type, brand, application, or technical needs
           </p>
 
-          <p className="text-sm md:text-base text-gray-300 mb-10">
+          <p className="text-xs sm:text-sm md:text-base text-gray-300 mb-8 md:mb-10">
             Expert consultation & competitive pricing available
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+          {/* CTA Buttons - Same width based on longest text */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 w-full max-w-md sm:max-w-none mx-auto">
             <Link
               href="/products"
-              className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+              className="w-full sm:w-64 inline-flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
               <Package className="h-5 w-5 mr-2" />
               Browse Products
@@ -76,7 +76,7 @@ const HeroSection = () => {
 
             <Link
               href="/contact"
-              className="inline-flex items-center px-6 py-3 bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 font-medium rounded-lg transition-all duration-300 transform hover:scale-105"
+              className="w-full sm:w-64 inline-flex items-center justify-center px-6 py-3 bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 font-medium rounded-lg transition-all duration-300 transform hover:scale-105"
             >
               <Users className="h-5 w-5 mr-2" />
               Ask Our Team
@@ -85,13 +85,14 @@ const HeroSection = () => {
           </div>
 
           {/* Popular Products Section */}
-          <div className="mt-20">
-            <h3 className="text-lg md:text-xl font-semibold mb-8 text-gray-300">
+          <div className="mt-8 mb-4">
+            <h3 className="text-lg md:text-xl font-semibold mb-6 text-gray-300">
               Popular Products & Services
             </h3>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
-              {/* PLC */}
+            {/* Cards dengan ukuran konsisten semua */}
+            <div className="grid grid-cols-3 md:grid-cols-6 gap-4 max-w-5xl mx-auto">
+              {/* PLC - Fixed size sama dengan yang lain */}
               <Link
                 href="/products?category=plc"
                 className="group bg-white/10 backdrop-blur-sm rounded-lg p-5 hover:bg-white/20 transition-all duration-300 transform hover:scale-105"
@@ -99,7 +100,9 @@ const HeroSection = () => {
                 <div className="text-blue-400 mb-3 flex justify-center">
                   <Settings className="h-7 w-7" />
                 </div>
-                <h4 className="text-sm font-medium text-white">PLC</h4>
+                <h4 className="text-xs xs:text-xs sm:text-sm font-medium text-white">
+                  PLC
+                </h4>
               </Link>
 
               {/* VFD */}
@@ -110,7 +113,9 @@ const HeroSection = () => {
                 <div className="text-blue-400 mb-3 flex justify-center">
                   <Zap className="h-7 w-7" />
                 </div>
-                <h4 className="text-sm font-medium text-white">VFD</h4>
+                <h4 className="text-xs xs:text-xs sm:text-sm font-medium text-white">
+                  VFD
+                </h4>
               </Link>
 
               {/* HMI */}
@@ -121,7 +126,9 @@ const HeroSection = () => {
                 <div className="text-blue-400 mb-3 flex justify-center">
                   <Monitor className="h-7 w-7" />
                 </div>
-                <h4 className="text-sm font-medium text-white">HMI</h4>
+                <h4 className="text-xs xs:text-xs sm:text-sm font-medium text-white">
+                  HMI
+                </h4>
               </Link>
 
               {/* Sensors */}
@@ -132,10 +139,12 @@ const HeroSection = () => {
                 <div className="text-blue-400 mb-3 flex justify-center">
                   <Target className="h-7 w-7" />
                 </div>
-                <h4 className="text-sm font-medium text-white">Sensors</h4>
+                <h4 className="text-xs xs:text-xs sm:text-sm font-medium text-white">
+                  Sensors
+                </h4>
               </Link>
 
-              {/* Programming */}
+              {/* Programming - Text lebih kecil untuk mobile */}
               <Link
                 href="/services"
                 className="group bg-white/10 backdrop-blur-sm rounded-lg p-5 hover:bg-white/20 transition-all duration-300 transform hover:scale-105"
@@ -143,10 +152,12 @@ const HeroSection = () => {
                 <div className="text-blue-400 mb-3 flex justify-center">
                   <Code className="h-7 w-7" />
                 </div>
-                <h4 className="text-sm font-medium text-white">Programming</h4>
+                <h4 className="text-xs xs:text-xs sm:text-sm font-medium text-white leading-tight">
+                  Programming
+                </h4>
               </Link>
 
-              {/* IoT Solutions */}
+              {/* IoT Solutions - Text lebih kecil untuk mobile */}
               <Link
                 href="/services"
                 className="group bg-white/10 backdrop-blur-sm rounded-lg p-5 hover:bg-white/20 transition-all duration-300 transform hover:scale-105"
@@ -154,7 +165,7 @@ const HeroSection = () => {
                 <div className="text-blue-400 mb-3 flex justify-center">
                   <Cpu className="h-7 w-7" />
                 </div>
-                <h4 className="text-sm font-medium text-white">
+                <h4 className="text-xs xs:text-xs sm:text-sm font-medium text-white leading-tight">
                   IoT Solutions
                 </h4>
               </Link>
@@ -162,8 +173,6 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-
-      {/* NO SCROLL INDICATOR - REMOVED */}
     </section>
   );
 };
