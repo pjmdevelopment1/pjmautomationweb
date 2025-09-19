@@ -150,13 +150,13 @@ export default function ProductCardServer({
                     <div className={productStyles.card.services.list}>
                       <div className={productStyles.card.services.item}>
                         <Settings
-                          className={`${productStyles.card.services.icon} text-teal-600`}
+                          className={`${productStyles.card.services.icon} text-blue-600`}
                         />
                         <span>Parameter Setting</span>
                       </div>
                       <div className={productStyles.card.services.item}>
                         <Headphones
-                          className={`${productStyles.card.services.icon} text-blue-600`}
+                          className={`${productStyles.card.services.icon} text-blue-900`}
                         />
                         <span>Tech Support</span>
                       </div>
@@ -310,7 +310,7 @@ export default function ProductCardServer({
               <div className={productStyles.card.services.list}>
                 <div className={productStyles.card.services.item}>
                   <Settings
-                    className={`${productStyles.card.services.icon} text-teal-600`}
+                    className={`${productStyles.card.services.icon} text-blue-900`}
                   />
                   <span>Engineering Support</span>
                 </div>
@@ -342,7 +342,7 @@ export default function ProductCardServer({
             {/* Primary Button - View Details */}
             <Link
               href={`/products/${safeSlug}`}
-              className="group relative inline-flex items-center justify-center px-2 py-2 bg-black text-white text-sm font-medium rounded-md hover:bg-teal-600 transition-all duration-300 shadow-sm hover:shadow-md transform hover:-translate-y-0.5 flex-1"
+              className="group relative inline-flex items-center justify-center px-2 py-2 bg-black text-white text-sm font-medium rounded-md hover:bg-blue-900 transition-all duration-300 shadow-sm hover:shadow-md transform hover:-translate-y-0.5 flex-1"
             >
               <span>View Details</span>
               <div className="absolute inset-0 rounded-md overflow-hidden">
@@ -353,7 +353,7 @@ export default function ProductCardServer({
             {/* Secondary Button - Quote */}
             <Link
               href={`/quote?product=${safeSlug}`}
-              className="group relative inline-flex items-center justify-center px-2 py-2 bg-transparent text-teal-600 text-sm font-medium rounded-md border border-gray-300 hover:border-teal-600 hover:bg-teal-50 transition-all duration-300 shadow-sm hover:shadow-md transform hover:-translate-y-0.5 min-w-[80px]"
+              className="group relative inline-flex items-center justify-center px-2 py-2 bg-transparent text-blue-900 text-sm font-medium rounded-md border border-gray-300 hover:border-blue-600 hover:bg-blue-50 transition-all duration-300 shadow-sm hover:shadow-md transform hover:-translate-y-0.5 min-w-[80px]"
             >
               <ShoppingCart className="h-4 w-4 mr-1 transition-transform duration-300 group-hover:scale-110" />
               <span>Quote</span>

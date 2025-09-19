@@ -56,9 +56,9 @@ export const productStyles = {
       brand: "text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded-full",
       category: "text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded-full",
       title:
-        "font-semibold text-lg text-gray-900 mb-2 line-clamp-2 group-hover:text-teal-600 transition-colors",
+        "font-semibold text-lg text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-900 transition-colors",
       titleList:
-        "font-semibold text-xl text-gray-900 mb-3 group-hover:text-teal-600 transition-colors line-clamp-2",
+        "font-semibold text-xl text-gray-900 mb-3 group-hover:text-blue-900 transition-colors line-clamp-2",
       model: "text-sm text-gray-600 mb-3",
     },
 
@@ -74,7 +74,7 @@ export const productStyles = {
       title: "text-xs font-semibold text-gray-900 mb-2",
       list: "flex items-center gap-4 text-xs text-gray-700",
       item: "flex items-center gap-1",
-      icon: "h-3 w-3 text-teal-600",
+      icon: "h-3 w-3 text-blue-900",
     },
 
     // Price section
@@ -133,37 +133,37 @@ export const productStyles = {
 
     // Active filters - MOBILE OPTIMIZED
     filters: {
-      container: "mb-4 p-3 bg-teal-50 border border-teal-200 rounded-lg",
+      container: "mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg",
 
       // Desktop layout
       header: "hidden md:flex items-center justify-between",
       label: "flex items-center gap-2",
-      labelIcon: "h-4 w-4 text-teal-600",
-      labelText: "text-sm font-medium text-teal-900",
+      labelIcon: "h-4 w-4 text-blue-600",
+      labelText: "text-sm font-medium text-blue-900",
       list: "flex items-center gap-2 flex-wrap",
       badge:
-        "inline-flex items-center gap-1 px-2 py-1 bg-teal-100 text-teal-800 text-xs rounded-full",
-      removeButton: "hover:bg-teal-200 rounded-full p-0.5",
+        "inline-flex items-center gap-2 bg-blue-100 text-blue-900 text-xs font-medium px-3 py-1.5 rounded-full border border-blue-200",
+      removeButton: "hover:bg-blue-200 rounded-full p-0.5",
       removeIcon: "h-3 w-3",
-      clearButton: "text-teal-600 border-teal-300 hover:bg-teal-50 h-7 px-2",
+      clearButton: "text-blue-900 border-blue-300 hover:bg-blue-50 h-7 px-2",
 
       // Mobile layout - NEW STYLES
       mobileContainer: "md:hidden",
       mobileHeader: "flex items-center justify-between mb-3",
       mobileTitle: "flex items-center gap-2",
-      mobileTitleIcon: "h-4 w-4 text-teal-600",
-      mobileTitleText: "text-sm font-medium text-teal-900",
-      mobileClearButton: "text-teal-600 hover:text-teal-800 h-7 px-2 text-xs",
+      mobileTitleIcon: "h-4 w-4 text-blue-600",
+      mobileTitleText: "text-sm font-medium text-blue-900",
+      mobileClearButton: "text-blue-900 hover:text-blue-800 h-7 px-2 text-xs",
 
       // Mobile filter cards
       mobileFiltersGroup: "space-y-2",
       mobileFilterCard:
-        "flex items-center justify-between bg-teal-100 rounded-lg p-2",
+        "flex items-center justify-between bg-blue-100 rounded-lg p-2",
       mobileFilterContent: "flex items-center gap-2 min-w-0 flex-1",
-      mobileFilterLabel: "text-xs font-medium text-teal-900 shrink-0",
-      mobileFilterValue: "text-xs text-teal-800 truncate",
+      mobileFilterLabel: "text-xs font-medium text-blue-900 shrink-0",
+      mobileFilterValue: "text-xs text-blue-800 truncate",
       mobileRemoveButton:
-        "h-6 w-6 p-0 text-teal-600 hover:text-teal-800 hover:bg-teal-200 shrink-0 ml-2",
+        "h-6 w-6 p-0 text-blue-600 hover:text-blue-800 hover:bg-blue-200 shrink-0 ml-2",
       mobileRemoveIcon: "h-3 w-3",
     },
 
@@ -172,12 +172,12 @@ export const productStyles = {
       container: "space-y-4",
       inputGroup: "relative",
       input:
-        "w-full h-10 pl-10 pr-4 border border-gray-300 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors text-sm sm:text-base",
+        "w-full h-10 pl-10 pr-4 border border-gray-300 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors text-sm sm:text-base",
       inputIcon:
         "absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400",
       selectGroup: "grid grid-cols-1 sm:grid-cols-2 gap-4",
       select:
-        "w-full h-10 pl-4 pr-10 border border-gray-300 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent appearance-none cursor-pointer transition-colors text-sm sm:text-base",
+        "w-full h-10 pl-4 pr-10 border border-gray-300 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none cursor-pointer transition-colors text-sm sm:text-base",
       selectIcon:
         "absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none",
       button:
@@ -195,11 +195,11 @@ export const productStyles = {
     sortGroup: "flex items-center gap-2",
     sortLabel: "text-sm text-gray-600",
     sortSelect:
-      "text-sm border border-gray-300 rounded-md px-3 py-1 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent",
+      "text-sm border border-gray-300 rounded-md px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent",
     viewToggle:
       "flex items-center border border-gray-300 rounded-md overflow-hidden",
     viewButton: "p-2 text-sm",
-    viewButtonActive: "bg-teal-50 text-teal-600",
+    viewButtonActive: "bg-blue-50 text-blue-600",
     viewButtonInactive: "text-gray-600 hover:bg-gray-50",
   },
 
@@ -211,7 +211,7 @@ export const productStyles = {
     controls: "flex items-center gap-2",
     button:
       "inline-flex items-center px-3 py-2 text-sm font-medium rounded-md border",
-    buttonActive: "bg-teal-600 text-white",
+    buttonActive: "bg-blue-900 text-white",
     buttonInactive: "border-gray-300 text-gray-700 hover:bg-gray-50",
     buttonDisabled: "border-gray-200 text-gray-400 cursor-not-allowed",
     pageNumbers: "hidden sm:flex items-center gap-1",
@@ -270,10 +270,10 @@ export const productStyles = {
 
   // 🎨 THEME COLORS (Mederi Karya Indonesia Brand)
   colors: {
-    primary: "text-teal-600",
-    primaryBg: "bg-teal-600",
-    primaryHover: "hover:text-teal-700",
-    primaryBgHover: "hover:bg-teal-700",
+    primary: "text-blue-600",
+    primaryBg: "bg-blue-600",
+    primaryHover: "hover:text-blue-700",
+    primaryBgHover: "hover:bg-blue-700",
     secondary: "text-blue-600",
     secondaryBg: "bg-blue-600",
     accent: "text-gray-600",
@@ -292,7 +292,7 @@ export const styleVariants = {
   card: {
     default: productStyles.card.container,
     list: productStyles.card.containerList,
-    featured: `${productStyles.card.container} ring-2 ring-teal-200 ring-offset-2`,
+    featured: `${productStyles.card.container} ring-2 ring-blue-200 ring-offset-2`,
     loading: `${productStyles.card.container} animate-pulse`,
   },
 
@@ -304,9 +304,9 @@ export const styleVariants = {
   },
 
   button: {
-    primary: "bg-teal-600 hover:bg-teal-700 text-white",
+    primary: "bg-blue-600 hover:bg-blue-700 text-white",
     secondary: "border border-gray-300 text-gray-700 hover:bg-gray-50",
-    outline: "border border-teal-600 text-teal-600 hover:bg-teal-50",
+    outline: "border border-blue-600 text-blue-600 hover:bg-blue-50",
     ghost: "text-gray-600 hover:bg-gray-100",
   },
 } as const;
@@ -326,7 +326,7 @@ export const getCardClasses = (
     viewMode === "grid"
       ? productStyles.card.container
       : productStyles.card.containerList;
-  return featured ? `${base} ring-2 ring-teal-200 ring-offset-2` : base;
+  return featured ? `${base} ring-2 ring-blue-200 ring-offset-2` : base;
 };
 
 export const getStatusClasses = (

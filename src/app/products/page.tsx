@@ -255,7 +255,7 @@ export default async function ProductsPage({
               </span>
             </h1>
 
-            <p className="text-base text-teal-100 leading-relaxed max-w-3xl">
+            <p className="text-base text-blue-100 leading-relaxed max-w-3xl">
               {category
                 ? PRODUCT_CATEGORIES.find((cat) => cat.slug === category)
                     ?.description ||
@@ -301,7 +301,7 @@ export default async function ProductsPage({
 
       {/* ✅ TECHNICAL SUPPORT CTA - ENHANCED WITH CONTACT INFO */}
       {totalProducts > 0 && (
-        <section className="py-16 bg-gradient-to-br from-teal-600 to-teal-700 relative overflow-hidden">
+        <section className="py-16 bg-gradient-to-br from-blue-900 to-blue-950 relative overflow-hidden">
           {/* Background Pattern - Same as home page */}
           <div className="absolute inset-0 opacity-10">
             <div
@@ -319,7 +319,7 @@ export default async function ProductsPage({
               <h2 className="text-3xl font-bold text-white mb-4">
                 Need Technical Support?
               </h2>
-              <p className="text-lg text-teal-100 mb-8">
+              <p className="text-lg text-blue-100 mb-8">
                 Our engineering team provides parameter setting, commissioning,
                 and troubleshooting services for all products. Get best
                 consultation for your automation project.
@@ -330,7 +330,7 @@ export default async function ProductsPage({
                 {/* Primary Button - Request Technical Support */}
                 <Link
                   href="/contact"
-                  className="group relative inline-flex items-center justify-center px-8 py-3 bg-white text-teal-600 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  className="group relative inline-flex items-center justify-center px-8 py-3 bg-white text-blue-900 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                 >
                   <Headphones className="h-5 w-5 mr-2" />
                   <span>Request Technical Support</span>
@@ -344,7 +344,7 @@ export default async function ProductsPage({
                 {/* Secondary Button - Engineering Consultation */}
                 <Link
                   href="/quote"
-                  className="group relative inline-flex items-center justify-center px-8 py-3 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:bg-white hover:text-teal-600 transition-all duration-300 transform hover:-translate-y-0.5"
+                  className="group relative inline-flex items-center justify-center px-8 py-3 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:bg-white hover:text-blue-900 transition-all duration-300 transform hover:-translate-y-0.5"
                 >
                   <Settings className="h-5 w-5 mr-2" />
                   <span>Engineering Consultation</span>
@@ -365,13 +365,13 @@ export default async function ProductsPage({
                     className="group flex items-center gap-3 p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
                   >
                     <div className="flex-shrink-0">
-                      <Phone className="h-6 w-6 text-teal-200 group-hover:rotate-12 transition-transform duration-300" />
+                      <Phone className="h-6 w-6 text-blue-200 group-hover:rotate-12 transition-transform duration-300" />
                     </div>
                     <div className="text-left min-w-0">
-                      <p className="text-xs text-teal-200 uppercase tracking-wide mb-1">
+                      <p className="text-xs text-blue-200 uppercase tracking-wide mb-1">
                         Call Direct
                       </p>
-                      <p className="font-semibold text-white text-sm group-hover:text-teal-100 transition-colors">
+                      <p className="font-semibold text-white text-sm group-hover:text-blue-100 transition-colors">
                         {SITE_CONFIG.company.phone}
                       </p>
                     </div>
@@ -383,13 +383,13 @@ export default async function ProductsPage({
                     className="group flex items-center gap-3 p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
                   >
                     <div className="flex-shrink-0">
-                      <Mail className="h-6 w-6 text-teal-200 group-hover:rotate-12 transition-transform duration-300" />
+                      <Mail className="h-6 w-6 text-blue-200 group-hover:rotate-12 transition-transform duration-300" />
                     </div>
                     <div className="text-left min-w-0">
-                      <p className="text-xs text-teal-200 uppercase tracking-wide mb-1">
+                      <p className="text-xs text-blue-200 uppercase tracking-wide mb-1">
                         Email Us
                       </p>
-                      <p className="font-semibold text-white text-sm group-hover:text-teal-100 transition-colors truncate">
+                      <p className="font-semibold text-white text-sm group-hover:text-blue-100 transition-colors truncate">
                         {SITE_CONFIG.company.email}
                       </p>
                     </div>
@@ -403,13 +403,13 @@ export default async function ProductsPage({
                     className="group flex items-center gap-3 p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
                   >
                     <div className="flex-shrink-0">
-                      <MessageSquare className="h-6 w-6 text-teal-200 group-hover:rotate-12 transition-transform duration-300" />
+                      <MessageSquare className="h-6 w-6 text-blue-200 group-hover:rotate-12 transition-transform duration-300" />
                     </div>
                     <div className="text-left min-w-0">
-                      <p className="text-xs text-teal-200 uppercase tracking-wide mb-1">
+                      <p className="text-xs text-blue-200 uppercase tracking-wide mb-1">
                         WhatsApp
                       </p>
-                      <p className="font-semibold text-white text-sm group-hover:text-teal-100 transition-colors">
+                      <p className="font-semibold text-white text-sm group-hover:text-blue-100 transition-colors">
                         Iqbal - 085210067755 <br />
                         Iksan - 085717278739
                       </p>
@@ -419,17 +419,17 @@ export default async function ProductsPage({
 
                 {/* Additional Info */}
                 <div className="mt-6 pt-6 border-t border-white/20">
-                  <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-teal-100">
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-blue-100">
                     <div className="flex items-center gap-2">
                       <Clock className="h-4 w-4" />
                       <span>Response within 2 hours</span>
                     </div>
-                    {/* <div className="hidden sm:block w-1 h-1 bg-teal-200 rounded-full"></div>
+                    {/* <div className="hidden sm:block w-1 h-1 bg-blue-200 rounded-full"></div>
                     <div className="flex items-center gap-2">
                       <Users className="h-4 w-4" />
                       <span>8+ Years Experience</span>
                     </div> */}
-                    <div className="hidden sm:block w-1 h-1 bg-teal-200 rounded-full"></div>
+                    <div className="hidden sm:block w-1 h-1 bg-blue-200 rounded-full"></div>
                     <div className="flex items-center gap-2">
                       <MapPin className="h-4 w-4" />
                       <span>Nationwide Service</span>
@@ -439,7 +439,7 @@ export default async function ProductsPage({
               </div>
 
               {/* WhatsApp Note */}
-              <p className="text-teal-100 text-sm mt-6 opacity-80">
+              <p className="text-blue-100 text-sm mt-6 opacity-80">
                 💡 For fastest response, use the floating WhatsApp button or
                 call directly
               </p>

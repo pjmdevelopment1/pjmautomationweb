@@ -117,7 +117,7 @@ export default function ProductGridServer({
               Or{" "}
               <Link
                 href="/contact"
-                className="text-teal-600 hover:text-teal-700"
+                className="text-blue-900 hover:text-blue-950"
               >
                 contact us
               </Link>{" "}
@@ -183,7 +183,7 @@ export default function ProductGridServer({
               </select>
               <button
                 type="submit"
-                className="ml-2 px-3 py-1 bg-teal-600 text-white rounded text-sm hover:bg-teal-700"
+                className="ml-2 px-3 py-1 bg-blue-900 text-white rounded text-sm hover:bg-blue-950"
               >
                 Apply
               </button>
