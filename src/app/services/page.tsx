@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Metadata } from "next";
 import { getServices } from "@/lib/contentful";
@@ -17,6 +18,12 @@ import {
   Users,
 } from "lucide-react";
 import { getCanonicalUrl } from "@/lib/url";
+
+interface ServicesPageProps {
+  searchParams: Promise<{
+    search?: string;
+  }>;
+}
 
 export const dynamic = "force-dynamic";
 
@@ -53,11 +60,41 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function ServicesPage() {
+export default async function ServicesPage({
+  searchParams,
+}: ServicesPageProps) {
+  const params = await searchParams;
+  const { search } = params;
+
   const services = await getServices();
 
-  const featuredServices = services.filter((service) => service.featured);
-  const regularServices = services.filter((service) => !service.featured);
+  let filteredServices = services;
+  if (search) {
+    const searchLower = search.toLowerCase();
+    filteredServices = filteredServices.filter((service) => {
+      // Primary match: Title (most important)
+      if (service.name.toLowerCase().includes(searchLower)) return true;
+
+      // Secondary match: Features (if exists and specific)
+      if (
+        service.features &&
+        service.features.some((feature: string) =>
+          feature.toLowerCase().includes(searchLower)
+        )
+      )
+        return true;
+
+      // Skip description search to avoid false positives
+      return false;
+    });
+  }
+
+  const featuredServices = filteredServices.filter(
+    (service) => service.featured
+  );
+  const regularServices = filteredServices.filter(
+    (service) => !service.featured
+  );
 
   return (
     <div className="mt-20">
@@ -112,6 +149,7 @@ export default async function ServicesPage() {
               <input
                 type="text"
                 name="search"
+                defaultValue={search || ""}
                 placeholder="Search by service name, type, or description..."
                 className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
               />

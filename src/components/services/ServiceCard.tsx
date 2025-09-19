@@ -28,7 +28,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
             />
             {service.featured && (
               <div className="absolute top-4 left-4">
-                <Badge className="bg-teal-600 text-white">Featured</Badge>
+                <Badge className="bg-blue-900 text-white">Featured</Badge>
               </div>
             )}
           </div>
@@ -38,7 +38,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         <div className="p-6 flex flex-col flex-1">
           {/* Title - Fixed Space */}
           <div className="mb-3">
-            <h3 className="text-xl font-semibold group-hover:text-teal-600 transition-colors leading-tight">
+            <h3 className="text-xl font-semibold group-hover:text-blue-900 transition-colors leading-tight">
               {service.name}
             </h3>
           </div>
@@ -73,7 +73,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
 
           {/* Learn More Button - Always at Bottom */}
           <div className="mt-auto">
-            <div className="flex items-center text-teal-600 font-medium group-hover:gap-2 transition-all">
+            <div className="flex items-center text-blue-900 font-medium group-hover:gap-2 transition-all">
               Learn More
               <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
             </div>
