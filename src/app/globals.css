@@ -68,3 +68,17 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+.product-description {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.product-description p {
+  text-align: justify !important;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+  margin-bottom: 1rem !important;
+}
