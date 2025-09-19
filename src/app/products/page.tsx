@@ -233,7 +233,7 @@ export default async function ProductsPage({
       />
 
       {/* ✅ HERO HEADER SECTION */}
-      <div className="bg-blue-900 text-white py-8 mt-20">
+      <div className="bg-gradient-to-br from-blue-900 to-blue-950 text-white py-8 mt-20">
         <div className="container mx-auto px-4">
           <Breadcrumb
             items={breadcrumbItems}

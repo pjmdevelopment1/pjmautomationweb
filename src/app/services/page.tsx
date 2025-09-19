@@ -11,6 +11,7 @@ import {
   Mail,
   MessageSquare,
   Phone,
+  Search,
   Settings,
   Shield,
   Users,
@@ -60,25 +61,25 @@ export default async function ServicesPage() {
 
   return (
     <div className="mt-20">
-      {/* Header Section - Teal Background like Products page */}
-      <div className="bg-teal-600 text-white py-8">
+      {/* Header Section - blue Background like Products page */}
+      <div className="bg-gradient-to-br from-blue-900 to-blue-950 text-white py-8 mt-20">
         <div className="container mx-auto px-4">
           <Breadcrumb
             items={[
               { name: "Home", url: "/" },
               { name: "Services", url: "/services" },
             ]}
-            className="mb-8 [&_a]:text-teal-200 [&_a:hover]:text-white [&_span]:text-white"
+            className="mb-8 [&_a]:text-blue-200 [&_a:hover]:text-white [&_span]:text-white"
           />
 
           <div className="max-w-4xl">
             <h1 className="text-3xl lg:text-4xl font-bold mb-4">
               Engineering Services
             </h1>
-            <p className="text-xl text-teal-100 mb-4">
+            <p className="text-xl text-blue-100 mb-4">
               + Technical Support & Consultation
             </p>
-            <p className="text-lg text-teal-200 max-w-2xl">
+            <p className="text-lg text-blue-200 max-w-2xl">
               Professional automation services with expert technical support.
               From parameter setting to complete commissioning, we ensure your
               systems perform optimally.
@@ -87,12 +88,64 @@ export default async function ServicesPage() {
         </div>
       </div>
 
-      {/* Content Section */}
       <div className="container mx-auto px-4 py-8">
+        {/* Services Search Section */}
+        <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 mb-8">
+          {/* Header */}
+          <div className="flex items-center justify-between gap-4 mb-4">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-blue-100 rounded-lg">
+                <Search className="h-5 w-5 text-blue-900" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-900">Search Services</h3>
+                <p className="text-sm text-gray-600">
+                  Find engineering services and technical support
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Search Form */}
+          <form method="GET" className="space-y-4">
+            <div className="flex gap-4">
+              <input
+                type="text"
+                name="search"
+                placeholder="Search by service name, type, or description..."
+                className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              />
+              <button
+                type="submit"
+                className="bg-blue-900 hover:bg-blue-950 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300"
+              >
+                <Search className="h-5 w-5 mr-2 inline" />
+                Search Services
+              </button>
+            </div>
+
+            {/* WhatsApp CTA */}
+            <p className="text-center text-sm text-gray-600">
+              Tidak mau repot mencari?
+              <a
+                href="https://wa.me/6285210067755?text=Halo%20PJM%20Automation,%20saya%20membutuhkan%20bantuan%20untuk%20mencari%20layanan%20engineering"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-blue-900 hover:text-blue-950 transition-colors"
+              >
+                Langsung hubungi tim kami (WhatsApp)
+              </a>
+            </p>
+          </form>
+        </div>
+      </div>
+
+      {/* Content Section */}
+      <div className="container mx-auto px-4 pb-8">
         {/* Featured Services */}
         {featuredServices.length > 0 && (
           <div className="mb-12">
-            <h2 className="text-3xl font-semibold mb-6 py-8 text-center">
+            <h2 className="text-3xl font-semibold mb-6 pb-8 text-center">
               Featured Services
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -105,29 +158,13 @@ export default async function ServicesPage() {
       </div>
 
       {/* Enhanced CTA Section - Products Page Style */}
-      <section className="py-16 bg-teal-600 relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `radial-gradient(circle at 20% 50%, white 1px, transparent 1px),
-                               radial-gradient(circle at 80% 80%, white 1px, transparent 1px)`,
-              backgroundSize: "50px 50px",
-            }}
-          />
-        </div>
-
-        {/* Decorative Elements */}
-        <div className="absolute top-10 right-10 w-64 h-64 bg-teal-500 rounded-full blur-3xl opacity-20 animate-pulse" />
-        <div className="absolute bottom-10 left-10 w-80 h-80 bg-teal-400 rounded-full blur-3xl opacity-20 animate-pulse" />
-
+      <section className="py-16 bg-gradient-to-br from-blue-900 to-blue-950 relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Need Custom Engineering Solutions?
             </h2>
-            <p className="text-xl text-teal-100 mb-10 leading-relaxed">
+            <p className="text-xl text-blue-100 mb-10 leading-relaxed">
               Our experienced engineers provide tailored automation solutions
               for your specific industrial requirements. Get expert consultation
               today.
@@ -136,7 +173,7 @@ export default async function ServicesPage() {
             {/* Enhanced Single Button with proper spacing */}
             <Link
               href="/contact"
-              className="group relative inline-flex items-center justify-center px-8 py-4 bg-white text-teal-600 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 mb-10"
+              className="group relative inline-flex items-center justify-center px-8 py-4 bg-white text-blue-900 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 mb-10"
             >
               <Settings className="h-5 w-5 mr-2" />
               <span>Get Engineering Consultation</span>
@@ -161,13 +198,13 @@ export default async function ServicesPage() {
                   className="group flex items-center gap-3 p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
                 >
                   <div className="flex-shrink-0">
-                    <Phone className="h-6 w-6 text-teal-200 group-hover:rotate-12 transition-transform duration-300" />
+                    <Phone className="h-6 w-6 text-blue-200 group-hover:rotate-12 transition-transform duration-300" />
                   </div>
                   <div className="text-left min-w-0">
-                    <p className="text-xs text-teal-200 uppercase tracking-wide mb-1">
+                    <p className="text-xs text-blue-200 uppercase tracking-wide mb-1">
                       Call Direct
                     </p>
-                    <p className="font-semibold text-white text-sm group-hover:text-teal-100 transition-colors">
+                    <p className="font-semibold text-white text-sm group-hover:text-blue-100 transition-colors">
                       {SITE_CONFIG.company.phone}
                     </p>
                   </div>
@@ -179,13 +216,13 @@ export default async function ServicesPage() {
                   className="group flex items-center gap-3 p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
                 >
                   <div className="flex-shrink-0">
-                    <Mail className="h-6 w-6 text-teal-200 group-hover:rotate-12 transition-transform duration-300" />
+                    <Mail className="h-6 w-6 text-blue-200 group-hover:rotate-12 transition-transform duration-300" />
                   </div>
                   <div className="text-left min-w-0">
-                    <p className="text-xs text-teal-200 uppercase tracking-wide mb-1">
+                    <p className="text-xs text-blue-200 uppercase tracking-wide mb-1">
                       Email Us
                     </p>
-                    <p className="font-semibold text-white text-sm group-hover:text-teal-100 transition-colors truncate">
+                    <p className="font-semibold text-white text-sm group-hover:text-blue-100 transition-colors truncate">
                       {SITE_CONFIG.company.email}
                     </p>
                   </div>
@@ -199,13 +236,13 @@ export default async function ServicesPage() {
                   className="group flex items-center gap-3 p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
                 >
                   <div className="flex-shrink-0">
-                    <MessageSquare className="h-6 w-6 text-teal-200 group-hover:rotate-12 transition-transform duration-300" />
+                    <MessageSquare className="h-6 w-6 text-blue-200 group-hover:rotate-12 transition-transform duration-300" />
                   </div>
                   <div className="text-left min-w-0">
-                    <p className="text-xs text-teal-200 uppercase tracking-wide mb-1">
+                    <p className="text-xs text-blue-200 uppercase tracking-wide mb-1">
                       WhatsApp
                     </p>
-                    <p className="font-semibold text-white text-sm group-hover:text-teal-100 transition-colors">
+                    <p className="font-semibold text-white text-sm group-hover:text-blue-100 transition-colors">
                       Iqbal - 085210067755 <br />
                       Iksan - 085717278739
                     </p>
@@ -215,17 +252,17 @@ export default async function ServicesPage() {
 
               {/* Additional Info */}
               <div className="mt-6 pt-6 border-t border-white/20">
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-teal-100">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-blue-100">
                   <div className="flex items-center gap-2">
                     <Clock className="h-4 w-4" />
                     <span>Response within 2 hours</span>
                   </div>
-                  <div className="hidden sm:block w-1 h-1 bg-teal-200 rounded-full"></div>
+                  <div className="hidden sm:block w-1 h-1 bg-blue-200 rounded-full"></div>
                   <div className="flex items-center gap-2">
                     <Users className="h-4 w-4" />
                     <span>8+ Years Experience</span>
                   </div>
-                  <div className="hidden sm:block w-1 h-1 bg-teal-200 rounded-full"></div>
+                  <div className="hidden sm:block w-1 h-1 bg-blue-200 rounded-full"></div>
                   <div className="flex items-center gap-2">
                     <Shield className="h-4 w-4" />
                     <span>Certified Solutions</span>
