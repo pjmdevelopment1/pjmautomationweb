@@ -99,7 +99,7 @@ function RelatedProductCard({ product }: { product: Product }) {
         </div>
 
         {/* Product Name - Flexible Height */}
-        <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors min-h-[48px] flex items-start">
+        <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-blue-900 transition-colors min-h-[48px] flex items-start">
           <Link
             href={`/products/${product.slug}`}
             className="line-clamp-2 leading-6"
@@ -134,7 +134,7 @@ function RelatedProductCard({ product }: { product: Product }) {
             {/* View Details Button - Primary with Hover Animation */}
             <Button
               size="sm"
-              className="w-full text-xs bg-black hover:bg-teal-600 text-white transition-all duration-300 transform hover:scale-102 hover:shadow-md"
+              className="w-full text-xs bg-black hover:bg-blue-900 text-white transition-all duration-300 transform hover:scale-102 hover:shadow-md"
               asChild
             >
               <Link href={`/products/${product.slug}`}>Lihat Detail</Link>
@@ -144,7 +144,7 @@ function RelatedProductCard({ product }: { product: Product }) {
             <Button
               size="sm"
               variant="outline"
-              className="w-full text-xs border-black text-black hover:bg-teal-600 hover:text-white hover:border-teal-600 transition-all duration-300 transform hover:scale-102 hover:shadow-md"
+              className="w-full text-xs border-black text-black hover:bg-blue-900 hover:text-white hover:border-blue-900 transition-all duration-300 transform hover:scale-102 hover:shadow-md"
               asChild
             >
               <Link href={`/quote?product=${product.slug}`}>
