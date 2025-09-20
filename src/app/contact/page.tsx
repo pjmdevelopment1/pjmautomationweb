@@ -62,7 +62,7 @@ export default function ContactPage() {
       description: "Send detailed technical questions",
       value: SITE_CONFIG.company.email,
       action: `mailto:${SITE_CONFIG.company.email}`,
-      color: "text-blue-600",
+      color: "text-blue-900",
       bgColor: "bg-blue-50",
     },
     {
@@ -111,18 +111,18 @@ export default function ContactPage() {
       />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-teal-600 to-teal-700 text-white py-20 mt-20">
+      <section className="bg-gradient-to-br from-blue-900 to-blue-950 text-white py-20 mt-20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl lg:text-5xl font-bold mb-6">
               Contact Our Engineering Team
             </h1>
-            <p className="text-xl text-teal-100 mb-8">
+            <p className="text-xl text-blue-100 mb-8">
               Get professional technical support for your automation needs. Free
               consultation, parameter setting, and commissioning services
               available.
             </p>
-            <div className="flex items-center justify-center gap-4 text-teal-100">
+            <div className="flex items-center justify-center gap-4 text-blue-100">
               <div className="flex items-center gap-2">
                 <Clock className="h-5 w-5" />
                 <span>24/7 Support</span>
@@ -222,12 +222,12 @@ export default function ContactPage() {
               </div>
 
               {/* Business Hours */}
-              <div className="bg-teal-50 border border-teal-200 rounded-xl p-6">
-                <h4 className="font-semibold text-teal-900 mb-4 flex items-center gap-2">
+              <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+                <h4 className="font-semibold text-blue-900 mb-4 flex items-center gap-2">
                   <Clock className="h-5 w-5" />
                   Business Hours
                 </h4>
-                <div className="space-y-2 text-sm text-teal-800">
+                <div className="space-y-2 text-sm text-blue-800">
                   <div className="flex justify-between">
                     <span>Monday - Friday</span>
                     <span>08:00 - 17:00 WIB</span>
@@ -240,8 +240,8 @@ export default function ContactPage() {
                     <span>Sunday</span>
                     <span>Emergency only</span>
                   </div>
-                  <hr className="border-teal-200 my-3" />
-                  <p className="text-teal-700">
+                  <hr className="border-blue-200 my-3" />
+                  <p className="text-blue-700">
                     <strong>Emergency Support:</strong> Available 24/7 for
                     critical automation issues
                   </p>
@@ -251,7 +251,7 @@ export default function ContactPage() {
               {/* Location */}
               <div className="bg-gray-50 rounded-xl p-6">
                 <h4 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                  <MapPin className="h-5 w-5 text-teal-600" />
+                  <MapPin className="h-5 w-5 text-blue-900" />
                   Service Areas
                 </h4>
                 <div className="grid grid-cols-2 gap-3 text-sm text-gray-600">
@@ -276,29 +276,13 @@ export default function ContactPage() {
       </section>
 
       {/* Full CTA Section - Blog Page Style */}
-      <section className="py-16 bg-teal-600 relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `radial-gradient(circle at 20% 50%, white 1px, transparent 1px),
-                         radial-gradient(circle at 80% 80%, white 1px, transparent 1px)`,
-              backgroundSize: "50px 50px",
-            }}
-          />
-        </div>
-
-        {/* Decorative Elements */}
-        <div className="absolute top-10 right-10 w-64 h-64 bg-teal-500 rounded-full blur-3xl opacity-20 animate-pulse" />
-        <div className="absolute bottom-10 left-10 w-80 h-80 bg-teal-400 rounded-full blur-3xl opacity-20 animate-pulse" />
-
+      <section className="py-16 bg-gradient-to-br from-blue-900 to-blue-950 relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Need Technical Support?
             </h2>
-            <p className="text-xl text-teal-100 mb-10 leading-relaxed">
+            <p className="text-xl text-blue-100 mb-10 leading-relaxed">
               Our engineering team provides direct technical consultation and
               troubleshooting services for your automation projects.
             </p>
@@ -307,7 +291,7 @@ export default function ContactPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
               <Link
                 href="/contact"
-                className="group relative inline-flex items-center justify-center px-8 py-4 bg-white text-teal-600 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                className="group relative inline-flex items-center justify-center px-8 py-4 bg-white text-blue-900 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 <Headphones className="h-5 w-5 mr-2" />
                 <span>Contact Engineers</span>
@@ -321,7 +305,7 @@ export default function ContactPage() {
 
               <Link
                 href="/products"
-                className="group relative inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-teal-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                className="group relative inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-900 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 <Package className="h-5 w-5 mr-2" />
                 <span>Browse Products</span>
@@ -347,13 +331,13 @@ export default function ContactPage() {
                   className="group flex items-center gap-3 p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
                 >
                   <div className="flex-shrink-0">
-                    <Phone className="h-6 w-6 text-teal-200 group-hover:rotate-12 transition-transform duration-300" />
+                    <Phone className="h-6 w-6 text-blue-200 group-hover:rotate-12 transition-transform duration-300" />
                   </div>
                   <div className="text-left min-w-0">
-                    <p className="text-xs text-teal-200 uppercase tracking-wide mb-1">
+                    <p className="text-xs text-blue-200 uppercase tracking-wide mb-1">
                       Call Direct
                     </p>
-                    <p className="font-semibold text-white text-sm group-hover:text-teal-100 transition-colors">
+                    <p className="font-semibold text-white text-sm group-hover:text-blue-100 transition-colors">
                       {SITE_CONFIG.company.phone}
                     </p>
                   </div>
@@ -365,13 +349,13 @@ export default function ContactPage() {
                   className="group flex items-center gap-3 p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
                 >
                   <div className="flex-shrink-0">
-                    <Mail className="h-6 w-6 text-teal-200 group-hover:rotate-12 transition-transform duration-300" />
+                    <Mail className="h-6 w-6 text-blue-200 group-hover:rotate-12 transition-transform duration-300" />
                   </div>
                   <div className="text-left min-w-0">
-                    <p className="text-xs text-teal-200 uppercase tracking-wide mb-1">
+                    <p className="text-xs text-blue-200 uppercase tracking-wide mb-1">
                       Email Us
                     </p>
-                    <p className="font-semibold text-white text-sm group-hover:text-teal-100 transition-colors truncate">
+                    <p className="font-semibold text-white text-sm group-hover:text-blue-100 transition-colors truncate">
                       {SITE_CONFIG.company.email}
                     </p>
                   </div>
@@ -385,13 +369,13 @@ export default function ContactPage() {
                   className="group flex items-center gap-3 p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
                 >
                   <div className="flex-shrink-0">
-                    <MessageSquare className="h-6 w-6 text-teal-200 group-hover:rotate-12 transition-transform duration-300" />
+                    <MessageSquare className="h-6 w-6 text-blue-200 group-hover:rotate-12 transition-transform duration-300" />
                   </div>
                   <div className="text-left min-w-0">
-                    <p className="text-xs text-teal-200 uppercase tracking-wide mb-1">
+                    <p className="text-xs text-blue-200 uppercase tracking-wide mb-1">
                       WhatsApp
                     </p>
-                    <p className="font-semibold text-white text-sm group-hover:text-teal-100 transition-colors">
+                    <p className="font-semibold text-white text-sm group-hover:text-blue-100 transition-colors">
                       Iqbal - 085210067755
                     </p>
                   </div>
@@ -400,17 +384,17 @@ export default function ContactPage() {
 
               {/* Additional Info */}
               <div className="mt-6 pt-6 border-t border-white/20">
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-teal-100">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-blue-100">
                   <div className="flex items-center gap-2">
                     <Clock className="h-4 w-4" />
                     <span>Response within 2 hours</span>
                   </div>
-                  <div className="hidden sm:block w-1 h-1 bg-teal-200 rounded-full"></div>
+                  <div className="hidden sm:block w-1 h-1 bg-blue-200 rounded-full"></div>
                   <div className="flex items-center gap-2">
                     <Users className="h-4 w-4" />
                     <span>8+ Years Experience</span>
                   </div>
-                  <div className="hidden sm:block w-1 h-1 bg-teal-200 rounded-full"></div>
+                  <div className="hidden sm:block w-1 h-1 bg-blue-200 rounded-full"></div>
                   <div className="flex items-center gap-2">
                     <Shield className="h-4 w-4" />
                     <span>Certified Solutions</span>

@@ -293,7 +293,7 @@ const QuoteForm = () => {
             <div
               className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
                 step <= currentStep
-                  ? "bg-teal-600 text-white"
+                  ? "bg-blue-900 text-white"
                   : "bg-gray-200 text-gray-600"
               }`}
             >
@@ -302,7 +302,7 @@ const QuoteForm = () => {
             <div className="ml-3 hidden sm:block">
               <div
                 className={`text-sm font-medium ${
-                  step <= currentStep ? "text-teal-600" : "text-gray-500"
+                  step <= currentStep ? "text-blue-900" : "text-gray-500"
                 }`}
               >
                 {step === 1 && "Company Info"}
@@ -313,7 +313,7 @@ const QuoteForm = () => {
             {step < 3 && (
               <div
                 className={`w-12 h-0.5 ml-4 ${
-                  step < currentStep ? "bg-teal-600" : "bg-gray-200"
+                  step < currentStep ? "bg-blue-900" : "bg-gray-200"
                 }`}
               />
             )}
@@ -324,7 +324,7 @@ const QuoteForm = () => {
       {/* Step 1: Company Information */}
       {currentStep === 1 && (
         <div className="space-y-8">
-          <div className="border-l-4 border-teal-500 pl-4 mb-8">
+          <div className="border-l-4 border-blue-900 pl-4 mb-8">
             <h3 className="text-lg font-semibold text-gray-900">
               Company Information
             </h3>
@@ -462,7 +462,7 @@ const QuoteForm = () => {
       {/* Step 2: Product Details */}
       {currentStep === 2 && (
         <div className="space-y-8">
-          <div className="border-l-4 border-teal-500 pl-4 mb-8">
+          <div className="border-l-4 border-blue-900 pl-4 mb-8">
             <h3 className="text-lg font-semibold text-gray-900">
               Product Requirements
             </h3>
@@ -476,7 +476,7 @@ const QuoteForm = () => {
               <div key={field.id} className="bg-gray-50 p-6 rounded-lg border">
                 <div className="flex items-center justify-between mb-6">
                   <h4 className="font-semibold text-gray-900 flex items-center gap-2">
-                    <Package className="h-5 w-5 text-teal-600" />
+                    <Package className="h-5 w-5 text-blue-900" />
                     Product {index + 1}
                   </h4>
                   {fields.length > 1 && (
@@ -581,7 +581,7 @@ const QuoteForm = () => {
                   specifications: "",
                 })
               }
-              className="w-full border-dashed border-2 border-gray-300 hover:border-teal-500 hover:bg-teal-50"
+              className="w-full border-dashed border-2 border-gray-300 hover:border-blue-900 hover:bg-blue-50"
             >
               <Plus className="h-4 w-4 mr-2" />
               Add Another Product
@@ -591,14 +591,14 @@ const QuoteForm = () => {
           {/* Product Categories Helper */}
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
             <div className="flex items-start gap-3">
-              <Info className="h-5 w-5 text-blue-600 mt-0.5" />
+              <Info className="h-5 w-5 text-blue-900 mt-0.5" />
               <div>
                 <h4 className="font-semibold text-blue-900 mb-2">
                   Popular Categories:
                 </h4>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm">
                   {PRODUCT_CATEGORIES.slice(0, 6).map((category) => (
-                    <span key={category.slug} className="text-blue-700">
+                    <span key={category.slug} className="text-blue-900">
                       • {category.name.split("(")[0].trim()}
                     </span>
                   ))}
@@ -645,7 +645,7 @@ const QuoteForm = () => {
       {/* Step 3: Additional Information */}
       {currentStep === 3 && (
         <div className="space-y-8">
-          <div className="border-l-4 border-teal-500 pl-4 mb-8">
+          <div className="border-l-4 border-blue-900 pl-4 mb-8">
             <h3 className="text-lg font-semibold text-gray-900">
               Additional Information
             </h3>
@@ -688,7 +688,7 @@ const QuoteForm = () => {
             <select
               id="urgency"
               {...register("urgency")}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 p-3 border"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-900 focus:ring-blue-900 p-3 border"
             >
               <option value="low">Low - Standard quote (24-48 hours)</option>
               <option value="medium">
@@ -743,7 +743,7 @@ const QuoteForm = () => {
             </Button>
             <Button
               type="submit"
-              className="bg-teal-600 hover:bg-teal-700"
+              className="bg-blue-900 hover:bg-blue-950"
               disabled={isSubmitting || status === "loading"}
             >
               {isSubmitting || status === "loading" ? (

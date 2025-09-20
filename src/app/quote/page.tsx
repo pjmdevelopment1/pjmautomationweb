@@ -43,16 +43,16 @@ export default async function QuotePage({ searchParams }: QuotePageProps) {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-teal-600 to-teal-700 text-white py-16 mt-20">
+      <section className="bg-gradient-to-br from-blue-900 to-blue-950 text-white py-16 mt-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl lg:text-5xl font-bold mb-6">
               Request Quote
-              <span className="block text-teal-200 text-2xl lg:text-3xl font-normal mt-2">
+              <span className="block text-blue-200 text-2xl lg:text-3xl font-normal mt-2">
                 Get Competitive Pricing + Technical Support
               </span>
             </h1>
-            <p className="text-xl text-teal-100 mb-8">
+            <p className="text-xl text-blue-100 mb-8">
               Professional automation parts with comprehensive technical
               support. Parameter setting, commissioning, and consultation
               included.
@@ -61,19 +61,19 @@ export default async function QuotePage({ searchParams }: QuotePageProps) {
               <div className="bg-white/10 rounded-lg p-4">
                 <div className="text-2xl font-bold">⚡</div>
                 <div className="text-sm">Fast Response</div>
-                <div className="text-xs text-teal-200">Within 2 hours</div>
+                <div className="text-xs text-blue-200">Within 2 hours</div>
               </div>
               <div className="bg-white/10 rounded-lg p-4">
                 <div className="text-2xl font-bold">🔧</div>
                 <div className="text-sm">Technical Support</div>
-                <div className="text-xs text-teal-200">
+                <div className="text-xs text-blue-200">
                   Parameter setting included
                 </div>
               </div>
               <div className="bg-white/10 rounded-lg p-4">
                 <div className="text-2xl font-bold">💰</div>
                 <div className="text-sm">Competitive Pricing</div>
-                <div className="text-xs text-teal-200">Best market rates</div>
+                <div className="text-xs text-blue-200">Best market rates</div>
               </div>
             </div>
           </div>
@@ -195,16 +195,16 @@ export default async function QuotePage({ searchParams }: QuotePageProps) {
               </div>
 
               {/* Contact Info */}
-              <div className="bg-teal-50 border border-teal-200 rounded-xl p-6">
-                <h3 className="font-bold text-teal-900 mb-4">
+              <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+                <h3 className="font-bold text-blue-900 mb-4">
                   Need Immediate Help?
                 </h3>
                 <div className="space-y-3">
                   <a
                     href="tel:+6285210067755"
-                    className="flex items-center gap-3 text-teal-700 hover:text-teal-800 transition-colors"
+                    className="flex items-center gap-3 text-blue-900 hover:text-blue-950 transition-colors"
                   >
-                    <div className="w-8 h-8 bg-teal-100 rounded-lg flex items-center justify-center">
+                    <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
                       <span className="text-sm">📞</span>
                     </div>
                     <div>
@@ -216,9 +216,9 @@ export default async function QuotePage({ searchParams }: QuotePageProps) {
                     href="https://wa.me/6285210067755?text=Hi, I need a quote for automation parts"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-teal-700 hover:text-teal-800 transition-colors"
+                    className="flex items-center gap-3 text-blue-900 hover:text-blue-950 transition-colors"
                   >
-                    <div className="w-8 h-8 bg-teal-100 rounded-lg flex items-center justify-center">
+                    <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
                       <span className="text-sm">💬</span>
                     </div>
                     <div>
@@ -226,8 +226,8 @@ export default async function QuotePage({ searchParams }: QuotePageProps) {
                       <div className="text-sm">Quick response</div>
                     </div>
                   </a>
-                  <div className="pt-3 border-t border-teal-200">
-                    <div className="text-xs text-teal-600">
+                  <div className="pt-3 border-t border-blue-200">
+                    <div className="text-xs text-blue-900">
                       <strong>Business Hours:</strong>
                       <br />
                       Mon-Fri: 08:00-17:00 WIB

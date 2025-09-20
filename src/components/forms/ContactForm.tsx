@@ -268,7 +268,7 @@ const ContactForm = () => {
       {/* Submit Button */}
       <Button
         type="submit"
-        className="w-full bg-teal-600 hover:bg-teal-700"
+        className="w-full bg-blue-900 hover:bg-blue-950"
         disabled={isSubmitting || status === "loading"}
       >
         {isSubmitting || status === "loading" ? (
@@ -290,7 +290,7 @@ const ContactForm = () => {
           Need immediate assistance?{" "}
           <a
             href="tel:+6285210067755"
-            className="text-teal-600 hover:text-teal-700 font-medium"
+            className="text-blue-800 hover:text-blue-950 font-medium"
           >
             Call us directly
           </a>{" "}
