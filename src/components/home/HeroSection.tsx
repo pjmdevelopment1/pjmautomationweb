@@ -70,7 +70,7 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 w-full max-w-md sm:max-w-none mx-auto">
             <Link
               href="/products"
-              className="w-full sm:w-64 inline-flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+              className="w-full sm:w-64 inline-flex items-center justify-center px-6 py-3 bg-blue-800 hover:bg-blue-900 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
               <Package className="h-5 w-5 mr-2" />
               Browse Products

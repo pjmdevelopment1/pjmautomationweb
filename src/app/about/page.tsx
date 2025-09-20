@@ -120,19 +120,19 @@ export default function AboutPage() {
       number: "500+",
       label: "Produk Tersedia",
       icon: Settings,
-      color: "bg-blue-700",
+      color: "bg-blue-800",
     },
     {
       number: "100+",
       label: "Customer Puas",
       icon: Users,
-      color: "bg-cyan-600",
+      color: "bg-blue-900",
     },
     {
       number: "24/7",
       label: "Technical Support",
       icon: Wrench,
-      color: "bg-cyan-700",
+      color: "bg-blue-800",
     },
   ];
 
@@ -188,28 +188,28 @@ export default function AboutPage() {
     {
       icon: Target,
       title: "Customer Success First",
-      iconColor: "bg-blue-700",
+      iconColor: "bg-blue-800",
       description:
         "Kesuksesan customer adalah prioritas utama kami. Kami tidak hanya menjual produk, tetapi memastikan customer mendapatkan hasil optimal dari setiap investasi automation mereka.",
     },
     {
       icon: BookOpen,
       title: "Continuous Learning",
-      iconColor: "bg-cyan-600",
+      iconColor: "bg-blue-900",
       description:
         "Industri automation terus berkembang pesat. Kami berkomitmen untuk selalu update dengan teknologi terbaru agar dapat memberikan solusi yang paling efektif dan efisien.",
     },
     {
       icon: Handshake,
       title: "Reliable Partnership",
-      iconColor: "bg-cyan-700",
+      iconColor: "bg-blue-800",
       description:
         "Kepercayaan adalah aset paling berharga dalam bisnis. Kami membangun reputasi melalui konsistensi dalam kualitas, ketepatan waktu, dan komunikasi yang transparan.",
     },
     {
       icon: Lightbulb,
       title: "Innovation & Adaptability",
-      iconColor: "bg-blue-800",
+      iconColor: "bg-blue-900",
       description:
         "Setiap challenge customer adalah opportunity untuk berinovasi. Kami selalu mencari cara terbaik untuk menyelesaikan masalah teknis dengan pendekatan yang kreatif dan adaptif.",
     },
@@ -488,7 +488,7 @@ export default function AboutPage() {
       </section>
 
       {/* Komitmen Section */}
-      <section className="py-16 bg-blue-800 text-white">
+      <section className="py-16 bg-gradient-to-br from-blue-900 to-blue-800 text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl lg:text-4xl font-bold mb-8">
