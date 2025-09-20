@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-html-link-for-pages */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Metadata } from "next";
@@ -16,6 +17,7 @@ import {
   Settings,
   Shield,
   Users,
+  X,
 } from "lucide-react";
 import { getCanonicalUrl } from "@/lib/url";
 
@@ -143,6 +145,29 @@ export default async function ServicesPage({
             </div>
           </div>
 
+          {search && (
+            <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-2">
+                  <Search className="h-4 w-4 text-blue-900" />
+                  <span className="text-sm font-medium text-blue-900">
+                    Active Search:
+                  </span>
+                  <span className="inline-flex items-center gap-2 bg-blue-100 text-blue-900 text-xs font-medium px-3 py-1.5 rounded-full border border-blue-200">
+                    Search: "{search}"
+                  </span>
+                </div>
+                <Link
+                  href="/services"
+                  className="inline-flex items-center gap-1 border bg-white border-blue-200 text-blue-900 hover:bg-blue-50 hover:border-blue-300 text-sm px-3 py-1 rounded transition-colors"
+                >
+                  <X className="h-4 w-4" />
+                  Clear All
+                </Link>
+              </div>
+            </div>
+          )}
+
           {/* Search Form */}
           <form method="GET" className="space-y-4">
             <div className="flex gap-4">
@@ -194,6 +219,41 @@ export default async function ServicesPage({
           </div>
         )}
       </div>
+
+      {/* No Services Found */}
+      {filteredServices.length === 0 && (
+        <div className="container mx-auto px-4 pb-8">
+          <div className="bg-white border border-gray-200 rounded-lg p-12 text-center">
+            <div className="max-w-md mx-auto">
+              <div className="mb-6 text-6xl">🔍</div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                No services found
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Try adjusting your search terms or browse all our services.
+              </p>
+              <div className="space-y-3">
+                <Link
+                  href="/services"
+                  className="inline-flex items-center gap-2 bg-blue-900 hover:bg-blue-950 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300"
+                >
+                  View All Services
+                </Link>
+                <p className="text-sm text-gray-500">
+                  Or{" "}
+                  <Link
+                    href="/contact"
+                    className="text-blue-900 hover:text-blue-950"
+                  >
+                    contact us
+                  </Link>{" "}
+                  for custom engineering consultation
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Enhanced CTA Section - Products Page Style */}
       <section className="py-16 bg-gradient-to-br from-blue-900 to-blue-950 relative overflow-hidden">
