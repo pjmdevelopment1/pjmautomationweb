@@ -114,13 +114,13 @@ export default function AboutPage() {
       number: "8+",
       label: "Tahun Pengalaman",
       icon: Clock,
-      color: "bg-teal-600",
+      color: "bg-blue-900",
     },
     {
       number: "500+",
       label: "Produk Tersedia",
       icon: Settings,
-      color: "bg-teal-700",
+      color: "bg-blue-700",
     },
     {
       number: "100+",
@@ -181,14 +181,14 @@ export default function AboutPage() {
     {
       icon: Wrench,
       title: "Engineering Excellence",
-      iconColor: "bg-teal-600",
+      iconColor: "bg-blue-900",
       description:
         "Kami percaya bahwa keunggulan engineering adalah fondasi dari setiap solusi yang berhasil. Setiap project kami tangani dengan detail, presisi, dan standar kualitas tertinggi.",
     },
     {
       icon: Target,
       title: "Customer Success First",
-      iconColor: "bg-teal-700",
+      iconColor: "bg-blue-700",
       description:
         "Kesuksesan customer adalah prioritas utama kami. Kami tidak hanya menjual produk, tetapi memastikan customer mendapatkan hasil optimal dari setiap investasi automation mereka.",
     },
@@ -209,7 +209,7 @@ export default function AboutPage() {
     {
       icon: Lightbulb,
       title: "Innovation & Adaptability",
-      iconColor: "bg-teal-800",
+      iconColor: "bg-blue-800",
       description:
         "Setiap challenge customer adalah opportunity untuk berinovasi. Kami selalu mencari cara terbaik untuk menyelesaikan masalah teknis dengan pendekatan yang kreatif dan adaptif.",
     },
@@ -254,30 +254,14 @@ export default function AboutPage() {
       />
 
       {/* EXISTING HERO SECTION - TIDAK DIUBAH */}
-      <section className="bg-teal-600 text-white py-20 mt-20 relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `radial-gradient(circle at 20% 50%, white 1px, transparent 1px),
-                             radial-gradient(circle at 80% 80%, white 1px, transparent 1px)`,
-              backgroundSize: "50px 50px",
-            }}
-          />
-        </div>
-
-        {/* Decorative Elements */}
-        <div className="absolute top-20 right-10 w-72 h-72 bg-teal-500 rounded-full blur-3xl opacity-20 animate-pulse" />
-        <div className="absolute bottom-20 left-10 w-96 h-96 bg-teal-400 rounded-full blur-3xl opacity-20 animate-pulse" />
-
+      <section className="bg-gradient-to-br from-blue-900 to-blue-950 text-white py-20 mt-20 relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl lg:text-5xl font-bold mb-6">
               Engineering Excellence in
-              <span className="block text-teal-200">Industrial Automation</span>
+              <span className="block text-blue-200">Industrial Automation</span>
             </h1>
-            <p className="text-xl text-teal-100 mb-10 leading-relaxed">
+            <p className="text-xl text-blue-100 mb-10 leading-relaxed">
               Mederi Karya Indonesia delivers comprehensive industrial
               automation solutions combining quality products, engineering
               expertise, and dedicated technical support to help manufacturing
@@ -289,7 +273,7 @@ export default function AboutPage() {
               {/* Primary Button - Get Technical Consultation */}
               <Link
                 href="/contact"
-                className="group relative inline-flex items-center justify-center px-8 py-4 bg-white text-teal-600 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                className="group relative inline-flex items-center justify-center px-8 py-4 bg-white text-blue-900 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 <Users className="h-5 w-5 mr-2" />
                 <span>Get Technical Consultation</span>
@@ -304,7 +288,7 @@ export default function AboutPage() {
               {/* Secondary Button - Our Services */}
               <Link
                 href="/services"
-                className="group relative inline-flex items-center justify-center px-8 py-4 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:bg-white hover:text-teal-600 transition-all duration-300 transform hover:-translate-y-0.5"
+                className="group relative inline-flex items-center justify-center px-8 py-4 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:bg-white hover:text-blue-900 transition-all duration-300 transform hover:-translate-y-0.5"
               >
                 <Settings className="h-5 w-5 mr-2" />
                 <span>Our Services</span>
@@ -328,7 +312,7 @@ export default function AboutPage() {
               </h2>
               <div className="max-w-4xl mx-auto text-lg text-gray-700 leading-relaxed space-y-6">
                 <p>
-                  <strong className="text-teal-600">
+                  <strong className="text-blue-900">
                     PT. Mederi Karya Indonesia (MKI)
                   </strong>{" "}
                   adalah Engineering Services Company yang menghadirkan solusi
@@ -368,15 +352,15 @@ export default function AboutPage() {
       </section>
 
       {/* Visi Section */}
-      <section className="py-16 bg-gradient-to-br from-teal-50 to-blue-50">
+      <section className="py-16 bg-gradient-to-br from-blue-50 to-blue-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-8">
               Visi Perusahaan
             </h2>
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-teal-100">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-blue-100">
               <div className="flex justify-center mb-6">
-                <div className="bg-teal-600 p-4 rounded-full">
+                <div className="bg-blue-900 p-4 rounded-full">
                   <Eye className="h-8 w-8 text-white" />
                 </div>
               </div>
@@ -406,7 +390,7 @@ export default function AboutPage() {
                   className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="bg-teal-600 p-3 rounded-lg group-hover:bg-teal-700 transition-colors">
+                    <div className="bg-blue-900 p-3 rounded-lg group-hover:bg-blue-700 transition-colors">
                       <mission.icon className="h-6 w-6 text-white" />
                     </div>
                     <div className="flex-1">
@@ -471,10 +455,10 @@ export default function AboutPage() {
               {services.map((service, index) => (
                 <div
                   key={index}
-                  className="bg-gradient-to-br from-teal-50 to-blue-50 rounded-xl p-8 border border-teal-100 hover:shadow-lg transition-all duration-300 group"
+                  className="bg-gradient-to-br from-blue-50 to-blue-50 rounded-xl p-8 border border-blue-100 hover:shadow-lg transition-all duration-300 group"
                 >
                   <div className="flex items-start gap-4 mb-6">
-                    <div className="bg-teal-600 p-3 rounded-lg group-hover:bg-teal-700 transition-colors">
+                    <div className="bg-blue-900 p-3 rounded-lg group-hover:bg-blue-700 transition-colors">
                       <service.icon className="h-6 w-6 text-white" />
                     </div>
                     <div className="flex-1">
@@ -488,7 +472,7 @@ export default function AboutPage() {
                         {service.features.map((feature, idx) => (
                           <span
                             key={idx}
-                            className="text-xs px-3 py-1 bg-teal-100 text-teal-700 rounded-full"
+                            className="text-xs px-3 py-1 bg-blue-100 text-blue-700 rounded-full"
                           >
                             {feature}
                           </span>
@@ -504,7 +488,7 @@ export default function AboutPage() {
       </section>
 
       {/* Komitmen Section */}
-      <section className="py-16 bg-gradient-to-br from-teal-600 to-teal-700 text-white">
+      <section className="py-16 bg-blue-800 text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl lg:text-4xl font-bold mb-8">
@@ -529,11 +513,7 @@ export default function AboutPage() {
       </section>
 
       {/* EXISTING ENHANCED CTA SECTION - TIDAK DIUBAH */}
-      <section className="bg-teal-600 text-white py-20 relative overflow-hidden">
-        {/* Enhanced CTA Buttons */}
-        <div className="absolute top-10 right-10 w-64 h-64 bg-teal-500 rounded-full blur-3xl opacity-20 animate-pulse" />
-        <div className="absolute bottom-10 left-10 w-80 h-80 bg-teal-400 rounded-full blur-3xl opacity-20 animate-pulse" />
-
+      <section className="bg-gradient-to-br from-blue-900 to-blue-950 text-white py-20 relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -541,18 +521,18 @@ export default function AboutPage() {
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">
                   Ready to Work Together?
                 </h2>
-                <p className="text-xl text-teal-100 mb-8 leading-relaxed">
+                <p className="text-xl text-blue-100 mb-8 leading-relaxed">
                   Let's discuss your automation needs and how our engineering
                   expertise can help your business succeed.
                 </p>
 
                 {/* Contact Information */}
                 <div className="space-y-4 mb-8">
-                  <div className="flex items-center gap-3 text-teal-100">
+                  <div className="flex items-center gap-3 text-blue-100">
                     <MapPin className="w-5 h-5" />
                     <span>{SITE_CONFIG.company.address}</span>
                   </div>
-                  <div className="flex items-center gap-3 text-teal-100">
+                  <div className="flex items-center gap-3 text-blue-100">
                     <Phone className="w-5 h-5" />
                     <a
                       href="tel:+6285210067755"
@@ -561,7 +541,7 @@ export default function AboutPage() {
                       {SITE_CONFIG.company.phone}
                     </a>
                   </div>
-                  <div className="flex items-center gap-3 text-teal-100">
+                  <div className="flex items-center gap-3 text-blue-100">
                     <Phone className="w-5 h-5" />
                     <a
                       href="https://wa.me/6285210067755?text=Halo Mederi Karya, saya membutuhkan informasi mengenai produk / technical support"
@@ -572,7 +552,7 @@ export default function AboutPage() {
                       Iqbal - 085210067755
                     </a>
                   </div>
-                  <div className="flex items-center gap-3 text-teal-100">
+                  <div className="flex items-center gap-3 text-blue-100">
                     <Mail className="w-5 h-5" />
                     <a
                       href="mailto:iqbalya25@gmail.com"
@@ -589,7 +569,7 @@ export default function AboutPage() {
                 {/* Primary Button - Get Free Consultation */}
                 <Link
                   href="/contact"
-                  className="group relative inline-flex items-center justify-center w-full px-8 py-4 bg-white text-teal-600 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  className="group relative inline-flex items-center justify-center w-full px-8 py-4 bg-white text-blue-900 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                 >
                   <Users className="h-5 w-5 mr-2" />
                   <span>Get Engineering Consultation</span>
@@ -606,7 +586,7 @@ export default function AboutPage() {
                   href="https://wa.me/6285210067755?text=Halo Mederi Karya, saya tertarik untuk berdiskusi tentang kebutuhan automation perusahaan kami."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative inline-flex items-center justify-center w-full px-8 py-4 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:bg-white hover:text-teal-600 transition-all duration-300 transform hover:-translate-y-0.5"
+                  className="group relative inline-flex items-center justify-center w-full px-8 py-4 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:bg-white hover:text-blue-900 transition-all duration-300 transform hover:-translate-y-0.5"
                 >
                   <MessageSquare className="h-5 w-5 mr-2" />
                   <span>WhatsApp - Iqbal (Sales Engineer)</span>
@@ -614,12 +594,12 @@ export default function AboutPage() {
                 </a>
 
                 {/* Additional Help Text */}
-                <p className="text-center text-teal-100 text-sm">
+                <p className="text-center text-blue-100 text-sm">
                   Or WhatsApp us for immediate assistance
                 </p>
 
                 {/* Trust Indicators */}
-                <div className="flex items-center justify-center gap-8 mt-8 text-teal-100">
+                <div className="flex items-center justify-center gap-8 mt-8 text-blue-100">
                   <div className="flex items-center gap-2">
                     <Clock className="h-5 w-5" />
                     <span className="text-sm">Response within 2 hours</span>
