@@ -191,11 +191,11 @@ export default function GlobalNotFound() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <div className="flex items-center text-sm text-gray-600">
                 <Phone className="h-4 w-4 mr-2 text-teal-600" />
-                +62 21 123 4567
+                +6285210067755
               </div>
               <div className="flex items-center text-sm text-gray-600">
                 <Mail className="h-4 w-4 mr-2 text-teal-600" />
-                info@mederikarya.com
+                sales@pjmotomasi.co.id
               </div>
               <div className="flex items-center text-sm text-gray-600">
                 <MapPin className="h-4 w-4 mr-2 text-teal-600" />

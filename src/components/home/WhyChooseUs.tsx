@@ -45,23 +45,20 @@ const WhyChooseUs = () => {
   // Customer logos - 12 companies
   const customerLogos = [
     // Row 1 - Top 6
-    { name: "Pertamina", logo: "/images/customers/pertamina.png" },
-    { name: "PLN", logo: "/images/customers/pln.png" },
-    { name: "Indocement", logo: "/images/customers/indocement.png" },
-    { name: "Unilever", logo: "/images/customers/unilever.png" },
-    { name: "Krakatau Steel", logo: "/images/customers/krakatau-steel.png" },
-    { name: "Pupuk Indonesia", logo: "/images/customers/pupuk-indonesia.png" },
+    { name: "Hilon", logo: "/images/customers/PT. Hilon Indonesia.png" },
+    { name: "DIC", logo: "/images/customers/PT. DIC.png" },
+    { name: "Sasa", logo: "/images/customers/PT. Sasa.png" },
+    { name: "Mesin Isuzu", logo: "/images/customers/PT. Mesin Isuzu.png" },
+    { name: "Hankook", logo: "/images/customers/PT. Hankook.png" },
+    { name: "Indonesia Power", logo: "/images/customers/Indonesia Power.png" },
 
-    // Row 2 - Bottom 6
-    { name: "Semen Indonesia", logo: "/images/customers/semen-indonesia.png" },
-    {
-      name: "Petrokimia Gresik",
-      logo: "/images/customers/petrokimia-gresik.png",
-    },
-    { name: "Chandra Asri", logo: "/images/customers/chandra-asri.png" },
-    { name: "Astra International", logo: "/images/customers/astra.png" },
-    { name: "Indofood", logo: "/images/customers/indofood.png" },
-    { name: "Sido Muncul", logo: "/images/customers/sido-muncul.png" },
+    // Row 2 - Bottom 6s
+    { name: "Pricol", logo: "/images/customers/PT. Pricol.png" },
+    { name: "Cipta Presisi", logo: "/images/customers/PT. Cipta Presisi.png" },
+    { name: "Kasakata", logo: "/images/customers/PT. Kasakata.png" },
+    { name: "Indofood", logo: "/images/customers/PT. Indofood.png" },
+    { name: "Idsmed", logo: "/images/customers/PT. Idsmed.png" },
+    { name: "Index Indo", logo: "/images/customers/PT. Index Indo Garmen.png" },
   ];
 
   // Key metrics - more business focused
@@ -151,12 +148,12 @@ const WhyChooseUs = () => {
               {customerLogos.slice(0, 6).map((customer, index) => (
                 <div
                   key={customer.name}
-                  className="flex items-center justify-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors group"
+                  className="flex items-center justify-center p-4 rounded-lg hover: transition-colors group"
                 >
                   <img
                     src={customer.logo}
                     alt={`${customer.name} Logo`}
-                    className="max-w-full max-h-12 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                    className="max-w-full max-h-12 object-contain filter transition-all duration-300 group-hover:scale-110"
                   />
                 </div>
               ))}
@@ -167,12 +164,12 @@ const WhyChooseUs = () => {
               {customerLogos.slice(6, 12).map((customer, index) => (
                 <div
                   key={customer.name}
-                  className="flex items-center justify-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors group"
+                  className="flex items-center justify-center p-4 rounded-lg hover: transition-colors group"
                 >
                   <img
                     src={customer.logo}
                     alt={`${customer.name} Logo`}
-                    className="max-w-full max-h-12 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                    className="max-w-full max-h-12 object-contain filter transition-all duration-300 group-hover:scale-110"
                   />
                 </div>
               ))}

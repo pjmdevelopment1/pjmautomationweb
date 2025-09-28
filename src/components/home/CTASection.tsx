@@ -86,15 +86,18 @@ const CTASection = () => {
                 </div>
               </a>
 
-              <div className="flex items-center justify-center gap-3 p-3">
-                <MapPin className="h-7 w-7 text-blue-200" />
+              <a
+                href="https://maps.app.goo.gl/YJ238fdpCgSw1FzW7"
+                className="group flex items-center justify-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors"
+              >
+                <MapPin className="h-7 w-7 text-blue-200 group-hover:rotate-12 transition-transform" />
                 <div className="text-left">
                   <p className="text-xs text-blue-200">Location</p>
                   <p className="font-semibold text-xs">
                     {SITE_CONFIG.company.address}
                   </p>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
 

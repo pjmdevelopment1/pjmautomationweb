@@ -287,7 +287,6 @@ export const productStyles = {
   },
 } as const;
 
-// 🎨 STYLE VARIANTS (for different component states)
 export const styleVariants = {
   card: {
     default: productStyles.card.container,

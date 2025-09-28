@@ -1,13 +1,13 @@
 export const SITE_CONFIG = {
-  name: "Mederi Karya Indonesia",
+  name: "PT. Prestasi Jaya Maju",
   description:
     "Solusi Industrial Automation lengkap, PLC, Inverter, HMI, Sensor , Servo dan Power meter dengan engineering support Programming & Parameter setting, commissioning, engineering consultation Jakarta.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://mederikarya.co.id",
   company: {
-    name: "Mederi Karya Indonesia",
+    name: "PT. Prestasi Jaya Maju",
     phone: "021-38317238",
-    email: "sales@mederikarya.co.id",
-    address: "Komplek Pergudangan Bizpark 3 , Blok D51A , Bekasi , Jawa Barat",
+    email: "sales@pjmautomation.co.id",
+    address: "Jl. Gandaria Raya No. 64 , Jakarta Selatan , DKI Jakarta",
     tagline: "One Stop Solution Automation Provider",
   },
   pricing: {
@@ -113,25 +113,25 @@ export const PRODUCT_CATEGORIES = [
 ];
 
 export const BRANDS = [
- "ABB",
- "Allen Bradley",
- "Autonics",
- "Banner",
- "Danfoss",
- "Delta",
- "Fuji",
- "Keyence",
- "LS",
- "Mitsubishi",
- "Omron",
- "Panasonic",
- "Pepperl+Fuchs",
- "Phoenix Contact",
- "Proface",
- "Schneider",
- "Sick",
- "Siemens",
- "Weintek",
+  "ABB",
+  "Allen Bradley",
+  "Autonics",
+  "Banner",
+  "Danfoss",
+  "Delta",
+  "Fuji",
+  "Keyence",
+  "LS",
+  "Mitsubishi",
+  "Omron",
+  "Panasonic",
+  "Pepperl+Fuchs",
+  "Phoenix Contact",
+  "Proface",
+  "Schneider",
+  "Sick",
+  "Siemens",
+  "Weintek",
 ];
 
 export const TARGET_KEYWORDS = {

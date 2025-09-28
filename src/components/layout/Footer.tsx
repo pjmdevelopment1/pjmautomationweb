@@ -57,7 +57,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Main Footer Content */}
         <div className="py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-12">
             {/* Company Info Section */}
             <div className="lg:col-span-1">
               <div className="mb-6">
@@ -154,15 +154,18 @@ const Footer = () => {
                 </a>
 
                 {/* Address */}
-                <div className="flex items-start gap-3 text-gray-400">
-                  <MapPin className="h-5 w-5 mt-0.5 text-blue-400" />
+                <a
+                  href="https://maps.app.goo.gl/YJ238fdpCgSw1FzW7"
+                  className="group flex items-start gap-3 text-gray-400  hover:text-white transition-colors duration-300"
+                >
+                  <MapPin className="h-5 w-5 mt-0.5 text-blue-400 group-hover:rotate-12 transition-transform duration-300" />
                   <div>
                     <p className="text-xs text-gray-500 mb-1">Location</p>
                     <p className="text-sm leading-relaxed">
                       {SITE_CONFIG.company.address}
                     </p>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
           </div>
@@ -196,8 +199,8 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
             <div className="text-center md:text-left">
               <p>
-                &copy; {currentYear} PT. Prestasi Jaya Maju (PJM Automation).
-                All rights reserved.
+                &copy; {currentYear} PT. Prestasi Jaya Maju (PJM Otomasi). All
+                rights reserved.
               </p>
               <p className="text-xs mt-1">
                 Professional Industrial Automation Supplier & Engineering

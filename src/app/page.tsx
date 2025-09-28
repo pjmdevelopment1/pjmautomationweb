@@ -17,13 +17,13 @@ import { getCanonicalUrl } from "@/lib/url";
 
 export const metadata: Metadata = {
   title:
-    "One Stop Solution for Industrial Automation Supplier + Engineering Support | Mederi Karya Indonesia",
+    "One Stop Solution for Industrial Automation Supplier + Engineering Support | Prestasi Jaya Maju",
   description:
     "Solusi Industrial Automation lengkap, PLC, Inverter, HMI, Sensor , Servo dan Power meter dengan engineering support Programming & Parameter setting, commissioning, engineering consultation Jakarta.",
   keywords: [
     ...TARGET_KEYWORDS.primary,
     ...TARGET_KEYWORDS.secondary.slice(0, 3),
-    "mederi karya indonesia",
+    "Prestasi Jaya Maju",
     "automation parts bekasi",
   ],
   alternates: {
@@ -71,7 +71,7 @@ export default async function HomePage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            name: "Mederi Karya Indonesia",
+            name: "Prestasi Jaya Maju",
             url: SITE_CONFIG.url,
             telephone: SITE_CONFIG.company.phone,
             address: {

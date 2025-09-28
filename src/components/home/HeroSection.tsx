@@ -25,9 +25,9 @@ const POPULAR_TOPICS = [
   { name: "PLC", href: "/products?category=plc" },
   { name: "VFD", href: "/products?category=vfd" },
   { name: "HMI", href: "/products?category=hmi" },
-  { name: "Sensors", href: "/products?category=sensors" },
-  { name: "Programming", href: "/services/programming" },
-  { name: "IoT Solutions", href: "/services/iot-solutions" },
+  { name: "Installation", href: "/services" },
+  { name: "Programming", href: "/services" },
+  { name: "IoT Solutions", href: "/services" },
 ];
 
 const HeroSection = () => {
@@ -136,7 +136,7 @@ const HeroSection = () => {
 
               {/* Sensors */}
               <Link
-                href="/products?category=sensors"
+                href="/services"
                 className="group bg-white/10 backdrop-blur-sm rounded-lg p-5 hover:bg-white/20 transition-all duration-300 transform hover:scale-105"
               >
                 <div className="text-blue-400 mb-3 flex justify-center">

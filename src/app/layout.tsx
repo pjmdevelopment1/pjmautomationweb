@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 
+
 import MainLayout from "@/components/layout/MainLayout";
 import { SITE_CONFIG } from "@/lib/contants";
 
@@ -36,8 +37,8 @@ export const metadata: Metadata = {
     "parameter setting bandung",
     "engineering services tangerang",
   ],
-  authors: [{ name: "Mederi Karya Indonesia" }],
-  creator: "Mederi Karya Indonesia",
+  authors: [{ name: "Prestasi Jaya Maju" }],
+  creator: "Prestasi Jaya Maju",
   openGraph: {
     type: "website",
     locale: "id_ID",
@@ -50,7 +51,7 @@ export const metadata: Metadata = {
         url: `${SITE_CONFIG.url}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: "Mederi Karya Indonesia - Supplier Automation Parts + Technical Support",
+        alt: "Prestasi Jaya Maju - Supplier Automation Parts + Technical Support",
       },
     ],
   },
@@ -149,7 +150,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "PT. Mederi Karya Indonesia",
+              name: "PT. Prestasi Jaya Maju",
               url: SITE_CONFIG.url,
               logo: `${SITE_CONFIG.url}/logo.png`,
               description: SITE_CONFIG.description,
@@ -168,8 +169,8 @@ export default function RootLayout({
               },
               sameAs: [
                 // Add social media URLs when available
-                // "https://www.linkedin.com/company/mederi-karya-indonesia",
-                // "https://www.facebook.com/mederikaryaindonesia"
+                // "https://www.linkedin.com/company/prestasi jaya maju",
+                // "https://www.facebook.com/prestasijayamaju"
               ],
             }),
           }}

@@ -37,11 +37,11 @@ import { SITE_CONFIG } from "@/lib/contants";
 // SEO Metadata with comprehensive keywords
 export const metadata: Metadata = {
   title:
-    "Tentang Mederi Karya Indonesia - 8+ Tahun Expertise Automation Engineering",
+    "Tentang Prestasi Jaya Maju - 8+ Tahun Expertise Automation Engineering",
   description:
     "Engineering Services Company terpercaya untuk industrial automation Indonesia. 8+ tahun pengalaman engineering, technical support, parameter setting, commissioning, konsultasi teknis PLC HMI Inverter.",
   keywords: [
-    "tentang mederi karya indonesia",
+    "tentang Prestasi Jaya Maju",
     "automation company indonesia",
     "engineering services bekasi",
     "industrial automation supplier",
@@ -55,13 +55,12 @@ export const metadata: Metadata = {
     "one stop solution automation",
   ],
   openGraph: {
-    title:
-      "Tentang Mederi Karya Indonesia - Engineering Excellence in Automation",
+    title: "Tentang Prestasi Jaya Maju - Engineering Excellence in Automation",
     description:
       "8+ tahun pengalaman engineering dalam industrial automation. Partner terpercaya untuk solusi automation Indonesia.",
     url: "/about",
     type: "website",
-    siteName: "Mederi Karya Indonesia",
+    siteName: "Prestasi Jaya Maju",
     locale: "id_ID",
   },
   alternates: {
@@ -84,10 +83,10 @@ export const metadata: Metadata = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Mederi Karya Indonesia",
-  alternateName: "MKI",
-  url: "https://mederikarya.com",
-  logo: "https://mederikarya.com/logo.png",
+  name: "Prestasi Jaya Maju",
+  alternateName: "PJM",
+  url: "https://pjmotomasi.co.id",
+  logo: "https://pjmotomasi.co.id/logo.png",
   description:
     "Engineering Services Company untuk industrial automation dengan 8+ tahun pengalaman",
   foundingDate: "2016",
@@ -219,21 +218,21 @@ export default function AboutPage() {
   const missions = [
     {
       icon: Award,
-      title: "Memberikan Solusi Teknis Terbaik",
+      title: "Memberikan Pelayanan Terbaik",
       description:
-        "Menyediakan produk automation berkualitas tinggi yang didukung dengan layanan engineering profesional untuk memastikan implementasi yang optimal dan hasil yang maksimal.",
+        "Sanggup untuk memberikan pelayanan terbaik kepada pelanggan baik perorangan maupun Perusahaan.",
     },
     {
       icon: Handshake,
-      title: "Membangun Partnership Jangka Panjang",
+      title: "Komitmen Terhadap Pelayanan Unggul",
       description:
-        "Mengembangkan hubungan kemitraan yang saling menguntungkan dengan customer melalui konsistensi kualitas, komunikasi yang jujur, dan komitmen pada customer success.",
+        " Berkomitmen untuk memberikan layanan pelanggan yang unggul melalui dukungan teknis yang responsif dan solusi yang disesuaikan dengan kebutuhan spesifik.",
     },
     {
       icon: TrendingUp,
-      title: "Mengembangkan Expertise Berkelanjutan",
+      title: "Inovasi Layanan Berkelanjutan",
       description:
-        "Terus meningkatkan kapabilitas engineering dan mengikuti perkembangan teknologi automation terkini untuk memberikan solusi yang selalu relevant dan cutting-edge.",
+        "Selalu berinovasi dan meningkatkan produk serta layanan kami untuk memenuhi tantangan industri yang terus berkembang dan kebutuhan pelanggan.",
     },
     {
       icon: Star,
@@ -262,10 +261,10 @@ export default function AboutPage() {
               <span className="block text-blue-200">Industrial Automation</span>
             </h1>
             <p className="text-xl text-blue-100 mb-10 leading-relaxed">
-              Mederi Karya Indonesia delivers comprehensive industrial
-              automation solutions combining quality products, engineering
-              expertise, and dedicated technical support to help manufacturing
-              companies achieve operational excellence.
+              Prestasi Jaya Maju delivers comprehensive industrial automation
+              solutions combining quality products, engineering expertise, and
+              dedicated technical support to help manufacturing companies
+              achieve operational excellence.
             </p>
 
             {/* Enhanced CTA Buttons - TIDAK DIUBAH */}
@@ -313,7 +312,7 @@ export default function AboutPage() {
               <div className="max-w-4xl mx-auto text-lg text-gray-700 leading-relaxed space-y-6">
                 <p>
                   <strong className="text-blue-900">
-                    PT. Mederi Karya Indonesia (MKI)
+                    PT. Prestasi Jaya Maju (PJM)
                   </strong>{" "}
                   adalah Engineering Services Company yang menghadirkan solusi
                   lengkap untuk kebutuhan industrial automation Anda. Didukung
@@ -365,10 +364,9 @@ export default function AboutPage() {
                 </div>
               </div>
               <blockquote className="text-xl lg:text-2xl text-gray-700 leading-relaxed italic">
-                "Menjadi partner terpercaya dalam transformasi industrial
-                automation di Indonesia, menghadirkan solusi engineering yang
-                inovatif dan berkelanjutan untuk meningkatkan produktivitas dan
-                efisiensi industri nasional."
+                "Menjadi mitra Perusahaan penyedia jasa dan komponen untuk mesin
+                automasi industri yang terbesar dalam memenuhi kebutuhan
+                komponen mesin industri."
               </blockquote>
             </div>
           </div>
@@ -544,7 +542,7 @@ export default function AboutPage() {
                   <div className="flex items-center gap-3 text-blue-100">
                     <Phone className="w-5 h-5" />
                     <a
-                      href="https://wa.me/6285210067755?text=Halo Mederi Karya, saya membutuhkan informasi mengenai produk / technical support"
+                      href="https://wa.me/6285210067755?text=Halo PJMOtomasi, saya membutuhkan informasi mengenai produk / technical support"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-white transition-colors"
@@ -583,7 +581,7 @@ export default function AboutPage() {
 
                 {/* Secondary Button - WhatsApp */}
                 <a
-                  href="https://wa.me/6285210067755?text=Halo Mederi Karya, saya tertarik untuk berdiskusi tentang kebutuhan automation perusahaan kami."
+                  href="https://wa.me/6285210067755?text=Halo PJMOtomasi, saya tertarik untuk berdiskusi tentang kebutuhan automation perusahaan kami."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group relative inline-flex items-center justify-center w-full px-8 py-4 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:bg-white hover:text-blue-900 transition-all duration-300 transform hover:-translate-y-0.5"

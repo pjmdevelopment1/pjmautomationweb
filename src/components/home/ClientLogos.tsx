@@ -44,7 +44,7 @@ const ClientLogos = () => {
           <p className="text-gray-600">
             Join{" "}
             <span className="font-semibold text-teal-600">100+ companies</span>{" "}
-            that trust Mederi Karya Indonesia for their automation needs
+            that trust Prestasi Jaya Maju for their automation needs
           </p>
         </div>
       </div>

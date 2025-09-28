@@ -9,7 +9,7 @@ const WhatsAppButtonSimple = () => {
   // const phoneNumber = "6285717278739";
   const phoneNumber = "6285210067755";
   const message = encodeURIComponent(
-    "Halo Mederi Karya, saya tertarik dengan produk automation. Bisa minta informasi lebih lanjut?"
+    "Halo PJMOtomasi, saya tertarik dengan produk automation. Bisa minta informasi lebih lanjut?"
   );
 
   useEffect(() => {

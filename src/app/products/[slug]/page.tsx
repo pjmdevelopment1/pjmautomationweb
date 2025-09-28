@@ -500,13 +500,16 @@ export default async function ProductPage({ params }: ProductPageProps) {
                         <span>{SITE_CONFIG.company.email}</span>
                       </a>
                       <br />
-                      <h4 className="font-medium text-gray-900 mb-3">
+                      <a
+                        href="https://maps.app.goo.gl/YJ238fdpCgSw1FzW7"
+                        className="font-medium text-gray-900 mb-3"
+                      >
                         Address :
-                      </h4>
-                      <div className="flex items-center gap-2 text-sm text-gray-700 hover:text-blue-900 transition-colors">
-                        <MapPin className="h-6 w-6" />
-                        <span>{SITE_CONFIG.company.address}</span>
-                      </div>
+                        <div className="flex items-center gap-2 text-sm text-gray-700 hover:text-blue-900 transition-colors">
+                          <MapPin className="h-6 w-6" />
+                          <span>{SITE_CONFIG.company.address}</span>
+                        </div>
+                      </a>
                     </div>
                   </div>
                 </div>
