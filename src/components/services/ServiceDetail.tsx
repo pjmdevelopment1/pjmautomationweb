@@ -46,7 +46,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
                 />
                 {service.featured && (
                   <div className="absolute top-4 left-4">
-                    <Badge className="bg-teal-600 text-white">Featured</Badge>
+                    <Badge className="bg-blue-900 text-white">Featured</Badge>
                   </div>
                 )}
               </div>
@@ -57,7 +57,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
           <div className="lg:col-span-2 space-y-4">
             {/* Breadcrumb Tags */}
             <div className="flex items-center gap-2 text-sm">
-              <Link href="/services" className="text-teal-600 hover:underline">
+              <Link href="/services" className="text-blue-900 hover:underline">
                 Services
               </Link>
               <span className="text-gray-400">/</span>
@@ -76,15 +76,15 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
 
             {/* Services Included */}
             {service.features && service.features.length > 0 && (
-              <div className="bg-teal-50 p-6 rounded-lg border border-teal-100">
-                <h3 className="text-lg font-semibold mb-4 text-teal-800">
+              <div className="bg-blue-50 p-6 rounded-lg border border-blue-100">
+                <h3 className="text-lg font-semibold mb-4 text-blue-950">
                   Services Included:
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {service.features.map((feature, index) => (
                     <div key={index} className="flex items-center gap-3">
-                      <Settings className="w-5 h-5 text-teal-600 flex-shrink-0" />
-                      <span className="text-sm text-teal-700">{feature}</span>
+                      <Settings className="w-5 h-5 text-blue-900 flex-shrink-0" />
+                      <span className="text-sm text-blue-900">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -132,15 +132,15 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
               </h3>
               <div className="space-y-4">
                 <div className="flex items-center gap-3 text-sm text-gray-600">
-                  <Settings className="w-4 h-4 text-teal-600" />
+                  <Settings className="w-4 h-4 text-blue-900" />
                   <span>Engineering technical consultation</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-gray-600">
-                  <Calendar className="w-4 h-4 text-teal-600" />
+                  <Calendar className="w-4 h-4 text-blue-900" />
                   <span>Flexible scheduling available</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-gray-600">
-                  <Settings className="w-4 h-4 text-teal-600" />
+                  <Settings className="w-4 h-4 text-blue-900" />
                   <span>Comprehensive support included</span>
                 </div>
 
@@ -148,10 +148,10 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
                 <div className="pt-4 border-t space-y-3">
                   {/* WhatsApp Button - Contact Our Team */}
                   <a
-                    href="https://wa.me/6285210067755?text=Halo MKI, saya membutuhkan konsultasi untuk layanan automation. Mohon informasi lebih lanjut."
+                    href="https://wa.me/6285210067755?text=Halo PJMOtomasi, saya membutuhkan konsultasi untuk layanan automation. Mohon informasi lebih lanjut."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full bg-teal-600 hover:bg-teal-700 text-white px-4 py-3 rounded-lg transition-colors font-medium flex items-center justify-center gap-2 group"
+                    className="w-full bg-blue-900 hover:bg-blue-950 text-white px-4 py-3 rounded-lg transition-colors font-medium flex items-center justify-center gap-2 group"
                   >
                     <MessageSquare className="w-4 h-4 group-hover:scale-110 transition-transform" />
                     Contact Our Team
@@ -160,7 +160,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
                   {/* Contact Page Button - Schedule Consultation */}
                   <Link
                     href="/contact"
-                    className="w-full bg-white border-2 border-teal-600 text-teal-600 hover:bg-teal-50 px-4 py-3 rounded-lg transition-colors font-medium flex items-center justify-center gap-2 group"
+                    className="w-full bg-white border-2 border-blue-900 text-blue-900 hover:bg-blue-50 px-4 py-3 rounded-lg transition-colors font-medium flex items-center justify-center gap-2 group"
                   >
                     <Calendar className="w-4 h-4 group-hover:scale-110 transition-transform" />
                     Schedule Consultation
@@ -184,7 +184,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
                       </p>
                       <a
                         href="tel:+6285210067755"
-                        className="text-sm font-medium text-gray-900 hover:text-teal-600 transition-colors"
+                        className="text-sm font-medium text-gray-900 hover:text-blue-900 transition-colors"
                       >
                         021-2784-3480
                       </a>
@@ -194,7 +194,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
                   {/* Email */}
                   <div className="flex items-center gap-3 text-sm">
                     <div className="w-8 h-8 bg-blue-50 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Mail className="w-4 h-4 text-blue-600" />
+                      <Mail className="w-4 h-4 text-blue-900" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-xs text-gray-500 uppercase tracking-wide">
@@ -202,7 +202,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
                       </p>
                       <a
                         href={`mailto:${SITE_CONFIG.company.email}`}
-                        className="text-sm font-medium text-gray-900 hover:text-teal-600 transition-colors break-all"
+                        className="text-sm font-medium text-gray-900 hover:text-blue-900 transition-colors break-all"
                       >
                         {SITE_CONFIG.company.email}
                       </a>
@@ -222,7 +222,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
                         href="https://wa.me/6285210067755?text=Halo PJMOtomasi, saya membutuhkan technical support untuk automation"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm font-medium text-gray-900 hover:text-teal-600 transition-colors"
+                        className="text-sm font-medium text-gray-900 hover:text-blue-900 transition-colors"
                       >
                         Iqbal - 085210067755
                       </a>
@@ -242,7 +242,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
                         href="https://wa.me/6282230590075?text=Halo PJMOtomasi, saya membutuhkan technical support untuk automation"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm font-medium text-gray-900 hover:text-teal-600 transition-colors"
+                        className="text-sm font-medium text-gray-900 hover:text-blue-900 transition-colors"
                       >
                         Tegar - 082230590075
                       </a>
@@ -295,29 +295,13 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
       )}
 
       {/* Full CTA Section - Products Page Style */}
-      <section className="py-16 bg-teal-600 relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `radial-gradient(circle at 20% 50%, white 1px, transparent 1px),
-                               radial-gradient(circle at 80% 80%, white 1px, transparent 1px)`,
-              backgroundSize: "50px 50px",
-            }}
-          />
-        </div>
-
-        {/* Decorative Elements */}
-        <div className="absolute top-10 right-10 w-64 h-64 bg-teal-500 rounded-full blur-3xl opacity-20 animate-pulse" />
-        <div className="absolute bottom-10 left-10 w-80 h-80 bg-teal-400 rounded-full blur-3xl opacity-20 animate-pulse" />
-
+      <section className="py-16 bg-gradient-to-br from-blue-900 to-blue-950 relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Need Custom Engineering Solutions?
             </h2>
-            <p className="text-xl text-teal-100 mb-10 leading-relaxed">
+            <p className="text-xl text-blue-100 mb-10 leading-relaxed">
               Our experienced engineers provide tailored automation solutions
               for your specific industrial requirements. Get engineering
               consultation today.
@@ -326,7 +310,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
             {/* Enhanced Single Button with proper spacing */}
             <Link
               href="/contact"
-              className="group relative inline-flex items-center justify-center px-8 py-4 bg-white text-teal-600 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 mb-10"
+              className="group relative inline-flex items-center justify-center px-8 py-4 bg-white text-blue-900 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 mb-10"
             >
               <Settings className="h-5 w-5 mr-2" />
               <span>Get Engineering Consultation</span>
@@ -351,13 +335,13 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
                   className="group flex items-center gap-3 p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
                 >
                   <div className="flex-shrink-0">
-                    <Phone className="h-6 w-6 text-teal-200 group-hover:rotate-12 transition-transform duration-300" />
+                    <Phone className="h-6 w-6 text-blue-200 group-hover:rotate-12 transition-transform duration-300" />
                   </div>
                   <div className="text-left min-w-0">
-                    <p className="text-xs text-teal-200 uppercase tracking-wide mb-1">
+                    <p className="text-xs text-blue-200 uppercase tracking-wide mb-1">
                       Call Direct
                     </p>
-                    <p className="font-semibold text-white text-sm group-hover:text-teal-100 transition-colors">
+                    <p className="font-semibold text-white text-sm group-hover:text-blue-100 transition-colors">
                       {SITE_CONFIG.company.phone}
                     </p>
                   </div>
@@ -369,13 +353,13 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
                   className="group flex items-center gap-3 p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
                 >
                   <div className="flex-shrink-0">
-                    <Mail className="h-6 w-6 text-teal-200 group-hover:rotate-12 transition-transform duration-300" />
+                    <Mail className="h-6 w-6 text-blue-200 group-hover:rotate-12 transition-transform duration-300" />
                   </div>
                   <div className="text-left min-w-0">
-                    <p className="text-xs text-teal-200 uppercase tracking-wide mb-1">
+                    <p className="text-xs text-blue-200 uppercase tracking-wide mb-1">
                       Email Us
                     </p>
-                    <p className="font-semibold text-white text-sm group-hover:text-teal-100 transition-colors truncate">
+                    <p className="font-semibold text-white text-sm group-hover:text-blue-100 transition-colors truncate">
                       {SITE_CONFIG.company.email}
                     </p>
                   </div>
@@ -383,19 +367,19 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
 
                 {/* WhatsApp Contact */}
                 <a
-                  href="https://wa.me/6285210067755?text=Halo Mederi Karya, saya membutuhkan technical support untuk automation"
+                  href="https://wa.me/6285210067755?text=Halo PJMOtomasi, saya membutuhkan technical support untuk automation"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center gap-3 p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
                 >
                   <div className="flex-shrink-0">
-                    <MessageSquare className="h-6 w-6 text-teal-200 group-hover:rotate-12 transition-transform duration-300" />
+                    <MessageSquare className="h-6 w-6 text-blue-200 group-hover:rotate-12 transition-transform duration-300" />
                   </div>
                   <div className="text-left min-w-0">
-                    <p className="text-xs text-teal-200 uppercase tracking-wide mb-1">
+                    <p className="text-xs text-blue-200 uppercase tracking-wide mb-1">
                       WhatsApp
                     </p>
-                    <p className="font-semibold text-white text-sm group-hover:text-teal-100 transition-colors">
+                    <p className="font-semibold text-white text-sm group-hover:text-blue-100 transition-colors">
                       Iqbal - 085210067755
                     </p>
                   </div>
@@ -404,17 +388,17 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
 
               {/* Additional Info */}
               <div className="mt-6 pt-6 border-t border-white/20">
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-teal-100">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-blue-100">
                   <div className="flex items-center gap-2">
                     <Clock className="h-4 w-4" />
                     <span>Response within 2 hours</span>
                   </div>
-                  <div className="hidden sm:block w-1 h-1 bg-teal-200 rounded-full"></div>
+                  <div className="hidden sm:block w-1 h-1 bg-blue-200 rounded-full"></div>
                   <div className="flex items-center gap-2">
                     <Users className="h-4 w-4" />
                     <span>8+ Years Experience</span>
                   </div>
-                  <div className="hidden sm:block w-1 h-1 bg-teal-200 rounded-full"></div>
+                  <div className="hidden sm:block w-1 h-1 bg-blue-200 rounded-full"></div>
                   <div className="flex items-center gap-2">
                     <Shield className="h-4 w-4" />
                     <span>Certified Solutions</span>

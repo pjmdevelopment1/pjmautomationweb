@@ -32,7 +32,7 @@ export default function GlobalNotFound() {
                 404
               </div>
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 bg-teal-500 rounded-full flex items-center justify-center">
+                <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center">
                   <Search className="h-8 w-8 text-white" />
                 </div>
               </div>
@@ -52,7 +52,7 @@ export default function GlobalNotFound() {
               <Button
                 asChild
                 size="lg"
-                className="bg-teal-600 hover:bg-teal-700"
+                className="bg-blue-900 hover:bg-blue-950"
               >
                 <Link href="/">
                   <Home className="h-4 w-4 mr-2" />
@@ -80,9 +80,9 @@ export default function GlobalNotFound() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {/* Products Section */}
-            <div className="bg-white rounded-lg p-6 border border-gray-200 hover:border-teal-300 hover:shadow-md transition-all">
-              <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
-                <Package className="h-6 w-6 text-teal-600" />
+            <div className="bg-white rounded-lg p-6 border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all">
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                <Package className="h-6 w-6 text-blue-900" />
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">Products</h3>
               <p className="text-sm text-gray-600 mb-4">
@@ -92,19 +92,19 @@ export default function GlobalNotFound() {
               <div className="space-y-2">
                 <Link
                   href="/products"
-                  className="flex items-center text-sm text-teal-600 hover:text-teal-700"
+                  className="flex items-center text-sm text-blue-900 hover:text-blue-950"
                 >
                   All Products <ExternalLink className="h-3 w-3 ml-1" />
                 </Link>
                 <Link
                   href="/products?category=plc"
-                  className="flex items-center text-sm text-teal-600 hover:text-teal-700"
+                  className="flex items-center text-sm text-blue-900 hover:text-blue-950"
                 >
                   PLC Systems <ExternalLink className="h-3 w-3 ml-1" />
                 </Link>
                 <Link
                   href="/products?category=hmi"
-                  className="flex items-center text-sm text-teal-600 hover:text-teal-700"
+                  className="flex items-center text-sm text-blue-900 hover:text-blue-950"
                 >
                   HMI Displays <ExternalLink className="h-3 w-3 ml-1" />
                 </Link>
@@ -114,7 +114,7 @@ export default function GlobalNotFound() {
             {/* Services Section */}
             <div className="bg-white rounded-lg p-6 border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all">
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                <Settings className="h-6 w-6 text-blue-600" />
+                <Settings className="h-6 w-6 text-blue-900" />
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">Services</h3>
               <p className="text-sm text-gray-600 mb-4">
@@ -124,19 +124,19 @@ export default function GlobalNotFound() {
               <div className="space-y-2">
                 <Link
                   href="/services"
-                  className="flex items-center text-sm text-blue-600 hover:text-blue-700"
+                  className="flex items-center text-sm text-blue-900 hover:text-blue-950"
                 >
                   All Services <ExternalLink className="h-3 w-3 ml-1" />
                 </Link>
                 <Link
                   href="/services#plc-programming"
-                  className="flex items-center text-sm text-blue-600 hover:text-blue-700"
+                  className="flex items-center text-sm text-blue-900 hover:text-blue-950"
                 >
                   PLC Programming <ExternalLink className="h-3 w-3 ml-1" />
                 </Link>
                 <Link
                   href="/services#system-integration"
-                  className="flex items-center text-sm text-blue-600 hover:text-blue-700"
+                  className="flex items-center text-sm text-blue-900 hover:text-blue-950"
                 >
                   System Integration <ExternalLink className="h-3 w-3 ml-1" />
                 </Link>
@@ -190,15 +190,15 @@ export default function GlobalNotFound() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <div className="flex items-center text-sm text-gray-600">
-                <Phone className="h-4 w-4 mr-2 text-teal-600" />
+                <Phone className="h-4 w-4 mr-2 text-blue-900" />
                 +6285210067755
               </div>
               <div className="flex items-center text-sm text-gray-600">
-                <Mail className="h-4 w-4 mr-2 text-teal-600" />
+                <Mail className="h-4 w-4 mr-2 text-blue-900" />
                 sales@pjmotomasi.co.id
               </div>
               <div className="flex items-center text-sm text-gray-600">
-                <MapPin className="h-4 w-4 mr-2 text-teal-600" />
+                <MapPin className="h-4 w-4 mr-2 text-blue-900" />
                 Jakarta, Indonesia
               </div>
             </div>

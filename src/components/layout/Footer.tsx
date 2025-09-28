@@ -135,7 +135,6 @@ const Footer = () => {
                     <p className="text-xs text-gray-500 mb-1">Call Us</p>
                     <p className="font-medium">{SITE_CONFIG.company.phone}</p>
                     <p className="text-sm">085210067755 (WhatsApp)</p>
-                    <p className="text-sm">085717278739 (WhatsApp)</p>
                   </div>
                 </a>
 
