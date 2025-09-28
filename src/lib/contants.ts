@@ -241,7 +241,7 @@ export const TRUST_SIGNALS = [
   },
   {
     title: "Custom Solutions",
-    description: "Solusi automation sesuai kebutuhan spesifik industri",
+    description: "Solusi automation sesuai kebutuhan terbaik automasi industri",
     icon: "Wrench",
   },
 ];
