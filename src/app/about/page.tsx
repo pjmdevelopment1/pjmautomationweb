@@ -526,14 +526,16 @@ export default function AboutPage() {
 
                 {/* Contact Information */}
                 <div className="space-y-4 mb-8">
-                  <div className="flex items-center gap-3 text-blue-100">
-                    <MapPin className="w-5 h-5" />
-                    <span>{SITE_CONFIG.company.address}</span>
-                  </div>
+                  <a href="https://maps.app.goo.gl/YJ238fdpCgSw1FzW7">
+                    <div className="flex items-center gap-3 text-blue-100">
+                      <MapPin className="w-5 h-5" />
+                      <span>{SITE_CONFIG.company.address}</span>
+                    </div>
+                  </a>
                   <div className="flex items-center gap-3 text-blue-100">
                     <Phone className="w-5 h-5" />
                     <a
-                      href="tel:+6285210067755"
+                      href="tel:021-2784-3480"
                       className="hover:text-white transition-colors"
                     >
                       {SITE_CONFIG.company.phone}
