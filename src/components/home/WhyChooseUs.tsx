@@ -65,7 +65,7 @@ const WhyChooseUs = () => {
   const metrics = [
     { number: "120+", label: "Active Customers", icon: Users },
     { number: "8+", label: "Years Experience", icon: Award },
-    { number: "98%", label: "Customer Retention", icon: TrendingUp },
+    { number: "100%", label: "Customer Retention", icon: TrendingUp },
     { number: "24/7", label: "Technical Support", icon: Headphones },
   ];
 

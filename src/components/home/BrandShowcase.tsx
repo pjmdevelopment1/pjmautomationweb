@@ -18,12 +18,12 @@ const brands = [
   },
   {
     name: "Fuji Electric",
-    logo: "/images/brands/fuji electric.png",
+    logo: "/images/brands/Fuji electric.png",
     link: "/products?brand=fuji",
   },
   {
     name: "Keyence",
-    logo: "/images/brands/keyence.png",
+    logo: "/images/brands/Keyence.png",
     link: "/products?brand=keyence",
   },
   {
