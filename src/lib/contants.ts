@@ -236,7 +236,7 @@ export const TRUST_SIGNALS = [
   },
   {
     title: "Local Support",
-    description: "Technical support lokal dalam bahasa Indonesia",
+    description: "Technical support Untuk Seluruh Wilayah Indonesia",
     icon: "MapPin",
   },
   {
