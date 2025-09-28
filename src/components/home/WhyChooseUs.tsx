@@ -54,7 +54,7 @@ const WhyChooseUs = () => {
 
     // Row 2 - Bottom 6s
     { name: "Pricol", logo: "/images/customers/PT. Pricol.png" },
-    { name: "Cipta Presisi", logo: "/images/customers/PT. Cipta Presisi.png" },
+    { name: "Toro", logo: "/images/customers/PT. Toro.png" },
     { name: "Kasakata", logo: "/images/customers/PT. Kasakata.png" },
     { name: "Indofood", logo: "/images/customers/PT. Indofood.png" },
     { name: "Idsmed", logo: "/images/customers/PT. Idsmed.png" },

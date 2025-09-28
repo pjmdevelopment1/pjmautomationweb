@@ -186,7 +186,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
                         href="tel:+6285210067755"
                         className="text-sm font-medium text-gray-900 hover:text-teal-600 transition-colors"
                       >
-                        +62 852-1006-7755
+                        021-2784-3480
                       </a>
                     </div>
                   </div>
@@ -216,26 +216,50 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-xs text-gray-500 uppercase tracking-wide">
-                        WhatsApp
+                        WhatsApp 1
                       </p>
                       <a
-                        href="https://wa.me/6285210067755"
+                        href="https://wa.me/6285210067755?text=Halo PJMOtomasi, saya membutuhkan technical support untuk automation"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-sm font-medium text-gray-900 hover:text-teal-600 transition-colors"
                       >
-                        Iqbal - 085210067755 <br />
-                        Iksan - 085717278739
+                        Iqbal - 085210067755
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* WhatsApp */}
+                  <div className="flex items-center gap-3 text-sm">
+                    <div className="w-8 h-8 bg-green-50 rounded-full flex items-center justify-center flex-shrink-0">
+                      <MessageSquare className="w-4 h-4 text-green-600" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs text-gray-500 uppercase tracking-wide">
+                        WhatsApp 2
+                      </p>
+                      <a
+                        href="https://wa.me/6282230590075?text=Halo PJMOtomasi, saya membutuhkan technical support untuk automation"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-medium text-gray-900 hover:text-teal-600 transition-colors"
+                      >
+                        Tegar - 082230590075
                       </a>
                     </div>
                   </div>
 
                   <br />
-                  <h4 className="font-medium text-gray-900 mb-3">Address :</h4>
-                  <div className="flex items-center gap-2 text-sm text-gray-700 hover:text-teal-600 transition-colors">
-                    <MapPin className="h-6 w-6" />
-                    <span>{SITE_CONFIG.company.address}</span>
-                  </div>
+                  <a
+                    href="https://maps.app.goo.gl/YJ238fdpCgSw1FzW7"
+                    className="font-medium text-gray-900 mb-3"
+                  >
+                    Address :
+                    <div className="flex items-center gap-2 text-sm text-gray-700 hover:text-blue-900 transition-colors">
+                      <MapPin className="h-6 w-6" />
+                      <span>{SITE_CONFIG.company.address}</span>
+                    </div>
+                  </a>
                 </div>
               </div>
             </div>

@@ -2,11 +2,11 @@ export const SITE_CONFIG = {
   name: "PT. Prestasi Jaya Maju",
   description:
     "Solusi Industrial Automation lengkap, PLC, Inverter, HMI, Sensor , Servo dan Power meter dengan engineering support Programming & Parameter setting, commissioning, engineering consultation Jakarta.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://mederikarya.co.id",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://pjmotomasi.co.id",
   company: {
     name: "PT. Prestasi Jaya Maju",
-    phone: "021-38317238",
-    email: "sales@pjmautomation.co.id",
+    phone: " 021-2784-3480",
+    email: "sales@pjmotomasi.co.id",
     address: "Jl. Gandaria Raya No. 64 , Jakarta Selatan , DKI Jakarta",
     tagline: "One Stop Solution Automation Provider",
   },
