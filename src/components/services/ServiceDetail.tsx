@@ -32,7 +32,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
           {/* Left Side - Image */}
           <div className="lg:col-span-1">
             {service.images && service.images.length > 0 && (
-              <div className="relative h-100 lg:h-100 w-full rounded-lg overflow-hidden">
+              <div className="relative h-96 lg:h-96 w-full rounded-lg overflow-hidden">
                 <Image
                   src={
                     service.images[0].startsWith("//")

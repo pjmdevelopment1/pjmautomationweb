@@ -231,7 +231,7 @@ export const TRUST_SIGNALS = [
   },
   {
     title: "Fast Response",
-    description: "Response time cepat untuk customer service",
+    description: "Response time cepat untuk consultation dan troubleshooting",
     icon: "Clock",
   },
   {
@@ -241,7 +241,7 @@ export const TRUST_SIGNALS = [
   },
   {
     title: "Custom Solutions",
-    description: "Solusi automation sesuai kebutuhan terbaik automasi industri",
+    description: "Solusi industrial automation sesuai kebutuhan terbaik automasi industri",
     icon: "Wrench",
   },
 ];
