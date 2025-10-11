@@ -18,8 +18,8 @@ export async function sendQuoteNotification(
 ): Promise<EmailResult> {
   try {
     const { data: emailResponse, error } = await resend.emails.send({
-      from: process.env.QUOTE_EMAIL_FROM || "onboarding@resend.dev",
-      to: [process.env.QUOTE_EMAIL_TO || "info@mederikaryaindonesia.com"],
+      from: process.env.QUOTE_EMAIL_FROM || "noreply@pjmotomasi.co.id",
+      to: [process.env.QUOTE_EMAIL_TO || "sales@pjmotomasi.co.id"],
       subject: `🔥 NEW QUOTE REQUEST #${quoteRef} - ${data.urgency.toUpperCase()} Priority`,
       html: generateQuoteEmailHtml(data, quoteRef),
       text: generateQuoteEmailText(data, quoteRef),
@@ -51,8 +51,8 @@ export async function sendContactNotification(
 ): Promise<EmailResult> {
   try {
     const { data: emailResponse, error } = await resend.emails.send({
-      from: process.env.QUOTE_EMAIL_FROM || "onboarding@resend.dev",
-      to: [process.env.QUOTE_EMAIL_TO || "info@mederikaryaindonesia.com"],
+      from: process.env.QUOTE_EMAIL_FROM || "noreply@pjmotomasi.co.id",
+      to: [process.env.QUOTE_EMAIL_TO || "sales@pjmotomasi.co.id"],
       subject: `💬 NEW CONTACT MESSAGE from ${data.companyName}`,
       html: generateContactEmailHtml(data),
       text: generateContactEmailText(data),
@@ -277,11 +277,11 @@ function generateContactEmailHtml(data: ContactFormData): string {
       <div style="background: #0f766e; color: white; padding: 20px; border-radius: 8px; text-align: center;">
         <h3 style="margin: 0 0 10px 0;">⚡ Quick Actions</h3>
         <div style="margin: 15px 0;">
-          <a href="mailto:${data.email}?subject=Re: Your inquiry to Mederi Karya Indonesia&body=Dear ${data.contactPerson},%0D%0A%0D%0AThank you for contacting us. Here is our response to your inquiry:%0D%0A%0D%0A" 
+          <a href="mailto:${data.email}?subject=Re: Your inquiry to PJM Otomasi&body=Dear ${data.contactPerson},%0D%0A%0D%0AThank you for contacting us. Here is our response to your inquiry:%0D%0A%0D%0A" 
              style="background: #14b8a6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; margin: 0 10px; display: inline-block; font-weight: bold;">
             📧 Reply to Customer
           </a>
-          <a href="https://wa.me/${data.phone.replace(/[^\d]/g, "")}?text=Hello ${data.contactPerson}, thank you for contacting Mederi Karya Indonesia. We have received your message and would like to assist you further." 
+          <a href="https://wa.me/${data.phone.replace(/[^\d]/g, "")}?text=Hello ${data.contactPerson}, thank you for contacting PJM Otomasi. We have received your message and would like to assist you further." 
              style="background: #22c55e; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; margin: 0 10px; display: inline-block; font-weight: bold;">
             💬 WhatsApp Customer
           </a>

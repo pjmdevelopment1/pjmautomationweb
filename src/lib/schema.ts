@@ -149,15 +149,15 @@ export function generateServiceSchema(service: any) {
     "description": service.shortDescription,
     "provider": {
       "@type": "Organization",
-      "name": "Mederi Karya Indonesia",
-      "url": "https://mederikarya.com"
+      "name": "Prestasi Jaya Maju",
+      "url": "https://pjmotomasi.co.id"
     },
     "areaServed": {
       "@type": "Country",
       "name": "Indonesia"
     },
     "serviceType": "Industrial Automation Service",
-    "url": `https://mederikarya.com/services/${service.slug}`,
+    "url": `https://pjmotomasi.co.id/services/${service.slug}`,
     "image": service.image,
     "offers": {
       "@type": "Offer",
