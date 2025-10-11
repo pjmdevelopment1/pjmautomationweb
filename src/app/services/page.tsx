@@ -170,17 +170,17 @@ export default async function ServicesPage({
 
           {/* Search Form */}
           <form method="GET" className="space-y-4">
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <input
                 type="text"
                 name="search"
                 defaultValue={search || ""}
                 placeholder="Search by service name, type, or description..."
-                className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 w-full"
               />
               <button
                 type="submit"
-                className="bg-blue-900 hover:bg-blue-950 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300"
+                className="bg-blue-900 hover:bg-blue-950 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 whitespace-nowrap sm:w-auto w-full"
               >
                 <Search className="h-5 w-5 mr-2 inline" />
                 Search Services
