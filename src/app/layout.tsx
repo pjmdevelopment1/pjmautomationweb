@@ -160,8 +160,8 @@ export default function RootLayout({
               address: {
                 "@type": "PostalAddress",
                 addressCountry: "ID",
-                addressRegion: "West Java",
-                addressLocality: "Bekasi",
+                addressRegion: "South Jakarta",
+                addressLocality: "Jakarta",
               },
               sameAs: [
                 // Add social media URLs when available
