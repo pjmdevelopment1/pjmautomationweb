@@ -100,10 +100,6 @@ export default function RootLayout({
         <link rel="icon" href="/favicon-16x16.png" sizes="16x16" />
         <link rel="icon" href="/favicon-32x32.png" sizes="32x32" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <meta
-          name="google-site-verification"
-          content="6RSRNqNO9wfsi4esBdtGY0Ggk1UGoSyaygOo5ayLXqM"
-        />
         {/* Additional SEO and Performance meta tags */}
         <meta name="theme-color" content="#4338ca" />
         <meta name="msapplication-TileColor" content="#4338ca" />
