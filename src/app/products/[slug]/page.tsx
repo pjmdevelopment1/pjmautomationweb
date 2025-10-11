@@ -445,15 +445,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   </div>
 
                   <div className="pt-4 border-t">
-                    <Button className="w-full bg-blue-900 hover:bg-blue-950 text-white mb-3">
-                      <Link
-                        href="https://wa.me/6285210067755?text=Halo PJMOtomasi, saya membutuhkan informasi mengenai produk"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
+                    <Link
+                      href="https://wa.me/6285210067755?text=Halo PJMOtomasi, saya membutuhkan informasi mengenai produk"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button className="w-full bg-blue-900 hover:bg-blue-950 text-white mb-3">
                         Contact Our Team
-                      </Link>
-                    </Button>
+                      </Button>
+                    </Link>
                     <p className="text-xs text-gray-500 text-center mb-4">
                       Free consultation available
                     </p>
