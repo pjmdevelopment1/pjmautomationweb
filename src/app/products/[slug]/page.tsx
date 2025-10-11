@@ -446,7 +446,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
                   <div className="pt-4 border-t">
                     <Button className="w-full bg-blue-900 hover:bg-blue-950 text-white mb-3">
-                      Contact Our Team
+                      <Link
+                        href="https://wa.me/6285210067755?text=Halo PJMOtomasi, saya membutuhkan informasi mengenai produk"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Contact Our Team
+                      </Link>
                     </Button>
                     <p className="text-xs text-gray-500 text-center mb-4">
                       Free consultation available
@@ -499,6 +505,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
                         <Mail className="h-4 w-4" />
                         <span>{SITE_CONFIG.company.email}</span>
                       </a>
+                      <br />
+                      <h4 className="font-medium text-gray-900 mb-3">
+                        PT. Prestasi Jaya Maju
+                      </h4>
                       <br />
                       <a
                         href="https://maps.app.goo.gl/YJ238fdpCgSw1FzW7"
