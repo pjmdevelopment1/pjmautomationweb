@@ -25,10 +25,10 @@ const Footer = () => {
   ];
 
   const serviceLinks = [
-    { href: "/services/parameter-setting", label: "Parameter Setting" },
-    { href: "/services/commissioning", label: "Commissioning" },
-    { href: "/services/consultation", label: "Engineering Consultation" },
-    { href: "/services/training", label: "Technical Training" },
+    { href: "/services", label: "Parameter Setting" },
+    { href: "/services", label: "Commissioning" },
+    { href: "/services", label: "Engineering Consultation" },
+    { href: "/services", label: "Technical Training" },
   ];
 
   const trustBadges = [
