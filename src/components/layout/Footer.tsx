@@ -26,9 +26,9 @@ const Footer = () => {
 
   const serviceLinks = [
     { href: "/services", label: "Parameter Setting" },
-    { href: "/services", label: "Commissioning" },
+    { href: "/services", label: "Install & Commissioning" },
+    { href: "/services", label: "Programming" },
     { href: "/services", label: "Engineering Consultation" },
-    { href: "/services", label: "Technical Training" },
   ];
 
   const trustBadges = [
