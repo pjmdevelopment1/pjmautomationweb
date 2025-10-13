@@ -486,7 +486,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                         </span>
                       </a>
                       <a
-                        href="https://wa.me/6282230590075?text=Halo PJMOtomasi, saya membutuhkan informasi mengenai produk"
+                        href="https://wa.me/6281112003634?text=Halo PJMOtomasi, saya membutuhkan informasi mengenai produk"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-blue-900 transition-colors"
@@ -495,7 +495,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                         <span>
                           {" "}
                           WhatsApp 2 : <br />
-                          Tegar - 082230590075
+                          Tegar - 081112003634
                         </span>
                       </a>
                       <a

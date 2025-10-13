@@ -29,7 +29,7 @@ export async function generateMetadata({
 
   if (!service) {
     return {
-      title: "Service Not Found | Mederi Karya Indonesia",
+      title: "Service Not Found | Prestasi Jaya Maju",
       description: "The requested service could not be found.",
     };
   }
