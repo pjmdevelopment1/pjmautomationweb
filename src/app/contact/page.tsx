@@ -22,8 +22,7 @@ import Link from "next/link";
 import { getCanonicalUrl } from "@/lib/url";
 
 export const metadata: Metadata = {
-  title:
-    "Contact Engineering Team - Technical Support | Mederi Karya Indonesia",
+  title: "Contact Engineering Team - Technical Support | Prestasi Jaya Maju",
   description:
     "Hubungi tim engineering MKI untuk technical support, parameter setting, commissioning automation. Konsultasi gratis tersedia Jakarta, Surabaya, Bandung.",
   keywords: [
@@ -35,7 +34,7 @@ export const metadata: Metadata = {
     "commissioning service bandung",
   ],
   openGraph: {
-    title: "Contact Our Engineering Team | Mederi Karya Indonesia",
+    title: "Contact Our Engineering Team | Prestasi Jaya Maju",
     description: "Get professional technical support for your automation needs",
     url: "/contact",
     type: "website",
@@ -71,7 +70,7 @@ export default function ContactPage() {
       description: "Quick response via WhatsApp",
       value: "Iqbal - 085210067755",
       action:
-        "https://wa.me/6285210067755?text=Halo Mederi Karya, saya membutuhkan technical support untuk automation",
+        "https://wa.me/6285210067755?text=Halo PJMOtomasi, saya membutuhkan technical support untuk automation",
       color: "text-green-600",
       bgColor: "bg-green-50",
     },
