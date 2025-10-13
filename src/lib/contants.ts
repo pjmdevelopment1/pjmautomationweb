@@ -132,6 +132,7 @@ export const BRANDS = [
   "Sick",
   "Siemens",
   "Weintek",
+  "Yaskawa",
 ];
 
 export const TARGET_KEYWORDS = {
