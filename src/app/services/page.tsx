@@ -30,7 +30,7 @@ interface ServicesPageProps {
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Engineering Services + Technical Support | Mederi Karya Indonesia",
+  title: "Engineering Services + Technical Support | Prestasi Jaya Maju",
   description:
     "Professional automation services: Parameter setting, commissioning, technical training, troubleshooting. Expert engineering support for industrial automation Jakarta, Surabaya.",
   keywords: [
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     "industrial automation service",
   ],
   openGraph: {
-    title: "Engineering Services + Technical Support | Mederi Karya",
+    title: "Engineering Services + Technical Support | Prestasi Jaya Maju",
     description:
       "Professional automation services with expert technical support for industrial applications.",
     url: "/services",

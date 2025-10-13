@@ -55,7 +55,7 @@ export async function generateMetadata({
   const { category, brand, search } = params;
 
   let title =
-    "Industrial Automation Products + Technical Support | Mederi Karya";
+    "Industrial Automation Products + Technical Support";
   let description =
     "Complete catalog automation parts: PLC, HMI, Inverter, Servo , Power Meter & Sensors dengan technical support. Programming, Parameter setting, commissioning, & engineering consultation.";
 
@@ -64,7 +64,7 @@ export async function generateMetadata({
       (cat) => cat.slug === category
     );
     if (categoryData) {
-      title = `${categoryData.name} + Technical Support | Mederi Karya Indonesia`;
+      title = `${categoryData.name} + Technical Support`;
       description = `${categoryData.description}. Harga terbaik dengan support engineering services.`;
     }
   }
@@ -72,12 +72,12 @@ export async function generateMetadata({
   if (brand) {
     title = `${
       brand.charAt(0).toUpperCase() + brand.slice(1)
-    } Products + Technical Support | Mederi Karya`;
+    } Products + Technical Support`;
     description = `${brand} automation products dengan programming, parameter setting, commissioning service dan engineering services .`;
   }
 
   if (search) {
-    title = `Search: "${search}" - Automation Parts + Technical Support | Mederi Karya`;
+    title = `Search: "${search}" - Automation Parts + Technical Support`;
     description = `Search results for "${search}" - automation parts dengan engineering services. programming, Parameter setting, troubleshooting, konsultasi.`;
   }
 
@@ -480,7 +480,7 @@ export default async function ProductsPage({
                   item: {
                     "@type": "Product",
                     name: product.name,
-                    url: `https://mederikaryaindonesia.com/products/${product.slug}`,
+                    url: `https://pjmotomasi.co.id/products/${product.slug}`,
                     brand: {
                       "@type": "Brand",
                       name: product.brand,
@@ -496,7 +496,7 @@ export default async function ProductsPage({
                         : "https://schema.org/PreOrder",
                       seller: {
                         "@type": "Organization",
-                        name: "Mederi Karya Indonesia",
+                        name: "Prestasi Jaya Maju",
                       },
                     },
                   },
@@ -504,10 +504,10 @@ export default async function ProductsPage({
             },
             provider: {
               "@type": "Organization",
-              name: "Mederi Karya Indonesia",
+              name: "Prestasi Jaya Maju",
               description:
                 "Industrial automation parts supplier with technical support",
-              url: "https://mederikaryaindonesia.com",
+              url: "https://pjmotomasi.co.id",
             },
           }),
         }}
