@@ -31,7 +31,7 @@ export const PRODUCT_CATEGORIES = [
   },
   {
     slug: "inverter", // ✅ CHANGED FROM "vfd"
-    name: "Inverter (Variable Frequency Drive)",
+    name: "Inverter (Variable Speed Drive)",
     description:
       "Supplier Pengontrol kecepatan motor dengan parameter setting dan commissioning - Schneider, ABB, Danfoss",
     keywords: [
@@ -242,7 +242,8 @@ export const TRUST_SIGNALS = [
   },
   {
     title: "Custom Solutions",
-    description: "Solusi industrial automation sesuai kebutuhan terbaik automasi industri",
+    description:
+      "Solusi industrial automation sesuai kebutuhan terbaik automasi industri",
     icon: "Wrench",
   },
 ];
