@@ -35,9 +35,9 @@ import { getCanonicalUrl } from "@/lib/url";
 import { SITE_CONFIG } from "@/lib/contants";
 
 export const metadata: Metadata = {
-  title: "Technical Blog & Automation Guides | Mederi Karya Indonesia",
+  title: "Technical Blog & Automation Guides | Prestasi Jaya Maju",
   description:
-    "Expert insights on industrial automation: PLC programming tutorials, troubleshooting guides, parameter setting tips, and engineering best practices from MKI team.",
+    "Expert insights on industrial automation: PLC programming tutorials, troubleshooting guides, parameter setting tips, and engineering best practices from PJM team.",
   keywords: [
     "automation blog indonesia",
     "plc programming tutorial",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     "industrial automation tips",
   ],
   openGraph: {
-    title: "Technical Blog & Automation Guides | MKI",
+    title: "Technical Blog & Automation Guides | PJM",
     description: "Expert engineering insights and automation tutorials",
     url: "/blog",
     type: "website",
@@ -84,7 +84,7 @@ function extractBlogFields(entry: any) {
             fields.featuredImage.fields?.file?.details?.image?.height || 300,
         }
       : null,
-    author: fields.author || "MKI Engineering Team",
+    author: fields.author || "PJM Engineering Team",
     publishDate: fields.publishDate || sys.createdAt,
     tags: Array.isArray(fields.tags) ? fields.tags : [],
     category: fields.category || "Technical Guide",
@@ -394,7 +394,7 @@ export default async function BlogPage({
 
                   {/* WhatsApp Contact */}
                   <a
-                    href="https://wa.me/6285210067755?text=Halo Mederi Karya, saya membutuhkan technical support untuk automation"
+                    href="https://wa.me/6285210067755?text=Halo PJMOtomasi, saya membutuhkan technical support untuk automation"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group flex items-center gap-3 p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
@@ -444,12 +444,12 @@ export default async function BlogPage({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Blog",
-              name: "Mederi Karya Indonesia Technical Blog",
+              name: "Prestasi Jaya Maju Technical Blog",
               description: "Technical insights and automation guides",
               url: "/blog",
               publisher: {
                 "@type": "Organization",
-                name: "Mederi Karya Indonesia",
+                name: "Prestasi Jaya Maju",
               },
               blogPost: paginatedPosts.slice(0, 10).map((post) => ({
                 "@type": "BlogPosting",

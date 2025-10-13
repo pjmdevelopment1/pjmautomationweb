@@ -24,7 +24,7 @@ import { getCanonicalUrl } from "@/lib/url";
 export const metadata: Metadata = {
   title: "Contact Engineering Team - Technical Support | Prestasi Jaya Maju",
   description:
-    "Hubungi tim engineering MKI untuk technical support, parameter setting, commissioning automation. Konsultasi gratis tersedia Jakarta, Surabaya, Bandung.",
+    "Hubungi tim engineering PJM untuk technical support, parameter setting, commissioning automation. Konsultasi gratis tersedia Jakarta, Surabaya, Bandung.",
   keywords: [
     "contact automation engineer",
     "technical support jakarta",
@@ -362,7 +362,7 @@ export default function ContactPage() {
 
                 {/* WhatsApp Contact */}
                 <a
-                  href="https://wa.me/6285210067755?text=Halo MKI, saya membutuhkan technical support untuk automation"
+                  href="https://wa.me/6285210067755?text=Halo PJMOtomasi, saya membutuhkan technical support untuk automation"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center gap-3 p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:scale-105"

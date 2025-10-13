@@ -9,7 +9,7 @@ import { getCanonicalUrl } from "@/lib/url";
 
 export const metadata: Metadata = {
   title:
-    "Request Quote - Automation Parts + Technical Support | Mederi Karya Indonesia",
+    "Request Quote - Automation Parts + Technical Support | Prestasi Jaya Maju",
   description:
     "Request competitive quotes for PLC, HMI, Inverter, Safety Relay with technical support. Fast response, expert consultation, parameter setting service included.",
   keywords: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     "technical support included",
   ],
   openGraph: {
-    title: "Request Quote for Automation Parts | MKI",
+    title: "Request Quote for Automation Parts | PJM",
     description: "Get competitive pricing with technical support included",
     url: "/quote",
     type: "website",
@@ -326,7 +326,7 @@ export default async function QuotePage({ searchParams }: QuotePageProps) {
               name: "Automation Parts Quote Service",
               provider: {
                 "@type": "Organization",
-                name: "Mederi Karya Indonesia",
+                name: "Prestasi Jaya Maju",
               },
               offers: {
                 "@type": "Offer",

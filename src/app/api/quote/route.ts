@@ -153,7 +153,7 @@ export async function OPTIONS() {
       "Access-Control-Allow-Origin":
         process.env.NODE_ENV === "development"
           ? "*"
-          : "https://mederikaryaindonesia.com",
+          : "https://pjmotomasi.co.id",
       "Access-Control-Allow-Methods": "POST, OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type",
       ...securityHeaders,

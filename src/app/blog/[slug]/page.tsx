@@ -68,7 +68,7 @@ function extractBlogFields(entry: any) {
             fields.featuredImage.fields?.file?.details?.image?.height || 600,
         }
       : null,
-    author: fields.author || "Mederi Karya Engineering Team",
+    author: fields.author || "PJM Engineering Team",
     publishDate: fields.publishDate || sys.createdAt,
     tags: Array.isArray(fields.tags) ? fields.tags : [],
     seoTitle: fields.seoTitle || "",
@@ -87,7 +87,7 @@ export async function generateMetadata({
 
   if (!entry) {
     return {
-      title: "Blog Post Not Found | Mederi Karya Indonesia",
+      title: "Blog Post Not Found | Prestasi Jaya Maju",
       description: "The requested blog post could not be found.",
     };
   }
@@ -95,7 +95,7 @@ export async function generateMetadata({
   const blog = extractBlogFields(entry);
   if (!blog) {
     return {
-      title: "Blog Post Not Found | Mederi Karya Indonesia",
+      title: "Blog Post Not Found | Prestasi Jaya Maju",
       description: "The requested blog post could not be found.",
     };
   }
@@ -355,7 +355,7 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
                   <p className="text-sm text-gray-600 mb-2">Published by</p>
                   <p className="font-semibold text-gray-900">{blog.author}</p>
                   <p className="text-sm text-gray-600">
-                    Mederi Karya Indonesia - Engineering Team
+                    Prestasi Jaya Maju - Engineering Team
                   </p>
                 </div>
                 <ShareButton title={blog.title} url={`/blog/${blog.slug}`} />
@@ -486,7 +486,7 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
 
                 {/* WhatsApp Contact */}
                 <a
-                  href="https://wa.me/6285210067755?text=Halo Mederi Karya, saya membutuhkan technical support untuk automation"
+                  href="https://wa.me/6285210067755?text=Halo PJMOtomasi, saya membutuhkan technical support untuk automation"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center gap-3 p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
