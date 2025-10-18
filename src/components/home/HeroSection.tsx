@@ -110,7 +110,7 @@ const HeroSection = () => {
 
               {/* VFD */}
               <Link
-                href="/products?category=vfd"
+                href="/products?category=inverter"
                 className="group bg-white/10 backdrop-blur-sm rounded-lg p-5 hover:bg-white/20 transition-all duration-300 transform hover:scale-105"
               >
                 <div className="text-blue-400 mb-3 flex justify-center">
