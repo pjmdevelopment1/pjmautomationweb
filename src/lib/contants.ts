@@ -131,6 +131,7 @@ export const BRANDS = [
   "Schneider",
   "Sick",
   "Siemens",
+  "Toshiba",
   "Weintek",
   "Yaskawa",
 ];
