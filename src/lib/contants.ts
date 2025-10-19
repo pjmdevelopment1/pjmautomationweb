@@ -133,6 +133,7 @@ export const BRANDS = [
   "Siemens",
   "Toshiba",
   "Weintek",
+  "Xinje",
   "Yaskawa",
 ];
 
