@@ -544,7 +544,7 @@ export default function AboutPage() {
                   <div className="flex items-center gap-3 text-blue-100">
                     <Phone className="w-5 h-5" />
                     <a
-                      href="https://wa.me/6285210067755?text=Halo PJMOtomasi, saya membutuhkan informasi mengenai produk / technical support"
+                      href="https://api.whatsapp.com/send/?phone=6285210067755&text=Halo PJMOtomasi, saya membutuhkan informasi mengenai produk / technical support"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-white transition-colors"

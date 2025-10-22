@@ -219,7 +219,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
                         WhatsApp 1
                       </p>
                       <a
-                        href="https://wa.me/6285210067755?text=Halo PJMOtomasi, saya membutuhkan technical support untuk automation"
+                        href="https://api.whatsapp.com/send/?phone=6285210067755&text=Halo PJMOtomasi, saya membutuhkan technical support untuk automation"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-sm font-medium text-gray-900 hover:text-blue-900 transition-colors"
@@ -239,7 +239,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
                         WhatsApp 2
                       </p>
                       <a
-                        href="https://wa.me/6281112003634?text=Halo PJMOtomasi, saya membutuhkan technical support untuk automation"
+                        href="https://api.whatsapp.com/send/?phone=6281112003634&text=Halo PJMOtomasi, saya membutuhkan technical support untuk automation"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-sm font-medium text-gray-900 hover:text-blue-900 transition-colors"

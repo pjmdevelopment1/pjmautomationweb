@@ -70,7 +70,7 @@ export default function ContactPage() {
       description: "Quick response via WhatsApp",
       value: "Iqbal - 085210067755",
       action:
-        "https://wa.me/6285210067755?text=Halo PJMOtomasi, saya membutuhkan technical support untuk automation",
+        "https://api.whatsapp.com/send/?phone=6285210067755&text=Halo PJMOtomasi, saya membutuhkan technical support untuk automation",
       color: "text-green-600",
       bgColor: "bg-green-50",
     },

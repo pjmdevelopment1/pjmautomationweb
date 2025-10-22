@@ -213,7 +213,7 @@ export default async function QuotePage({ searchParams }: QuotePageProps) {
                     </div>
                   </a>
                   <a
-                    href="https://wa.me/6285210067755?text=Hi, I need a quote for automation parts"
+                    href="https://api.whatsapp.com/send/?phone=6285210067755&text=Hi, I need a quote for automation parts"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 text-blue-900 hover:text-blue-950 transition-colors"

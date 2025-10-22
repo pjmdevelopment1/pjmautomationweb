@@ -473,7 +473,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                         <span>{SITE_CONFIG.company.phone}</span>
                       </a>
                       <a
-                        href="https://wa.me/6285210067755?text=Halo PJMOtomasi, saya membutuhkan informasi mengenai produk"
+                        href="https://api.whatsapp.com/send/?phone=6285210067755&text=Halo PJMOtomasi, saya membutuhkan informasi mengenai produk"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-blue-900 transition-colors"
@@ -486,7 +486,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                         </span>
                       </a>
                       <a
-                        href="https://wa.me/6281112003634?text=Halo PJMOtomasi, saya membutuhkan informasi mengenai produk"
+                        href="https://api.whatsapp.com/send/?phone=6281112003634&text=Halo PJMOtomasi, saya membutuhkan informasi mengenai produk"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-blue-900 transition-colors"
