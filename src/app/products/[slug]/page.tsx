@@ -446,7 +446,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
                   <div className="pt-4 border-t">
                     <Link
-                      href="https://wa.me/6285210067755?text=Halo PJMOtomasi, saya membutuhkan informasi mengenai produk"
+                      href="https://api.whatsapp.com/send/?phone=6285210067755&text=Halo PJMOtomasi, saya membutuhkan informasi mengenai produk"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
