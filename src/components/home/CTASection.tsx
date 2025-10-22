@@ -58,7 +58,7 @@ const CTASection = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white">
               <a
-                href={`tel:${SITE_CONFIG.company.phone}`}
+                href="https://api.whatsapp.com/send/?phone=6285210067755&text=Halo PJMOtomasi, saya membutuhkan informasi mengenai produk"
                 className="group flex items-center justify-center gap-3 p-3 rounded-lg hover:bg-white/10 transition-colors"
               >
                 <Phone className="h-5 w-5 text-blue-200 group-hover:rotate-12 transition-transform" />
