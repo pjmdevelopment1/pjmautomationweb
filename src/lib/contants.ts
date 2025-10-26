@@ -120,6 +120,7 @@ export const BRANDS = [
   "Danfoss",
   "Delta",
   "Fuji",
+  "Haiwell",
   "Keyence",
   "LS",
   "Mitsubishi",
@@ -135,6 +136,7 @@ export const BRANDS = [
   "Weintek",
   "Xinje",
   "Yaskawa",
+  "Zest",
 ];
 
 export const TARGET_KEYWORDS = {
