@@ -1,5 +1,5 @@
 {
-  "name": "mederikaryaindonesia",
+  "name": "pjmotomasi",
   "version": "0.1.0",
   "description": "Industrial Automation Parts Supply - PLCs, HMIs, VFDs, Safety Relays, Power Meter",
   "private": true,
@@ -18,7 +18,7 @@
     "Industrial",
     "Indonesia"
   ],
-  "author": "Mederi Karya Indonesia",
+  "author": "Prestasi Jaya Maju",
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^16.0.1",
     "@contentful/rich-text-types": "^17.0.0",

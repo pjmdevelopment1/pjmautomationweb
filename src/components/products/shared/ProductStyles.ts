@@ -268,7 +268,7 @@ export const productStyles = {
     desktopUp: "lg:block",
   },
 
-  // 🎨 THEME COLORS (Mederi Karya Indonesia Brand)
+  // 🎨 THEME COLORS (PJM Otomasi Brand)
   colors: {
     primary: "text-blue-600",
     primaryBg: "bg-blue-600",
