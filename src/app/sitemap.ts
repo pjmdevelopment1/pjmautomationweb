@@ -17,7 +17,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     // Fetch dynamic content with error handling - ADD SERVICES
     const [products, blogPosts, services] = await Promise.all([
-      getProducts({ limit: 1000 }).catch(() => []),
+      getProducts({ limit: 1500 }).catch(() => []),
       getBlogPosts(200).catch(() => []),
       getServices().catch(() => []), // ← ADD THIS
     ]);
