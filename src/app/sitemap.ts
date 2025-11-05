@@ -17,9 +17,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     // Fetch dynamic content with error handling - ADD SERVICES
     const [products, blogPosts, services] = await Promise.all([
-      getProducts({ limit: 1000 }).catch(() => []),
+      getProducts({ limit: 2000 }).catch(() => []), // ✅ Changed from 1000 to 2000
       getBlogPosts(200).catch(() => []),
-      getServices().catch(() => []), // ← ADD THIS
+      getServices().catch(() => []),
     ]);
 
     // Static pages with proper priorities and change frequencies
@@ -87,12 +87,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }));
 
     // DYNAMIC SERVICE PAGES from Contentful - HIGHEST SEO PRIORITY
-    const dynamicServicePages: MetadataRoute.Sitemap = services.map((service) => ({
-      url: `${baseUrl}/services/${service.slug}`,
-      lastModified: service.updatedAt || currentDate, // Use actual update date
-      changeFrequency: "daily" as const, // ← DAILY for active updates
-      priority: service.featured ? 0.98 : 0.95, // ← HIGHEST PRIORITY (SEO weapon!)
-    }));
+    const dynamicServicePages: MetadataRoute.Sitemap = services.map(
+      (service) => ({
+        url: `${baseUrl}/services/${service.slug}`,
+        lastModified: service.updatedAt || currentDate, // Use actual update date
+        changeFrequency: "daily" as const, // ← DAILY for active updates
+        priority: service.featured ? 0.98 : 0.95, // ← HIGHEST PRIORITY (SEO weapon!)
+      })
+    );
 
     // Blog post pages - Safe handling of Contentful entries
     const blogPages: MetadataRoute.Sitemap = blogPosts
@@ -165,8 +167,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ];
 
     // Remove duplicate service pages (in case of any overlaps)
-    const uniquePages = allPages.filter((page, index, self) =>
-      index === self.findIndex((p) => p.url === page.url)
+    const uniquePages = allPages.filter(
+      (page, index, self) => index === self.findIndex((p) => p.url === page.url)
     );
 
     // Sort by priority (highest first) for better crawling

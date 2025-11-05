@@ -116,7 +116,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   // const filteredRelated = relatedProducts.filter((p) => p.id !== product.id);
 
   // Fetch all products for smart related logic
-  const allProducts = await getProducts({ limit: 1000 });
+  const allProducts = await getProducts({ limit: 2000 });
 
   // STRATEGY: Category dulu, baru brand - dengan urutan PLC, HMI, Inverter
   let relatedProducts = allProducts

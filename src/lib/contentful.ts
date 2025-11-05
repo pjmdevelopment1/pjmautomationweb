@@ -47,9 +47,62 @@ export async function getProducts(
   } = {}
 ): Promise<Product[]> {
   try {
+    const requestedLimit = options.limit || 100;
+    const CONTENTFUL_MAX_LIMIT = 1000; // Contentful hard limit
+
+    // 🚀 SMART BATCHING: If requested limit > 1000, fetch in batches
+    if (requestedLimit > CONTENTFUL_MAX_LIMIT) {
+      // console.log(`🔄 Batch fetching ${requestedLimit} products...`);
+
+      const allProducts: Product[] = [];
+      let skip = options.skip || 0;
+      let remainingToFetch = requestedLimit;
+
+      while (remainingToFetch > 0 && skip < 10000) {
+        const batchSize = Math.min(CONTENTFUL_MAX_LIMIT, remainingToFetch);
+
+        const query: any = {
+          content_type: "product",
+          limit: batchSize,
+          skip: skip,
+          order: ["-sys.createdAt"],
+        };
+
+        if (options.category) {
+          query["fields.category"] = options.category;
+        }
+
+        if (options.featured !== undefined) {
+          query["fields.featured"] = options.featured;
+        }
+
+        const response = await client.getEntries(query);
+        const products = response.items.map((item) =>
+          transformProduct(item, "list")
+        );
+
+        allProducts.push(...products);
+
+        // console.log(`✅ Fetched ${products.length} products (skip: ${skip})`);
+
+        // If we got less than requested, we've reached the end
+        if (products.length < batchSize) {
+          // console.log(`📦 Total products fetched: ${allProducts.length}`);
+          break;
+        }
+
+        skip += batchSize;
+        remainingToFetch -= batchSize;
+      }
+
+      return allProducts;
+    }
+
+    // 📦 SINGLE REQUEST: For limits <= 1000
     const query: any = {
       content_type: "product",
-      limit: options.limit || 100,
+      limit: requestedLimit,
+      order: ["-sys.createdAt"],
     };
 
     if (options.category) {
@@ -386,7 +439,6 @@ function transformService(item: any): Service {
       .filter((img) => img && img.fields && img.fields.file)
       .map((img) => `https:${img.fields.file.url}`);
   };
-
 
   return {
     id: item.sys?.id || "",
