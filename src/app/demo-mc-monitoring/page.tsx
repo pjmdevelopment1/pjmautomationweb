@@ -350,7 +350,8 @@ export default function MachineMonitoringDemo() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="rounded-md border">
+              {/* Tambahkan wrapper scroll disini */}
+              <div className="rounded-md border max-h-80 overflow-y-auto">
                 <Table>
                   <TableHeader>
                     <TableRow>
@@ -360,6 +361,7 @@ export default function MachineMonitoringDemo() {
                       <TableHead className="w-[100px]">Type</TableHead>
                     </TableRow>
                   </TableHeader>
+
                   <TableBody>
                     {logs.length === 0 ? (
                       <TableRow>
