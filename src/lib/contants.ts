@@ -126,6 +126,7 @@ export const BRANDS = [
   "Mitsubishi",
   "Omron",
   "Panasonic",
+  "Parker",
   "Pepperl+Fuchs",
   "Phoenix Contact",
   "Proface",
