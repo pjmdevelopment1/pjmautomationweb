@@ -97,15 +97,18 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2">
-            <div className="bg-white border rounded-lg p-8">
+            <div className="bg-white border rounded-lg p-4 lg:p-8 overflow-hidden">
               <h2 className="text-2xl font-semibold mb-6 text-gray-900">
                 Service Details
               </h2>
-              <div className="prose prose-lg max-w-none">
+              <div className="prose prose-lg max-w-none service-description break-words overflow-hidden">
                 {typeof service.description === "string" ? (
                   <div className="text-gray-700 leading-relaxed">
                     {service.description.split("\n").map((paragraph, index) => (
-                      <p key={index} className="mb-4">
+                      <p
+                        key={index}
+                        className="mb-4 text-justify leading-relaxed break-words overflow-wrap-anywhere"
+                      >
                         {paragraph}
                       </p>
                     ))}
