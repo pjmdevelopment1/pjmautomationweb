@@ -130,6 +130,7 @@ export const BRANDS = [
   "Pepperl+Fuchs",
   "Phoenix Contact",
   "Proface",
+  "Reeman",
   "Schneider",
   "Sick",
   "Siemens",
