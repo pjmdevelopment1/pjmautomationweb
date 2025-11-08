@@ -82,3 +82,17 @@
   overflow-wrap: anywhere !important;
   margin-bottom: 1rem !important;
 }
+
+.service-description {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.service-description p {
+  text-align: justify !important;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+  margin-bottom: 1rem !important;
+}
