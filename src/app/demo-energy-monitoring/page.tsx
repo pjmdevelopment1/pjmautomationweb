@@ -342,8 +342,7 @@ export default function EnergyMonitoringDemo() {
   // ============================================
   // HAPUS function addLog yang lama, GANTI dengan:
 
-  // Add data log entry (kWh snapshot every 5 seconds)
-  const addDataLog = () => {
+  const logChartData = (currentChartData: ChartDataPoint[]) => {
     const timestamp = new Date().toLocaleString("id-ID", {
       day: "2-digit",
       month: "2-digit",
@@ -353,16 +352,27 @@ export default function EnergyMonitoringDemo() {
       second: "2-digit",
     });
 
+    // Hitung AVERAGE power (bukan total)
+    const plant1Avg =
+      currentChartData.reduce((sum, d) => sum + d.plant1, 0) /
+      currentChartData.length;
+    const plant2Avg =
+      currentChartData.reduce((sum, d) => sum + d.plant2, 0) /
+      currentChartData.length;
+    const plant3Avg =
+      currentChartData.reduce((sum, d) => sum + d.plant3, 0) /
+      currentChartData.length;
+
     setDataLogs((prev) => [
       {
         id: Date.now() + Math.random(),
         timestamp,
-        plant1Energy: plants[0].energyToday,
-        plant2Energy: plants[1].energyToday,
-        plant3Energy: plants[2].energyToday,
-        totalEnergy: plants.reduce((sum, p) => sum + p.energyToday, 0),
+        plant1Energy: plant1Avg, // Average power in window
+        plant2Energy: plant2Avg,
+        plant3Energy: plant3Avg,
+        totalEnergy: plant1Avg + plant2Avg + plant3Avg,
       },
-      ...prev.slice(0, 19), // Keep max 20 logs
+      ...prev.slice(0, 19),
     ]);
   };
 
@@ -373,36 +383,45 @@ export default function EnergyMonitoringDemo() {
     const VISIBLE_HOURS = 10;
     const UPDATE_INTERVAL = 3000;
 
-    // Generate full 24h data pool
     const full24HoursData = generateChartData();
+    const initialData = full24HoursData.slice(0, VISIBLE_HOURS);
 
-    // Initialize with first 10 hours
-    setChartData(full24HoursData.slice(0, VISIBLE_HOURS));
+    setChartData(initialData);
+    logChartData(initialData);
 
-    let dataIndex = VISIBLE_HOURS; // Start from 11th data
+    let dataIndex = VISIBLE_HOURS;
 
     const intervalId = setInterval(() => {
-      // Get next data point (with loop)
       const nextDataPoint = full24HoursData[dataIndex % 24];
 
-      // Update chart data (append new, remove oldest)
       setChartData((prevData) => {
         const updated = [...prevData, nextDataPoint];
 
-        // Keep only latest 10 hours
         if (updated.length > VISIBLE_HOURS) {
-          updated.shift(); // Remove first (oldest) element
+          updated.shift();
         }
 
         return updated;
       });
 
-      // Move to next index
       dataIndex++;
     }, UPDATE_INTERVAL);
 
     return () => clearInterval(intervalId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // ============================================
+  // LOG setiap chartData berubah
+  // ============================================
+  useEffect(() => {
+    if (chartData.length === 0) return; // Skip initial empty
+
+    logChartData(chartData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [chartData]); // Trigger saat chartData update
+
+  
   // ============================================
   // EFFECTS (Real-time Updates)
   // ============================================
@@ -470,87 +489,6 @@ export default function EnergyMonitoringDemo() {
   }, [totalPower, peakPower]);
 
   // ============================================
-  // Update 4: DATA LOG - Every 5 seconds (10 chart updates)
-  // ============================================
-  useEffect(() => {
-    let updateCounter = 0;
-
-    const interval = setInterval(() => {
-      updateCounter++;
-
-      // Log every 10 chart updates (10 × 500ms = 5 seconds)
-      if (updateCounter >= 10) {
-        addDataLog();
-        updateCounter = 0;
-      }
-    }, 500); // Same as chart interval
-
-    return () => clearInterval(interval);
-  }, [plants]); // Dependency on plants to get latest energy data
-
-  {
-    /* ============================================
-    DATA LOG - kWh Records Every 5 Seconds
-============================================ */
-  }
-  <Card>
-    <CardHeader>
-      <CardTitle>Energy Data Log</CardTitle>
-      <CardDescription>
-        kWh snapshot recorded every 5 seconds (showing 10 latest, max 20
-        entries)
-      </CardDescription>
-    </CardHeader>
-    <CardContent>
-      <div className="rounded-md border max-h-[400px] overflow-y-auto">
-        <Table>
-          <TableHeader className="sticky top-0 bg-white z-10">
-            <TableRow>
-              <TableHead className="w-[180px]">Timestamp</TableHead>
-              <TableHead className="text-right">Plant 1 (kWh)</TableHead>
-              <TableHead className="text-right">Plant 2 (kWh)</TableHead>
-              <TableHead className="text-right">Plant 3 (kWh)</TableHead>
-              <TableHead className="text-right">Total (kWh)</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {dataLogs.length === 0 ? (
-              <TableRow>
-                <TableCell
-                  colSpan={5}
-                  className="text-center text-slate-500 py-8"
-                >
-                  Collecting data... First log will appear in 5 seconds.
-                </TableCell>
-              </TableRow>
-            ) : (
-              dataLogs.map((log) => (
-                <TableRow key={log.id}>
-                  <TableCell className="font-mono text-xs">
-                    {log.timestamp}
-                  </TableCell>
-                  <TableCell className="text-right font-medium">
-                    {formatNumber(log.plant1Energy, 2)}
-                  </TableCell>
-                  <TableCell className="text-right font-medium">
-                    {formatNumber(log.plant2Energy, 2)}
-                  </TableCell>
-                  <TableCell className="text-right font-medium">
-                    {formatNumber(log.plant3Energy, 2)}
-                  </TableCell>
-                  <TableCell className="text-right font-bold">
-                    {formatNumber(log.totalEnergy, 2)}
-                  </TableCell>
-                </TableRow>
-              ))
-            )}
-          </TableBody>
-        </Table>
-      </div>
-    </CardContent>
-  </Card>;
-
-  // ============================================
   // RENDER: JSX
   // ============================================
   return (
@@ -576,7 +514,6 @@ export default function EnergyMonitoringDemo() {
               </AlertDescription>
             </Alert>
           </div>
-
           {/* ============================================
               SUMMARY CARDS (4 Metrics)
           ============================================ */}
@@ -653,7 +590,6 @@ export default function EnergyMonitoringDemo() {
               </CardContent>
             </Card>
           </div>
-
           {/* ============================================
               PLANT CARDS (3 Plants)
           ============================================ */}
@@ -771,7 +707,6 @@ export default function EnergyMonitoringDemo() {
               );
             })}
           </div>
-
           {/* ============================================
     POWER COMPARISON CHART
 ============================================ */}
@@ -787,6 +722,74 @@ export default function EnergyMonitoringDemo() {
               <PowerChart data={chartData} />
             </CardContent>
           </Card>
+          {/* ============================================
+    DATA LOG - kWh Records Every 5 Seconds
+============================================ */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Energy Data Log</CardTitle>
+              <CardDescription>
+                kWh snapshot recorded every 5 seconds (showing 10 latest, max 20
+                entries)
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="rounded-md border max-h-[400px] overflow-y-auto">
+                <Table>
+                  <TableHeader className="sticky top-0 bg-white z-10">
+                    <TableRow>
+                      <TableHead className="w-[180px]">Timestamp</TableHead>
+                      <TableHead className="text-right">
+                        Plant 1 Avg (kW)
+                      </TableHead>
+                      <TableHead className="text-right">
+                        Plant 2 Avg (kW)
+                      </TableHead>
+                      <TableHead className="text-right">
+                        Plant 3 Avg (kW)
+                      </TableHead>
+                      <TableHead className="text-right">
+                        Total Avg (kW)
+                      </TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {dataLogs.length === 0 ? (
+                      <TableRow>
+                        <TableCell
+                          colSpan={5}
+                          className="text-center text-slate-500 py-8"
+                        >
+                          Collecting data... First log will appear in 5 seconds.
+                        </TableCell>
+                      </TableRow>
+                    ) : (
+                      dataLogs.map((log) => (
+                        <TableRow key={log.id}>
+                          <TableCell className="font-mono text-xs">
+                            {log.timestamp}
+                          </TableCell>
+                          <TableCell className="text-right font-medium">
+                            {formatNumber(log.plant1Energy, 2)}
+                          </TableCell>
+                          <TableCell className="text-right font-medium">
+                            {formatNumber(log.plant2Energy, 2)}
+                          </TableCell>
+                          <TableCell className="text-right font-medium">
+                            {formatNumber(log.plant3Energy, 2)}
+                          </TableCell>
+                          <TableCell className="text-right font-bold">
+                            {formatNumber(log.totalEnergy, 2)}
+                          </TableCell>
+                        </TableRow>
+                      ))
+                    )}
+                  </TableBody>
+                </Table>
+              </div>
+            </CardContent>
+          </Card>
+          ;
         </div>
       </div>
       {/* Enhanced CTA Section */}
