@@ -239,6 +239,71 @@ const getEfficiencyStatus = (
   return { label: "Poor", color: "text-red-600" };
 };
 
+const PowerChart = React.memo<{ data: ChartDataPoint[] }>(({ data }) => {
+  return (
+    <ResponsiveContainer width="100%" height={350}>
+      <LineChart
+        data={data}
+        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+      >
+        <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+        <XAxis dataKey="time" stroke="#64748b" style={{ fontSize: "12px" }} />
+        <YAxis
+          stroke="#64748b"
+          style={{ fontSize: "12px" }}
+          label={{
+            value: "Power (kW)",
+            angle: -90,
+            position: "insideLeft",
+            style: { fontSize: "12px", fill: "#64748b" },
+          }}
+        />
+        <Tooltip
+          contentStyle={{
+            backgroundColor: "white",
+            border: "1px solid #e2e8f0",
+            borderRadius: "8px",
+            fontSize: "12px",
+          }}
+          formatter={(value: number) => `${value.toFixed(1)} kW`}
+        />
+        <Legend wrapperStyle={{ fontSize: "12px", paddingTop: "10px" }} />
+
+        {/* CRITICAL: Disable animation! */}
+        <Line
+          type="monotone"
+          dataKey="plant1"
+          stroke="#3b82f6"
+          strokeWidth={2}
+          name="Plant 1"
+          dot={false}
+          isAnimationActive={false} // ← IMPORTANT!
+        />
+        <Line
+          type="monotone"
+          dataKey="plant2"
+          stroke="#10b981"
+          strokeWidth={2}
+          name="Plant 2"
+          dot={false}
+          isAnimationActive={false} // ← IMPORTANT!
+        />
+        <Line
+          type="monotone"
+          dataKey="plant3"
+          stroke="#f59e0b"
+          strokeWidth={2}
+          name="Plant 3"
+          dot={false}
+          isAnimationActive={false} // ← IMPORTANT!
+        />
+      </LineChart>
+    </ResponsiveContainer>
+  );
+});
+
+PowerChart.displayName = "PowerChart";
+
 // ============================================
 // SECTION 5: MAIN COMPONENT
 // ============================================
@@ -273,66 +338,6 @@ export default function EnergyMonitoringDemo() {
   );
 
   // ============================================
-  // MEMOIZED CHART COMPONENT (Prevent re-render)
-  // ============================================
-  const PowerChart = React.memo<{ data: ChartDataPoint[] }>(({ data }) => {
-    return (
-      <ResponsiveContainer width="100%" height={350}>
-        <LineChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-          <XAxis dataKey="time" stroke="#64748b" style={{ fontSize: "12px" }} />
-          <YAxis
-            stroke="#64748b"
-            style={{ fontSize: "12px" }}
-            label={{
-              value: "Power (kW)",
-              angle: -90,
-              position: "insideLeft",
-              style: { fontSize: "12px", fill: "#64748b" },
-            }}
-          />
-          <Tooltip
-            contentStyle={{
-              backgroundColor: "white",
-              border: "1px solid #e2e8f0",
-              borderRadius: "8px",
-              fontSize: "12px",
-            }}
-            formatter={(value: number) => `${value.toFixed(1)} kW`}
-          />
-          <Legend wrapperStyle={{ fontSize: "12px", paddingTop: "10px" }} />
-          <Line
-            type="monotone"
-            dataKey="plant1"
-            stroke="#3b82f6"
-            strokeWidth={2}
-            name="Plant 1"
-            dot={false}
-          />
-          <Line
-            type="monotone"
-            dataKey="plant2"
-            stroke="#10b981"
-            strokeWidth={2}
-            name="Plant 2"
-            dot={false}
-          />
-          <Line
-            type="monotone"
-            dataKey="plant3"
-            stroke="#f59e0b"
-            strokeWidth={2}
-            name="Plant 3"
-            dot={false}
-          />
-        </LineChart>
-      </ResponsiveContainer>
-    );
-  });
-
-  PowerChart.displayName = "PowerChart";
-
-  // ============================================
   // HELPER FUNCTIONS
   // ============================================
   // HAPUS function addLog yang lama, GANTI dengan:
@@ -362,38 +367,41 @@ export default function EnergyMonitoringDemo() {
   };
 
   // ============================================
-  // CHART ANIMATION - Sliding window (FIXED)
+  // CHART ANIMATION - Append Method (No Flash!)
   // ============================================
   useEffect(() => {
     const VISIBLE_HOURS = 10;
-    const INTERVAL_MS = 3000;
+    const UPDATE_INTERVAL = 3000;
 
-    // Generate full 24h data
-    const fullChartData = generateChartData();
+    // Generate full 24h data pool
+    const full24HoursData = generateChartData();
 
-    // Set initial data
-    setChartData(fullChartData.slice(0, VISIBLE_HOURS));
+    // Initialize with first 10 hours
+    setChartData(full24HoursData.slice(0, VISIBLE_HOURS));
 
-    let currentIndex = 0;
+    let dataIndex = VISIBLE_HOURS; // Start from 11th data
 
-    const interval = setInterval(() => {
-      currentIndex++;
+    const intervalId = setInterval(() => {
+      // Get next data point (with loop)
+      const nextDataPoint = full24HoursData[dataIndex % 24];
 
-      // Calculate start position (loops after 24)
-      const startIndex = currentIndex % 24;
+      // Update chart data (append new, remove oldest)
+      setChartData((prevData) => {
+        const updated = [...prevData, nextDataPoint];
 
-      // Build window data
-      const windowData: ChartDataPoint[] = [];
+        // Keep only latest 10 hours
+        if (updated.length > VISIBLE_HOURS) {
+          updated.shift(); // Remove first (oldest) element
+        }
 
-      for (let i = 0; i < VISIBLE_HOURS; i++) {
-        const dataIndex = (startIndex + i) % 24; // Loop back to 0 after 23
-        windowData.push(fullChartData[dataIndex]);
-      }
+        return updated;
+      });
 
-      setChartData(windowData);
-    }, INTERVAL_MS);
+      // Move to next index
+      dataIndex++;
+    }, UPDATE_INTERVAL);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(intervalId);
   }, []);
   // ============================================
   // EFFECTS (Real-time Updates)
