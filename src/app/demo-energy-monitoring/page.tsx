@@ -462,6 +462,32 @@ export default function EnergyMonitoringDemo() {
     return () => clearInterval(interval);
   }, []);
 
+  // Update 3: Peak power tracking
+  useEffect(() => {
+    if (totalPower > peakPower) {
+      setPeakPower(totalPower);
+    }
+  }, [totalPower, peakPower]);
+
+  // ============================================
+  // Update 4: DATA LOG - Every 5 seconds (10 chart updates)
+  // ============================================
+  useEffect(() => {
+    let updateCounter = 0;
+
+    const interval = setInterval(() => {
+      updateCounter++;
+
+      // Log every 10 chart updates (10 × 500ms = 5 seconds)
+      if (updateCounter >= 10) {
+        addDataLog();
+        updateCounter = 0;
+      }
+    }, 500); // Same as chart interval
+
+    return () => clearInterval(interval);
+  }, [plants]); // Dependency on plants to get latest energy data
+
   {
     /* ============================================
     DATA LOG - kWh Records Every 5 Seconds
