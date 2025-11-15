@@ -277,7 +277,7 @@ const PowerChart = React.memo<{ data: ChartDataPoint[] }>(({ data }) => {
           strokeWidth={2}
           name="Plant 1"
           dot={false}
-          isAnimationActive={false} // ← IMPORTANT!
+        //   isAnimationActive={false} // ← IMPORTANT!
         />
         <Line
           type="monotone"
@@ -286,7 +286,7 @@ const PowerChart = React.memo<{ data: ChartDataPoint[] }>(({ data }) => {
           strokeWidth={2}
           name="Plant 2"
           dot={false}
-          isAnimationActive={false} // ← IMPORTANT!
+        //   isAnimationActive={false} // ← IMPORTANT!
         />
         <Line
           type="monotone"
@@ -295,7 +295,7 @@ const PowerChart = React.memo<{ data: ChartDataPoint[] }>(({ data }) => {
           strokeWidth={2}
           name="Plant 3"
           dot={false}
-          isAnimationActive={false} // ← IMPORTANT!
+        //   isAnimationActive={false} // ← IMPORTANT!
         />
       </LineChart>
     </ResponsiveContainer>
