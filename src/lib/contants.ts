@@ -110,6 +110,13 @@ export const PRODUCT_CATEGORIES = [
       "Accesories untuk komponen industrial automation push button, pilot lamp, relay",
     keywords: ["Push Button", "Pilot Lamp", "Relay"],
   },
+  {
+    slug: "robot",
+    name: "Robot",
+    description:
+      "Automatic Robot Untuk Berbagai Kebutuhan Industrial, Delivery Robot, Arm Robot, Scara Robot",
+    keywords: ["Delivery Robot", "Arm Robot", "Scara Robot"],
+  },
 ];
 
 export const BRANDS = [
