@@ -1,16 +1,13 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 // ============================================
-// ENERGY MONITORING DEMO PAGE
-// Created: 2024
-// Purpose: Showcase real-time energy monitoring capabilities
-// Features: Multi-plant monitoring, power analytics, cost tracking
+// ENERGY MONITORING DEMO - CLEAN VERSION
+// Created: November 2024
+// Features: Fixed 24h data, realistic fluctuations, perfect sync
 // ============================================
 
 // ============================================
-// SECTION 1: IMPORTS
+// IMPORTS
 // ============================================
 import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
@@ -61,21 +58,23 @@ import {
 import { SITE_CONFIG } from "@/lib/contants";
 
 // ============================================
-// SECTION 2: TYPESCRIPT INTERFACES
+// INTERFACES
 // ============================================
 interface Plant {
   id: number;
   name: string;
   location: string;
   status: "running" | "stopped" | "maintenance";
-  power: number; // kW - real-time
-  voltage: number; // Volt
-  current: number; // Ampere
-  powerFactor: number; // 0-1
-  energyToday: number; // kWh accumulated
-  costToday: number; // Rupiah
-  efficiency: number; // %
-  carbonToday: number; // tons CO2
+  basePower: number;
+  baseVoltage: number;
+  powerFactor: number;
+  power: number;
+  voltage: number;
+  current: number;
+  energyToday: number;
+  costToday: number;
+  carbonToday: number;
+  efficiency: number;
 }
 
 interface ChartDataPoint {
@@ -95,102 +94,119 @@ interface DataLogEntry {
 }
 
 // ============================================
-// SECTION 3: CONSTANTS & INITIAL DATA
+// FIXED 24 HOURS DATA (Pre-determined)
 // ============================================
+const FIXED_24H_DATA: ChartDataPoint[] = [
+  // 00:00-05:00: Night shift minimal (30%)
+  { time: "00:00", plant1: 54.2, plant2: 28.5, plant3: 63.1 },
+  { time: "01:00", plant1: 53.8, plant2: 28.1, plant3: 62.5 },
+  { time: "02:00", plant1: 55.1, plant2: 29.2, plant3: 64.3 },
+  { time: "03:00", plant1: 54.5, plant2: 28.8, plant3: 63.7 },
+  { time: "04:00", plant1: 53.2, plant2: 28.0, plant3: 62.2 },
+  { time: "05:00", plant1: 54.8, plant2: 28.9, plant3: 63.9 },
+
+  // 06:00-07:00: Morning ramp up (50% → 75%)
+  { time: "06:00", plant1: 88.5, plant2: 46.8, plant3: 103.2 },
+  { time: "07:00", plant1: 132.7, plant2: 70.1, plant3: 154.8 },
+
+  // 08:00-15:00: Day shift peak (100%)
+  { time: "08:00", plant1: 176.4, plant2: 93.2, plant3: 205.8 },
+  { time: "09:00", plant1: 179.8, plant2: 95.0, plant3: 209.5 },
+  { time: "10:00", plant1: 182.3, plant2: 96.3, plant3: 212.4 },
+  { time: "11:00", plant1: 178.1, plant2: 94.1, plant3: 207.6 },
+  { time: "12:00", plant1: 180.9, plant2: 95.6, plant3: 210.8 },
+  { time: "13:00", plant1: 183.5, plant2: 97.0, plant3: 213.9 },
+  { time: "14:00", plant1: 181.7, plant2: 96.0, plant3: 211.9 },
+  { time: "15:00", plant1: 177.3, plant2: 93.7, plant3: 206.7 },
+
+  // 16:00-17:00: Evening ramp down (85% → 70%)
+  { time: "16:00", plant1: 154.2, plant2: 81.5, plant3: 179.7 },
+  { time: "17:00", plant1: 127.8, plant2: 67.5, plant3: 148.9 },
+
+  // 18:00-21:00: Evening shift (70%)
+  { time: "18:00", plant1: 125.3, plant2: 66.2, plant3: 146.1 },
+  { time: "19:00", plant1: 128.1, plant2: 67.7, plant3: 149.3 },
+  { time: "20:00", plant1: 126.5, plant2: 66.8, plant3: 147.5 },
+  { time: "21:00", plant1: 124.9, plant2: 66.0, plant3: 145.6 },
+
+  // 22:00-23:00: Night transition (50%)
+  { time: "22:00", plant1: 89.2, plant2: 47.1, plant3: 104.0 },
+  { time: "23:00", plant1: 90.5, plant2: 47.8, plant3: 105.5 },
+];
+
+// ============================================
+// CONSTANTS
+// ============================================
+const ELECTRICITY_RATE = 1445; // Rupiah per kWh
+const CARBON_FACTOR = 0.74; // kg CO2 per kWh (Indonesia grid)
+const CHART_UPDATE_INTERVAL = 3000; // 3 seconds
+const VISIBLE_HOURS = 10;
+
+// Calculate initial accumulated energy (00:00-09:00)
+const calculateInitialEnergy = (
+  plantKey: "plant1" | "plant2" | "plant3"
+): number => {
+  return FIXED_24H_DATA.slice(0, 10).reduce(
+    (sum, hour) => sum + hour[plantKey],
+    0
+  );
+};
+
+// Initial plants state
 const INITIAL_PLANTS: Plant[] = [
   {
     id: 1,
     name: "Plant 1",
     location: "Production Line A",
     status: "running",
-    power: 180.5,
-    voltage: 385,
-    current: 275,
+    basePower: 180,
+    baseVoltage: 385,
     powerFactor: 0.95,
-    energyToday: 4320,
-    costToday: 1728000,
+    power: 179.8,
+    voltage: 385,
+    current: 274.2,
+    energyToday: calculateInitialEnergy("plant1"),
+    costToday: calculateInitialEnergy("plant1") * ELECTRICITY_RATE,
+    carbonToday: (calculateInitialEnergy("plant1") * CARBON_FACTOR) / 1000,
     efficiency: 92,
-    carbonToday: 3.2,
   },
   {
     id: 2,
     name: "Plant 2",
     location: "Assembly Line B",
     status: "running",
-    power: 95.3,
-    voltage: 380,
-    current: 145,
+    basePower: 95,
+    baseVoltage: 380,
     powerFactor: 0.89,
-    energyToday: 2280,
-    costToday: 912000,
+    power: 95.0,
+    voltage: 380,
+    current: 143.8,
+    energyToday: calculateInitialEnergy("plant2"),
+    costToday: calculateInitialEnergy("plant2") * ELECTRICITY_RATE,
+    carbonToday: (calculateInitialEnergy("plant2") * CARBON_FACTOR) / 1000,
     efficiency: 88,
-    carbonToday: 1.7,
   },
   {
     id: 3,
     name: "Plant 3",
     location: "Packaging & Warehouse",
     status: "running",
-    power: 210.7,
-    voltage: 390,
-    current: 315,
+    basePower: 210,
+    baseVoltage: 390,
     powerFactor: 0.93,
-    energyToday: 5040,
-    costToday: 2016000,
+    power: 209.5,
+    voltage: 390,
+    current: 312.1,
+    energyToday: calculateInitialEnergy("plant3"),
+    costToday: calculateInitialEnergy("plant3") * ELECTRICITY_RATE,
+    carbonToday: (calculateInitialEnergy("plant3") * CARBON_FACTOR) / 1000,
     efficiency: 90,
-    carbonToday: 3.7,
   },
 ];
 
-const ELECTRICITY_RATE = 1445; // Rupiah per kWh (PLN industrial rate)
-
-const EVENT_TEMPLATES = [
-  { event: "Peak demand detected", type: "warning" as const },
-  { event: "Power factor optimized", type: "success" as const },
-  { event: "Normal operation resumed", type: "info" as const },
-  { event: "Load increased", type: "info" as const },
-  { event: "Load decreased", type: "success" as const },
-  { event: "Voltage stabilized", type: "success" as const },
-  { event: "High consumption alert", type: "warning" as const },
-  { event: "Energy target achieved", type: "success" as const },
-];
-
 // ============================================
-// SECTION 4: UTILITY FUNCTIONS
+// UTILITY FUNCTIONS
 // ============================================
-
-// Generate 24-hour chart data with realistic patterns
-const generateChartData = (): ChartDataPoint[] => {
-  const data: ChartDataPoint[] = [];
-
-  for (let i = 0; i < 24; i++) {
-    // Simulate realistic industrial patterns
-    // Night: lower consumption (00:00-06:00)
-    // Day shift: high consumption (07:00-15:00)
-    // Evening shift: medium consumption (16:00-22:00)
-    // Night: lower again (23:00)
-
-    let timeMultiplier = 1;
-    if (i >= 0 && i < 6)
-      timeMultiplier = 0.4; // Night - minimal
-    else if (i >= 7 && i < 15)
-      timeMultiplier = 1.0; // Day - peak
-    else if (i >= 16 && i < 22)
-      timeMultiplier = 0.7; // Evening - medium
-    else timeMultiplier = 0.5; // Late night
-
-    data.push({
-      time: `${i.toString().padStart(2, "0")}:00`,
-      plant1: (150 + Math.random() * 60) * timeMultiplier, // 150-210 kW base
-      plant2: (70 + Math.random() * 50) * timeMultiplier, // 70-120 kW base
-      plant3: (180 + Math.random() * 60) * timeMultiplier, // 180-240 kW base
-    });
-  }
-
-  return data;
-};
-
-// Format number to Indonesian Rupiah
 const formatCurrency = (amount: number): string => {
   return new Intl.NumberFormat("id-ID", {
     style: "currency",
@@ -200,12 +216,10 @@ const formatCurrency = (amount: number): string => {
   }).format(amount);
 };
 
-// Format number with comma separator
 const formatNumber = (num: number, decimals: number = 1): string => {
   return num.toFixed(decimals).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
-// Get status badge color
 const getStatusColor = (
   status: Plant["status"]
 ): "default" | "destructive" | "secondary" => {
@@ -221,7 +235,6 @@ const getStatusColor = (
   }
 };
 
-// Get power factor status
 const getPowerFactorStatus = (pf: number): { label: string; color: string } => {
   if (pf >= 0.95) return { label: "Excellent", color: "text-green-600" };
   if (pf >= 0.9) return { label: "Good", color: "text-blue-600" };
@@ -229,7 +242,6 @@ const getPowerFactorStatus = (pf: number): { label: string; color: string } => {
   return { label: "Poor", color: "text-red-600" };
 };
 
-// Get efficiency status
 const getEfficiencyStatus = (
   efficiency: number
 ): { label: string; color: string } => {
@@ -239,6 +251,9 @@ const getEfficiencyStatus = (
   return { label: "Poor", color: "text-red-600" };
 };
 
+// ============================================
+// CHART COMPONENT (Memoized)
+// ============================================
 const PowerChart = React.memo<{ data: ChartDataPoint[] }>(({ data }) => {
   return (
     <ResponsiveContainer width="100%" height={350}>
@@ -268,8 +283,6 @@ const PowerChart = React.memo<{ data: ChartDataPoint[] }>(({ data }) => {
           formatter={(value: number) => `${value.toFixed(1)} kW`}
         />
         <Legend wrapperStyle={{ fontSize: "12px", paddingTop: "10px" }} />
-
-        {/* CRITICAL: Disable animation! */}
         <Line
           type="monotone"
           dataKey="plant1"
@@ -277,7 +290,7 @@ const PowerChart = React.memo<{ data: ChartDataPoint[] }>(({ data }) => {
           strokeWidth={2}
           name="Plant 1"
           dot={false}
-        //   isAnimationActive={false} // ← IMPORTANT!
+          isAnimationActive={false}
         />
         <Line
           type="monotone"
@@ -286,7 +299,7 @@ const PowerChart = React.memo<{ data: ChartDataPoint[] }>(({ data }) => {
           strokeWidth={2}
           name="Plant 2"
           dot={false}
-        //   isAnimationActive={false} // ← IMPORTANT!
+          isAnimationActive={false}
         />
         <Line
           type="monotone"
@@ -295,7 +308,7 @@ const PowerChart = React.memo<{ data: ChartDataPoint[] }>(({ data }) => {
           strokeWidth={2}
           name="Plant 3"
           dot={false}
-        //   isAnimationActive={false} // ← IMPORTANT!
+          isAnimationActive={false}
         />
       </LineChart>
     </ResponsiveContainer>
@@ -305,22 +318,20 @@ const PowerChart = React.memo<{ data: ChartDataPoint[] }>(({ data }) => {
 PowerChart.displayName = "PowerChart";
 
 // ============================================
-// SECTION 5: MAIN COMPONENT
+// MAIN COMPONENT
 // ============================================
 export default function EnergyMonitoringDemo() {
   // ============================================
-  // STATE MANAGEMENT
+  // STATE
   // ============================================
   const [plants, setPlants] = useState<Plant[]>(INITIAL_PLANTS);
-  const [dataLogs, setDataLogs] = useState<DataLogEntry[]>([]);
   const [chartData, setChartData] = useState<ChartDataPoint[]>([]);
+  const [dataLogs, setDataLogs] = useState<DataLogEntry[]>([]);
   const [peakPower, setPeakPower] = useState<number>(520);
 
   // ============================================
-  // COMPUTED VALUES (Summary Metrics)
+  // COMPUTED VALUES
   // ============================================
-
-  // Memoize computed values (tambahkan ini)
   const totalPower = useMemo(
     () => plants.reduce((sum, plant) => sum + plant.power, 0),
     [plants]
@@ -340,19 +351,9 @@ export default function EnergyMonitoringDemo() {
   // ============================================
   // HELPER FUNCTIONS
   // ============================================
-  // HAPUS function addLog yang lama, GANTI dengan:
 
-  const logChartData = (currentChartData: ChartDataPoint[]) => {
-    const timestamp = new Date().toLocaleString("id-ID", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-    });
-
-    // Hitung AVERAGE power (bukan total)
+  // Calculate current chart window average for each plant
+  const getChartAverages = (currentChartData: ChartDataPoint[]) => {
     const plant1Avg =
       currentChartData.reduce((sum, d) => sum + d.plant1, 0) /
       currentChartData.length;
@@ -363,11 +364,28 @@ export default function EnergyMonitoringDemo() {
       currentChartData.reduce((sum, d) => sum + d.plant3, 0) /
       currentChartData.length;
 
+    return { plant1Avg, plant2Avg, plant3Avg };
+  };
+
+  // Log current chart data
+  const logChartData = (currentChartData: ChartDataPoint[]) => {
+    const timestamp = new Date().toLocaleString("id-ID", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
+
+    const { plant1Avg, plant2Avg, plant3Avg } =
+      getChartAverages(currentChartData);
+
     setDataLogs((prev) => [
       {
         id: Date.now() + Math.random(),
         timestamp,
-        plant1Energy: plant1Avg, // Average power in window
+        plant1Energy: plant1Avg,
         plant2Energy: plant2Avg,
         plant3Energy: plant3Avg,
         totalEnergy: plant1Avg + plant2Avg + plant3Avg,
@@ -377,75 +395,75 @@ export default function EnergyMonitoringDemo() {
   };
 
   // ============================================
-  // CHART ANIMATION - Append Method (No Flash!)
+  // EFFECT 1: Chart Animation (Sliding Window)
   // ============================================
   useEffect(() => {
-    const VISIBLE_HOURS = 10;
-    const UPDATE_INTERVAL = 3000;
-
-    const full24HoursData = generateChartData();
-    const initialData = full24HoursData.slice(0, VISIBLE_HOURS);
-
+    const initialData = FIXED_24H_DATA.slice(0, VISIBLE_HOURS);
     setChartData(initialData);
     logChartData(initialData);
 
     let dataIndex = VISIBLE_HOURS;
 
     const intervalId = setInterval(() => {
-      const nextDataPoint = full24HoursData[dataIndex % 24];
+      const nextDataPoint = FIXED_24H_DATA[dataIndex % 24];
 
       setChartData((prevData) => {
         const updated = [...prevData, nextDataPoint];
-
         if (updated.length > VISIBLE_HOURS) {
           updated.shift();
         }
-
         return updated;
       });
 
       dataIndex++;
-    }, UPDATE_INTERVAL);
+    }, CHART_UPDATE_INTERVAL);
 
     return () => clearInterval(intervalId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // ============================================
-  // LOG setiap chartData berubah
+  // EFFECT 2: Log Chart Data (on chartData change)
   // ============================================
   useEffect(() => {
-    if (chartData.length === 0) return; // Skip initial empty
-
+    if (chartData.length === 0) return;
     logChartData(chartData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chartData]); // Trigger saat chartData update
+  }, [chartData]);
 
-  
   // ============================================
-  // EFFECTS (Real-time Updates)
+  // EFFECT 3: Power Fluctuation (±2% from chart avg)
   // ============================================
-
-  // Update 1: Power fluctuation (every 2 seconds)
   useEffect(() => {
     const interval = setInterval(() => {
+      if (chartData.length === 0) return;
+
+      const { plant1Avg, plant2Avg, plant3Avg } = getChartAverages(chartData);
+
       setPlants((prev) =>
-        prev.map((plant) => {
+        prev.map((plant, index) => {
           if (plant.status !== "running") return plant;
 
-          // Random fluctuation ±5kW
-          const fluctuation = (Math.random() - 0.5) * 10;
-          const newPower = Math.max(
-            50,
-            Math.min(300, plant.power + fluctuation)
-          );
+          let chartAvg = plant1Avg;
+          if (index === 1) chartAvg = plant2Avg;
+          if (index === 2) chartAvg = plant3Avg;
 
-          // Recalculate current based on power (I = P / (V * PF * √3))
-          const newCurrent = newPower / (plant.voltage * plant.powerFactor);
+          // Power: ±2% from chart average
+          const powerVariation = 0.98 + Math.random() * 0.04;
+          const newPower = chartAvg * powerVariation;
+
+          // Voltage: ±1.5V from base
+          const voltageVariation = (Math.random() - 0.5) * 3;
+          const newVoltage = plant.baseVoltage + voltageVariation;
+
+          // Current: calculated (3-phase formula)
+          const newCurrent =
+            (newPower * 1000) / (newVoltage * plant.powerFactor * Math.sqrt(3));
 
           return {
             ...plant,
             power: newPower,
+            voltage: newVoltage,
             current: newCurrent,
           };
         })
@@ -453,26 +471,27 @@ export default function EnergyMonitoringDemo() {
     }, 2000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [chartData]);
 
-  // Update 2: Energy accumulation (every second)
+  // ============================================
+  // EFFECT 4: Energy Accumulation
+  // ============================================
   useEffect(() => {
     const interval = setInterval(() => {
       setPlants((prev) =>
         prev.map((plant) => {
           if (plant.status !== "running") return plant;
 
-          // kWh = kW × hours, per second = kW / 3600
           const energyIncrement = plant.power / 3600;
           const newEnergy = plant.energyToday + energyIncrement;
           const newCost = newEnergy * ELECTRICITY_RATE;
-          const newCarbon = newEnergy * 0.74; // 0.74 kg CO2 per kWh (Indonesia grid average)
+          const newCarbon = (newEnergy * CARBON_FACTOR) / 1000;
 
           return {
             ...plant,
             energyToday: newEnergy,
             costToday: newCost,
-            carbonToday: newCarbon / 1000, // Convert to tons
+            carbonToday: newCarbon,
           };
         })
       );
@@ -481,7 +500,9 @@ export default function EnergyMonitoringDemo() {
     return () => clearInterval(interval);
   }, []);
 
-  // Update 3: Peak power tracking
+  // ============================================
+  // EFFECT 5: Peak Power Tracking
+  // ============================================
   useEffect(() => {
     if (totalPower > peakPower) {
       setPeakPower(totalPower);
@@ -489,15 +510,13 @@ export default function EnergyMonitoringDemo() {
   }, [totalPower, peakPower]);
 
   // ============================================
-  // RENDER: JSX
+  // RENDER
   // ============================================
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <div className="pt-24 pb-12 px-6">
         <div className="max-w-7xl mx-auto space-y-6">
-          {/* ============================================
-              HEADER SECTION
-          ============================================ */}
+          {/* Header */}
           <div className="text-center space-y-2">
             <h1 className="text-4xl font-bold text-slate-900">
               Energy Monitoring Demo
@@ -508,17 +527,14 @@ export default function EnergyMonitoringDemo() {
             <Alert className="max-w-2xl mx-auto mt-4">
               <Activity className="h-4 w-4" />
               <AlertDescription>
-                This is a live demonstration with simulated data. Real-time
-                updates every second showing power consumption, cost analysis,
-                and efficiency metrics.
+                Live demonstration with realistic industrial data pattern. Chart
+                slides every 3 seconds showing 24-hour cycle.
               </AlertDescription>
             </Alert>
           </div>
-          {/* ============================================
-              SUMMARY CARDS (4 Metrics)
-          ============================================ */}
+
+          {/* Summary Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {/* Total Power */}
             <Card>
               <CardHeader className="pb-3">
                 <CardDescription className="flex items-center gap-2">
@@ -534,7 +550,6 @@ export default function EnergyMonitoringDemo() {
               </CardContent>
             </Card>
 
-            {/* Daily Cost */}
             <Card>
               <CardHeader className="pb-3">
                 <CardDescription className="flex items-center gap-2">
@@ -552,7 +567,6 @@ export default function EnergyMonitoringDemo() {
               </CardContent>
             </Card>
 
-            {/* Peak Demand */}
             <Card>
               <CardHeader className="pb-3">
                 <CardDescription className="flex items-center gap-2">
@@ -564,11 +578,12 @@ export default function EnergyMonitoringDemo() {
                 <div className="text-3xl font-bold text-slate-900">
                   {formatNumber(peakPower, 1)} kW
                 </div>
-                <p className="text-xs text-slate-500 mt-1">Today's maximum</p>
+                <p className="text-xs text-slate-500 mt-1">
+                  Today&apos;s maximum
+                </p>
               </CardContent>
             </Card>
 
-            {/* Average Power Factor */}
             <Card>
               <CardHeader className="pb-3">
                 <CardDescription className="flex items-center gap-2">
@@ -590,9 +605,8 @@ export default function EnergyMonitoringDemo() {
               </CardContent>
             </Card>
           </div>
-          {/* ============================================
-              PLANT CARDS (3 Plants)
-          ============================================ */}
+
+          {/* Plant Cards */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {plants.map((plant) => {
               const pfStatus = getPowerFactorStatus(plant.powerFactor);
@@ -600,7 +614,6 @@ export default function EnergyMonitoringDemo() {
 
               return (
                 <Card key={plant.id} className="relative overflow-hidden">
-                  {/* Status indicator line */}
                   <div
                     className={`absolute top-0 left-0 right-0 h-1 ${
                       plant.status === "running"
@@ -629,9 +642,7 @@ export default function EnergyMonitoringDemo() {
                   </CardHeader>
 
                   <CardContent className="space-y-4">
-                    {/* Real-time Metrics Grid */}
                     <div className="grid grid-cols-2 gap-3">
-                      {/* Power */}
                       <div className="bg-slate-50 p-3 rounded-lg">
                         <p className="text-xs text-slate-600 mb-1">Power</p>
                         <p className="text-lg font-bold text-slate-900">
@@ -639,23 +650,20 @@ export default function EnergyMonitoringDemo() {
                         </p>
                       </div>
 
-                      {/* Voltage */}
                       <div className="bg-slate-50 p-3 rounded-lg">
                         <p className="text-xs text-slate-600 mb-1">Voltage</p>
                         <p className="text-lg font-bold text-slate-900">
-                          {Math.round(plant.voltage)} V
+                          {formatNumber(plant.voltage, 1)} V
                         </p>
                       </div>
 
-                      {/* Current */}
                       <div className="bg-slate-50 p-3 rounded-lg">
                         <p className="text-xs text-slate-600 mb-1">Current</p>
                         <p className="text-lg font-bold text-slate-900">
-                          {formatNumber(plant.current, 0)} A
+                          {formatNumber(plant.current, 1)} A
                         </p>
                       </div>
 
-                      {/* Power Factor */}
                       <div className="bg-slate-50 p-3 rounded-lg">
                         <p className="text-xs text-slate-600 mb-1">
                           Power Factor
@@ -666,7 +674,6 @@ export default function EnergyMonitoringDemo() {
                       </div>
                     </div>
 
-                    {/* Energy & Cost */}
                     <div className="space-y-2 pt-2 border-t">
                       <div className="flex justify-between items-center">
                         <span className="text-sm text-slate-600">
@@ -686,7 +693,6 @@ export default function EnergyMonitoringDemo() {
                       </div>
                     </div>
 
-                    {/* Efficiency & Carbon */}
                     <div className="flex justify-between items-center pt-2 border-t text-sm">
                       <div className="flex items-center gap-2">
                         <Gauge className="h-4 w-4 text-slate-500" />
@@ -707,30 +713,27 @@ export default function EnergyMonitoringDemo() {
               );
             })}
           </div>
-          {/* ============================================
-    POWER COMPARISON CHART
-============================================ */}
+
+          {/* Chart */}
           <Card>
             <CardHeader>
               <CardTitle>Power Consumption Comparison</CardTitle>
               <CardDescription>
-                24-hour trend analysis across all plants
+                24-hour cycle with realistic industrial shift pattern
               </CardDescription>
             </CardHeader>
             <CardContent>
-              {/* Ganti dari <ResponsiveContainer> jadi: */}
               <PowerChart data={chartData} />
             </CardContent>
           </Card>
-          {/* ============================================
-    DATA LOG - kWh Records Every 5 Seconds
-============================================ */}
+
+          {/* Data Log */}
           <Card>
             <CardHeader>
               <CardTitle>Energy Data Log</CardTitle>
               <CardDescription>
-                kWh snapshot recorded every 5 seconds (showing 10 latest, max 20
-                entries)
+                Average power from current 10-hour window (updates every 3
+                seconds)
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -760,7 +763,7 @@ export default function EnergyMonitoringDemo() {
                           colSpan={5}
                           className="text-center text-slate-500 py-8"
                         >
-                          Collecting data... First log will appear in 5 seconds.
+                          Collecting data...
                         </TableCell>
                       </TableRow>
                     ) : (
@@ -770,16 +773,16 @@ export default function EnergyMonitoringDemo() {
                             {log.timestamp}
                           </TableCell>
                           <TableCell className="text-right font-medium">
-                            {formatNumber(log.plant1Energy, 2)}
+                            {formatNumber(log.plant1Energy, 1)}
                           </TableCell>
                           <TableCell className="text-right font-medium">
-                            {formatNumber(log.plant2Energy, 2)}
+                            {formatNumber(log.plant2Energy, 1)}
                           </TableCell>
                           <TableCell className="text-right font-medium">
-                            {formatNumber(log.plant3Energy, 2)}
+                            {formatNumber(log.plant3Energy, 1)}
                           </TableCell>
                           <TableCell className="text-right font-bold">
-                            {formatNumber(log.totalEnergy, 2)}
+                            {formatNumber(log.totalEnergy, 1)}
                           </TableCell>
                         </TableRow>
                       ))
@@ -789,120 +792,112 @@ export default function EnergyMonitoringDemo() {
               </div>
             </CardContent>
           </Card>
-          ;
         </div>
       </div>
-      {/* Enhanced CTA Section */}
-      {/* Enhanced CTA Section - Products Page Style */}
+
+      {/* CTA Section */}
       <section className="py-16 bg-gradient-to-br from-blue-900 to-blue-950 relative overflow-hidden">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Need Custom Engineering Solutions?
-            </h2>
-            <p className="text-xl text-blue-100 mb-10 leading-relaxed">
-              Our experienced engineers provide tailored automation solutions
-              for your specific industrial requirements. Get expert consultation
-              today.
-            </p>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-grid-white/[0.2] bg-[size:20px_20px]" />
+        </div>
 
-            {/* Enhanced Single Button with proper spacing */}
-            <Link
-              href="/contact"
-              className="group relative inline-flex items-center justify-center px-8 py-4 bg-white text-blue-900 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 mb-10"
-            >
-              <Settings className="h-5 w-5 mr-2" />
-              <span>Get Engineering Consultation</span>
-              <ArrowRight className="h-5 w-5 ml-2 transition-transform duration-300 group-hover:translate-x-2" />
+        <div className="relative px-6 py-16 sm:px-12 sm:py-20 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 leading-tight text-white">
+            Need a Custom Energy Monitoring Solution?
+          </h2>
+          <p className="text-xl text-blue-100 mb-10 leading-relaxed max-w-3xl mx-auto">
+            Our experienced engineers provide tailored automation solutions for
+            your specific industrial energy management requirements. Get expert
+            consultation today.
+          </p>
 
-              {/* Shine effect on hover */}
-              <div className="absolute inset-0 rounded-lg overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-              </div>
-            </Link>
+          <Link
+            href="/contact"
+            className="group relative inline-flex items-center justify-center px-8 py-4 bg-white text-blue-900 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 mb-10"
+          >
+            <Settings className="h-5 w-5 mr-2" />
+            <span>Get Engineering Consultation</span>
+            <ArrowRight className="h-5 w-5 ml-2 transition-transform duration-300 group-hover:translate-x-2" />
+            <div className="absolute inset-0 rounded-lg overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+            </div>
+          </Link>
 
-            {/* Contact Information Card */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 max-w-5xl mx-auto">
-              <h3 className="text-white font-semibold mb-6 text-lg">
-                Direct Contact Information
-              </h3>
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 max-w-5xl mx-auto">
+            <h3 className="text-white font-semibold mb-6 text-lg">
+              Direct Contact Information
+            </h3>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {/* Phone Contact */}
-                <a
-                  href={`tel:${SITE_CONFIG.company.phone}`}
-                  className="group flex items-center gap-3 p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
-                >
-                  <div className="flex-shrink-0">
-                    <Phone className="h-6 w-6 text-blue-200 group-hover:rotate-12 transition-transform duration-300" />
-                  </div>
-                  <div className="text-left min-w-0">
-                    <p className="text-xs text-blue-200 uppercase tracking-wide mb-1">
-                      Call Direct
-                    </p>
-                    <p className="font-semibold text-white text-sm group-hover:text-blue-100 transition-colors">
-                      {SITE_CONFIG.company.phone}
-                    </p>
-                  </div>
-                </a>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <a
+                href={`tel:${SITE_CONFIG.company.phone}`}
+                className="group flex items-center gap-3 p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
+              >
+                <div className="flex-shrink-0">
+                  <Phone className="h-6 w-6 text-blue-200 group-hover:rotate-12 transition-transform duration-300" />
+                </div>
+                <div className="text-left min-w-0">
+                  <p className="text-xs text-blue-200 uppercase tracking-wide mb-1">
+                    Call Direct
+                  </p>
+                  <p className="font-semibold text-white text-sm group-hover:text-blue-100 transition-colors">
+                    {SITE_CONFIG.company.phone}
+                  </p>
+                </div>
+              </a>
 
-                {/* Email Contact */}
-                <a
-                  href={`mailto:${SITE_CONFIG.company.email}`}
-                  className="group flex items-center gap-3 p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
-                >
-                  <div className="flex-shrink-0">
-                    <Mail className="h-6 w-6 text-blue-200 group-hover:rotate-12 transition-transform duration-300" />
-                  </div>
-                  <div className="text-left min-w-0">
-                    <p className="text-xs text-blue-200 uppercase tracking-wide mb-1">
-                      Email Us
-                    </p>
-                    <p className="font-semibold text-white text-sm group-hover:text-blue-100 transition-colors truncate">
-                      {SITE_CONFIG.company.email}
-                    </p>
-                  </div>
-                </a>
+              <a
+                href={`mailto:${SITE_CONFIG.company.email}`}
+                className="group flex items-center gap-3 p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
+              >
+                <div className="flex-shrink-0">
+                  <Mail className="h-6 w-6 text-blue-200 group-hover:rotate-12 transition-transform duration-300" />
+                </div>
+                <div className="text-left min-w-0">
+                  <p className="text-xs text-blue-200 uppercase tracking-wide mb-1">
+                    Email Us
+                  </p>
+                  <p className="font-semibold text-white text-sm group-hover:text-blue-100 transition-colors truncate">
+                    {SITE_CONFIG.company.email}
+                  </p>
+                </div>
+              </a>
 
-                {/* WhatsApp Contact */}
-                <a
-                  href="https://api.whatsapp.com/send/?phone=6285210067755&text=Halo PJMOtomasi, saya membutuhkan technical support untuk automation"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-3 p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
-                >
-                  <div className="flex-shrink-0">
-                    <MessageSquare className="h-6 w-6 text-blue-200 group-hover:rotate-12 transition-transform duration-300" />
-                  </div>
-                  <div className="text-left min-w-0">
-                    <p className="text-xs text-blue-200 uppercase tracking-wide mb-1">
-                      WhatsApp
-                    </p>
-                    <p className="font-semibold text-white text-sm group-hover:text-blue-100 transition-colors">
-                      Iqbal - 085210067755 <br />
-                      Tegar - 081112003634
-                    </p>
-                  </div>
-                </a>
-              </div>
+              <a
+                href="https://api.whatsapp.com/send/?phone=6285210067755&text=Halo PJMOtomasi, saya membutuhkan technical support untuk energy monitoring"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-3 p-4 rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
+              >
+                <div className="flex-shrink-0">
+                  <MessageSquare className="h-6 w-6 text-blue-200 group-hover:rotate-12 transition-transform duration-300" />
+                </div>
+                <div className="text-left min-w-0">
+                  <p className="text-xs text-blue-200 uppercase tracking-wide mb-1">
+                    WhatsApp
+                  </p>
+                  <p className="font-semibold text-white text-sm group-hover:text-blue-100 transition-colors">
+                    Iqbal - 085210067755
+                  </p>
+                </div>
+              </a>
+            </div>
 
-              {/* Additional Info */}
-              <div className="mt-6 pt-6 border-t border-white/20">
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-blue-100">
-                  <div className="flex items-center gap-2">
-                    <Clock className="h-4 w-4" />
-                    <span>Response within 2 hours</span>
-                  </div>
-                  <div className="hidden sm:block w-1 h-1 bg-blue-200 rounded-full"></div>
-                  <div className="flex items-center gap-2">
-                    <Users className="h-4 w-4" />
-                    <span>8+ Years Experience</span>
-                  </div>
-                  <div className="hidden sm:block w-1 h-1 bg-blue-200 rounded-full"></div>
-                  <div className="flex items-center gap-2">
-                    <Shield className="h-4 w-4" />
-                    <span>Certified Solutions</span>
-                  </div>
+            <div className="mt-6 pt-6 border-t border-white/20">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-blue-100">
+                <div className="flex items-center gap-2">
+                  <Clock className="h-4 w-4" />
+                  <span>Response within 2 hours</span>
+                </div>
+                <div className="hidden sm:block w-1 h-1 bg-blue-200 rounded-full"></div>
+                <div className="flex items-center gap-2">
+                  <Users className="h-4 w-4" />
+                  <span>8+ Years Experience</span>
+                </div>
+                <div className="hidden sm:block w-1 h-1 bg-blue-200 rounded-full"></div>
+                <div className="flex items-center gap-2">
+                  <Shield className="h-4 w-4" />
+                  <span>Certified Solutions</span>
                 </div>
               </div>
             </div>
