@@ -362,42 +362,32 @@ export default function EnergyMonitoringDemo() {
   };
 
   // ============================================
-  // CHART ANIMATION - Build chart from empty on load
-  // ============================================
-  // ============================================
-  // CHART ANIMATION - Sliding window (10-hour visible)
+  // CHART ANIMATION - Sliding window (FIXED)
   // ============================================
   useEffect(() => {
-    const VISIBLE_HOURS = 12; // Berapa jam yang terlihat di chart
-    const INTERVAL_MS = 500; // Data muncul setiap 500ms
+    const VISIBLE_HOURS = 10;
+    const INTERVAL_MS = 3000;
 
-    // Generate full 24h data (will loop infinitely)
+    // Generate full 24h data
     const fullChartData = generateChartData();
+
+    // Set initial data
+    setChartData(fullChartData.slice(0, VISIBLE_HOURS));
 
     let currentIndex = 0;
 
-    // Initial state: show first 10 hours
-    setChartData(fullChartData.slice(0, VISIBLE_HOURS));
-
-    // Start sliding animation
     const interval = setInterval(() => {
       currentIndex++;
 
-      // Calculate sliding window
-      const startIndex = currentIndex % 24; // Loop back to 0 after 23
-      const endIndex = (currentIndex + VISIBLE_HOURS) % 24;
+      // Calculate start position (loops after 24)
+      const startIndex = currentIndex % 24;
 
-      let windowData: ChartDataPoint[];
+      // Build window data
+      const windowData: ChartDataPoint[] = [];
 
-      if (endIndex > startIndex) {
-        // Normal case: no wrap around
-        windowData = fullChartData.slice(startIndex, endIndex);
-      } else {
-        // Wrap around case: 23:00 → 00:00 → 01:00
-        windowData = [
-          ...fullChartData.slice(startIndex, 24), // From startIndex to 23:00
-          ...fullChartData.slice(0, endIndex), // From 00:00 to endIndex
-        ];
+      for (let i = 0; i < VISIBLE_HOURS; i++) {
+        const dataIndex = (startIndex + i) % 24; // Loop back to 0 after 23
+        windowData.push(fullChartData[dataIndex]);
       }
 
       setChartData(windowData);
