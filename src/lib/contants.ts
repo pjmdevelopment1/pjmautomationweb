@@ -128,6 +128,7 @@ export const BRANDS = [
   "Delta",
   "Fuji",
   "Haiwell",
+  "Idec",
   "Keyence",
   "LS",
   "Mitsubishi",
