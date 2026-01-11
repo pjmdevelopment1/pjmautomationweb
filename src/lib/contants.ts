@@ -155,6 +155,7 @@ export const TARGET_KEYWORDS = {
   primary: [
     "supplier automation parts indonesia",
     "jual inverter jakarta",
+    "jual vsd jakarta",
     "technical support plc",
     "parameter setting inverter",
     "supplier plc mitsubishi indonesia",
