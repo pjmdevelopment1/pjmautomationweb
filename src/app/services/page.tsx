@@ -27,7 +27,9 @@ interface ServicesPageProps {
   }>;
 }
 
-export const dynamic = "force-dynamic";
+//export const dynamic = "force-dynamic";
+
+export const revalidate = 10800;
 
 export const metadata: Metadata = {
   title: "Engineering Services + Technical Support | Prestasi Jaya Maju",
@@ -81,7 +83,7 @@ export default async function ServicesPage({
       if (
         service.features &&
         service.features.some((feature: string) =>
-          feature.toLowerCase().includes(searchLower)
+          feature.toLowerCase().includes(searchLower),
         )
       )
         return true;
@@ -92,10 +94,10 @@ export default async function ServicesPage({
   }
 
   const featuredServices = filteredServices.filter(
-    (service) => service.featured
+    (service) => service.featured,
   );
   const regularServices = filteredServices.filter(
-    (service) => !service.featured
+    (service) => !service.featured,
   );
 
   return (

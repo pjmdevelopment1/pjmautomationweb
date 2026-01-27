@@ -36,9 +36,9 @@ import RelatedProducts from "@/app/products/RelatedProducts";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { getCanonicalUrl } from "@/lib/url";
 
-export const dynamic = "force-dynamic"; // For immediate Contentful updates
+// export const dynamic = "force-dynamic"; 
 // OR
-// export const revalidate = 3600; // For 1-hour cache with automatic updates
+export const revalidate = 10800;
 
 interface ProductPageProps {
   params: Promise<{

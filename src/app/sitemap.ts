@@ -10,6 +10,8 @@ import {
   SERVICES,
 } from "@/lib/contants";
 
+export const revalidate = 86400;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = SITE_CONFIG.url;
   const currentDate = new Date().toISOString();
