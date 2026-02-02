@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// src/app/sitemap.ts - OPTIMIZED FOR ACTIVE DEVELOPMENT
+// src/app/sitemap.ts - OPTIMIZED FOR SEO + API EFFICIENCY
 import { MetadataRoute } from "next";
 import { getProducts, getBlogPosts, getServices } from "@/lib/contentful";
 import {
@@ -10,135 +10,164 @@ import {
   SERVICES,
 } from "@/lib/contants";
 
-export const revalidate = 86400;
+// ✅ OPTIMIZED: Changed from 86400 (daily) to 604800 (weekly)
+// WHY: Sitemap structure doesn't change daily, only content does
+// Google will still crawl based on individual page frequencies
+export const revalidate = 604800; // 7 days
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = SITE_CONFIG.url;
   const currentDate = new Date().toISOString();
 
   try {
-    // Fetch dynamic content with error handling - ADD SERVICES
+    // Fetch dynamic content with error handling
     const [products, blogPosts, services] = await Promise.all([
-      getProducts({ limit: 2000 }).catch(() => []), // ✅ Changed from 1000 to 2000
+      getProducts({ limit: 2000 }).catch(() => []),
       getBlogPosts(200).catch(() => []),
       getServices().catch(() => []),
     ]);
 
-    // Static pages with proper priorities and change frequencies
+    // ═══════════════════════════════════════════════════════════════
+    // STATIC PAGES - Core website pages
+    // ═══════════════════════════════════════════════════════════════
     const staticPages: MetadataRoute.Sitemap = [
       {
         url: baseUrl,
         lastModified: currentDate,
-        changeFrequency: "daily",
+        changeFrequency: "weekly", // ✅ OPTIMIZED - Product pages are the SEO weapons, not homepage
         priority: 1.0,
       },
       {
         url: `${baseUrl}/products`,
         lastModified: currentDate,
-        changeFrequency: "daily", // ← KEEP DAILY for active updates
-        priority: 0.95, // ← HIGHER PRIORITY
+        changeFrequency: "weekly", // ✅ OPTIMIZED - Individual product pages get the traffic, not listing
+        priority: 0.95,
       },
       {
         url: `${baseUrl}/services`,
         lastModified: currentDate,
-        changeFrequency: "daily", // ← CHANGED from "weekly" to "daily"
-        priority: 0.9, // ← LOWER than individual service pages (was 0.95)
+        changeFrequency: "monthly", // ✅ OPTIMIZED: Services don't change often
+        priority: 0.9,
       },
       {
         url: `${baseUrl}/about`,
         lastModified: currentDate,
-        changeFrequency: "monthly",
+        changeFrequency: "monthly", // ✅ GOOD - Rarely changes
         priority: 0.7,
       },
       {
         url: `${baseUrl}/contact`,
         lastModified: currentDate,
-        changeFrequency: "monthly",
+        changeFrequency: "monthly", // ✅ GOOD - Rarely changes
         priority: 0.8,
       },
       {
         url: `${baseUrl}/quote`,
         lastModified: currentDate,
-        changeFrequency: "weekly",
+        changeFrequency: "monthly", // ✅ OPTIMIZED: Form page doesn't change
         priority: 0.9,
       },
       {
         url: `${baseUrl}/blog`,
         lastModified: currentDate,
-        changeFrequency: "daily",
+        changeFrequency: "weekly", // ✅ OPTIMIZED: Blog listing changes when new posts added
         priority: 0.8,
       },
     ];
 
-    // Product category pages - LOWER than individual products
+    // ═══════════════════════════════════════════════════════════════
+    // CATEGORY PAGES - Product categories
+    // ═══════════════════════════════════════════════════════════════
     const categoryPages: MetadataRoute.Sitemap = PRODUCT_CATEGORIES.map(
       (category) => ({
         url: `${baseUrl}/products?category=${category.slug}`,
         lastModified: currentDate,
-        changeFrequency: "daily" as const, // ← CHANGED from "weekly" to "daily"
-        priority: 0.85, // ← LOWER than product pages (was 0.9)
+        changeFrequency: "weekly" as const, // ✅ OPTIMIZED: Was "daily", now "weekly"
+        // WHY: Categories get new products, but not every day
+        priority: 0.85,
       })
     );
 
-    // Individual product pages - HIGH PRIORITY SEO GOLDMINE
-    const productPages: MetadataRoute.Sitemap = products.map((product) => ({
-      url: `${baseUrl}/products/${product.slug}`,
-      lastModified: product.updateAt || currentDate,
-      changeFrequency: "daily" as const, // ← DAILY for active updates
-      priority: product.feature ? 0.95 : 0.92, // ← MUCH HIGHER (was 0.85/0.8)
-    }));
+    // ═══════════════════════════════════════════════════════════════
+    // INDIVIDUAL PRODUCT PAGES - Your 1564 product pages
+    // ═══════════════════════════════════════════════════════════════
+    const productPages: MetadataRoute.Sitemap = products.map((product) => {
+      // ✅ SMART LOGIC: New products get "weekly", old products get "monthly"
+      const productAge = new Date().getTime() - new Date(product.createdAt).getTime();
+      const isNewProduct = productAge < 30 * 24 * 60 * 60 * 1000; // Less than 30 days old
+      
+      return {
+        url: `${baseUrl}/products/${product.slug}`,
+        lastModified: product.updateAt || currentDate,
+        // ✅ OPTIMIZED: New products = weekly, old products = monthly
+        // WHY: New products may get updates, old products are stable
+        changeFrequency: isNewProduct ? "weekly" : "monthly" as const,
+        priority: product.feature ? 0.95 : 0.92,
+      };
+    });
 
-    // DYNAMIC SERVICE PAGES from Contentful - HIGHEST SEO PRIORITY
+    // ═══════════════════════════════════════════════════════════════
+    // SERVICE PAGES - Individual service pages
+    // ═══════════════════════════════════════════════════════════════
     const dynamicServicePages: MetadataRoute.Sitemap = services.map(
       (service) => ({
         url: `${baseUrl}/services/${service.slug}`,
-        lastModified: service.updatedAt || currentDate, // Use actual update date
-        changeFrequency: "daily" as const, // ← DAILY for active updates
-        priority: service.featured ? 0.98 : 0.95, // ← HIGHEST PRIORITY (SEO weapon!)
+        lastModified: service.updatedAt || currentDate,
+        changeFrequency: "monthly" as const, // ✅ OPTIMIZED: Was "daily", now "monthly"
+        // WHY: Services are stable, don't change often
+        priority: service.featured ? 0.98 : 0.95,
       })
     );
 
-    // Blog post pages - Safe handling of Contentful entries
+    // ═══════════════════════════════════════════════════════════════
+    // BLOG PAGES - Blog posts
+    // ═══════════════════════════════════════════════════════════════
     const blogPages: MetadataRoute.Sitemap = blogPosts
       .filter((post: any) => post?.fields?.slug)
       .map((post: any) => ({
         url: `${baseUrl}/blog/${post.fields.slug}`,
         lastModified: post.sys?.updatedAt || currentDate,
-        changeFrequency: "monthly" as const,
+        changeFrequency: "yearly" as const, // ✅ OPTIMIZED: Published posts rarely change
         priority: 0.6,
       }));
 
-    // Location pages - Important for local SEO
+    // ═══════════════════════════════════════════════════════════════
+    // LOCATION PAGES - City/region pages
+    // ═══════════════════════════════════════════════════════════════
     const locationPages: MetadataRoute.Sitemap = LOCATIONS.map((location) => ({
       url: `${baseUrl}/location/${location.slug}`,
       lastModified: currentDate,
-      changeFrequency: "monthly" as const,
+      changeFrequency: "monthly" as const, // ✅ GOOD - Location info stable
       priority: 0.7,
     }));
 
-    // Additional technical pages for SEO
+    // ═══════════════════════════════════════════════════════════════
+    // TECHNICAL PAGES - Legal/info pages
+    // ═══════════════════════════════════════════════════════════════
     const technicalPages: MetadataRoute.Sitemap = [
       {
         url: `${baseUrl}/faq`,
         lastModified: currentDate,
-        changeFrequency: "monthly" as const,
+        changeFrequency: "monthly" as const, // ✅ GOOD
         priority: 0.6,
       },
       {
         url: `${baseUrl}/privacy`,
         lastModified: currentDate,
-        changeFrequency: "yearly" as const,
+        changeFrequency: "yearly" as const, // ✅ GOOD - Legal pages rarely change
         priority: 0.3,
       },
       {
         url: `${baseUrl}/terms`,
         lastModified: currentDate,
-        changeFrequency: "yearly" as const,
+        changeFrequency: "yearly" as const, // ✅ GOOD
         priority: 0.3,
       },
     ];
 
-    // Brand-specific pages for better SEO - HIGHER PRIORITY
+    // ═══════════════════════════════════════════════════════════════
+    // BRAND PAGES - Brand-specific product listings
+    // ═══════════════════════════════════════════════════════════════
     const brandPages: MetadataRoute.Sitemap = [
       "mitsubishi",
       "schneider",
@@ -151,30 +180,33 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ].map((brand) => ({
       url: `${baseUrl}/products?brand=${brand}`,
       lastModified: currentDate,
-      changeFrequency: "daily" as const, // ← CHANGED from "weekly" to "daily"
-      priority: 0.8, // ← HIGHER PRIORITY (was 0.75)
+      changeFrequency: "weekly" as const, // ✅ OPTIMIZED: Was "daily", now "weekly"
+      // WHY: Brand pages get new products weekly, not daily
+      priority: 0.8,
     }));
 
-    // Combine all pages - PRIORITIZE DYNAMIC CONTENT
+    // ═══════════════════════════════════════════════════════════════
+    // COMBINE ALL PAGES
+    // ═══════════════════════════════════════════════════════════════
     const allPages = [
       ...staticPages,
       ...categoryPages,
       ...productPages,
-      ...dynamicServicePages, // ← ONLY dynamic services from Contentful
+      ...dynamicServicePages,
       ...blogPages,
       ...locationPages,
-      // Removed staticServicePages - all services are from Contentful now
       ...technicalPages,
       ...brandPages,
     ];
 
-    // Remove duplicate service pages (in case of any overlaps)
+    // Remove duplicate URLs (if any)
     const uniquePages = allPages.filter(
       (page, index, self) => index === self.findIndex((p) => p.url === page.url)
     );
 
     // Sort by priority (highest first) for better crawling
     return uniquePages.sort((a, b) => (b.priority || 0) - (a.priority || 0));
+    
   } catch (error) {
     console.error("Error generating sitemap:", error);
 
@@ -195,8 +227,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       {
         url: `${baseUrl}/services`,
         lastModified: currentDate,
-        changeFrequency: "daily",
-        priority: 0.95,
+        changeFrequency: "monthly",
+        priority: 0.9,
       },
       {
         url: `${baseUrl}/contact`,
