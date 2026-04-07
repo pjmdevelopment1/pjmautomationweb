@@ -19,7 +19,7 @@ export interface Product {
   seoTitle?: string;
   seoDescription?: string;
   createdAt: string;
-  updateAt: string;
+  updatedAt: string;
 }
 
 export interface ProductSpecification {

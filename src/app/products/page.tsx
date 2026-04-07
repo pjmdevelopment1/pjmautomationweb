@@ -9,7 +9,7 @@
 
 import { Metadata } from "next";
 import { Suspense } from "react";
-import { getProducts, getProductCategories } from "@/lib/contentful";
+import { getAllProducts, getProductCategories } from "@/lib/contentful";
 import {
   PRODUCT_CATEGORIES,
   SITE_CONFIG,
@@ -130,9 +130,9 @@ export default async function ProductsPage({
   const currentPage = parseInt(page);
   const itemsPerPage = 12;
 
-  // ✅ SERVER-SIDE DATA FETCHING
-  const [allProducts, categories] = await Promise.all([
-    getProducts({ limit: 2000 }),
+  const [{ products: allProducts, total: totalProductsFromAPI }, categories] =
+  await Promise.all([
+    getAllProducts(),
     getProductCategories(),
   ]);
 
@@ -196,6 +196,7 @@ export default async function ProductsPage({
 
   // ✅ SERVER-SIDE PAGINATION
   const totalProducts = sortedProducts.length;
+  const grandTotal = totalProductsFromAPI;
   const totalPages = Math.ceil(totalProducts / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const paginatedProducts = sortedProducts.slice(
