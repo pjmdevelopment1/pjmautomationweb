@@ -30,6 +30,9 @@ import { generateBreadcrumbSchema } from "@/lib/schema";
 import { extractPlainTextFromRichText } from "@/components/common/RichTextRenderer";
 import Breadcrumb from "@/components/common/Breadcrumb";
 import { Button } from "@/components/ui/button";
+import { MAINTENANCE_MODE } from "@/lib/contants";
+import MaintenanceNotice from "@/components/common/maintenancenotice";
+
 import Link from "next/link";
 
 // ✅ NEW SERVER COMPONENTS - No hydration issues!
@@ -118,6 +121,9 @@ export async function generateMetadata({
 export default async function ProductsPage({
   searchParams,
 }: ProductsPageProps) {
+  if (MAINTENANCE_MODE) {          
+    return <MaintenanceNotice />; 
+  }  
   const params = await searchParams;
   const {
     category,

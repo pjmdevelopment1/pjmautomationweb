@@ -33,6 +33,8 @@ import {
 } from "react";
 import { getCanonicalUrl } from "@/lib/url";
 import { SITE_CONFIG } from "@/lib/contants";
+import { MAINTENANCE_MODE } from "@/lib/contants";
+import MaintenanceNotice from "@/components/common/maintenancenotice";
 
 export const metadata: Metadata = {
   title: "Technical Blog & Automation Guides | Prestasi Jaya Maju",
@@ -105,6 +107,9 @@ export default async function BlogPage({
 }: {
   searchParams: Promise<{ page?: string; tag?: string; category?: string }>;
 }) {
+  if (MAINTENANCE_MODE) {
+    return <MaintenanceNotice />;
+  }
   const params = await searchParams;
   const currentPage = Number(params.page) || 1;
   const pageSize = 6;
@@ -120,13 +125,13 @@ export default async function BlogPage({
     if (params.tag) {
       filteredPosts = posts.filter((post) =>
         post.tags.some((tag: string) =>
-          tag.toLowerCase().includes(params.tag!.toLowerCase())
-        )
+          tag.toLowerCase().includes(params.tag!.toLowerCase()),
+        ),
       );
     }
     if (params.category) {
       filteredPosts = posts.filter((post) =>
-        post.category.toLowerCase().includes(params.category!.toLowerCase())
+        post.category.toLowerCase().includes(params.category!.toLowerCase()),
       );
     }
 
@@ -135,7 +140,7 @@ export default async function BlogPage({
     const startIndex = (currentPage - 1) * pageSize;
     const paginatedPosts = filteredPosts.slice(
       startIndex,
-      startIndex + pageSize
+      startIndex + pageSize,
     );
 
     // Helper for pagination URLs

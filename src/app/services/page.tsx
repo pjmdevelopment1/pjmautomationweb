@@ -20,6 +20,8 @@ import {
   X,
 } from "lucide-react";
 import { getCanonicalUrl } from "@/lib/url";
+import { MAINTENANCE_MODE } from "@/lib/contants";
+import MaintenanceNotice from "@/components/common/maintenancenotice";
 
 interface ServicesPageProps {
   searchParams: Promise<{
@@ -67,6 +69,9 @@ export const metadata: Metadata = {
 export default async function ServicesPage({
   searchParams,
 }: ServicesPageProps) {
+  if (MAINTENANCE_MODE) {
+    return <MaintenanceNotice />;
+  }
   const params = await searchParams;
   const { search } = params;
 

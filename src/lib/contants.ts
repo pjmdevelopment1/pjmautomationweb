@@ -1,3 +1,5 @@
+export const MAINTENANCE_MODE = true;
+
 export const SITE_CONFIG = {
   name: "PT. Prestasi Jaya Maju",
   description:
@@ -5,7 +7,7 @@ export const SITE_CONFIG = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://pjmotomasi.co.id",
   company: {
     name: "PT. Prestasi Jaya Maju",
-    phone: " 021-2784-3480",
+    phone: " 021-38810132",
     email: "sales@pjmotomasi.co.id",
     address: "Jl. Gandaria Raya No. 64 , Jakarta Selatan , DKI Jakarta",
     tagline: "One Stop Solution Automation Provider",

@@ -35,6 +35,8 @@ import {
   Key,
 } from "react";
 import { getCanonicalUrl } from "@/lib/url";
+import { MAINTENANCE_MODE } from "@/lib/contants";
+import MaintenanceNotice from "@/components/common/maintenancenotice";
 
 interface BlogPageProps {
   params: Promise<{
@@ -141,6 +143,9 @@ export async function generateMetadata({
 }
 
 export default async function BlogPostPage({ params }: BlogPageProps) {
+  if (MAINTENANCE_MODE) {
+    return <MaintenanceNotice />;
+  }
   const { slug } = await params;
   const entry = await getBlogPostBySlug(slug);
 
@@ -159,7 +164,7 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
     .map(extractBlogFields)
     .filter(
       (post): post is NonNullable<typeof post> =>
-        post !== null && post.slug !== blog.slug
+        post !== null && post.slug !== blog.slug,
     )
     .slice(0, 3);
 
@@ -263,7 +268,7 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
                           >
                         | null
                         | undefined,
-                      index: Key | null | undefined
+                      index: Key | null | undefined,
                     ) => (
                       <Badge
                         key={index}
@@ -273,7 +278,7 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
                         <Tag className="h-3 w-3 mr-1" />
                         {tag}
                       </Badge>
-                    )
+                    ),
                   )}
                 </div>
               )}

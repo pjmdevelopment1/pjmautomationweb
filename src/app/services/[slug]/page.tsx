@@ -7,6 +7,8 @@ import ServiceDetail from "@/components/services/ServiceDetail";
 import Breadcrumb from "@/components/common/Breadcrumb";
 import { generateServiceSchema } from "@/lib/schema";
 import { getCanonicalUrl } from "@/lib/url";
+import { MAINTENANCE_MODE } from "@/lib/contants";
+import MaintenanceNotice from "@/components/common/maintenancenotice";
 
 // ✅ FIXED: Updated interface to make params a Promise
 interface ServicePageProps {
@@ -76,6 +78,9 @@ export async function generateMetadata({
 
 // ✅ FIXED: Await params in main component function
 export default async function ServicePage({ params }: ServicePageProps) {
+  if (MAINTENANCE_MODE) {
+    return <MaintenanceNotice />;
+  }
   const { slug } = await params; // 🔧 Await params first
   const service = await getServiceBySlug(slug);
 

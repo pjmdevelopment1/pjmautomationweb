@@ -189,7 +189,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
                         href="tel:+6285210067755"
                         className="text-sm font-medium text-gray-900 hover:text-blue-900 transition-colors"
                       >
-                        021-2784-3480
+                        021-38810132
                       </a>
                     </div>
                   </div>
