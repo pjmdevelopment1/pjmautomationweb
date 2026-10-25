@@ -35,7 +35,7 @@ export default function MaintenanceNotice() {
             <p>
               Mohon maaf atas ketidaknyamanannya. Saat ini website{" "}
               <strong>PJM Otomasi (PT. Prestasi Jaya Maju)</strong> sedang dalam
-              proses maintenance hingga awal Agustus 2026.
+              proses maintenance hingga awal November 2026.
             </p>
             <p className="font-semibold text-gray-900">
               Kami tetap beroperasi dan siap melayani Anda.
